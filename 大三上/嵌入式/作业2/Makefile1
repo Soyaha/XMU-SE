@@ -1,0 +1,11 @@
+CC = gcc
+TARGET = hello
+OBJ = hello.o    # 用变量存中间目标文件
+SRCS = hello.c
+HDRS = hello.h
+$(TARGET): $(OBJ)
+	$(CC) $(OBJ) -o $(TARGET)  # 链接命令（变量版）
+$(OBJ): $(SRCS) $(HDRS)
+	$(CC) -c $(SRCS) -o $(OBJ)  # 编译命令（变量版）
+clean:
+	rm -f $(TARGET) $(OBJ)

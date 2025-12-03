@@ -1,0 +1,1285 @@
+
+------------------------- 实验1 --------------------------------
+
+
+cd /home/linux/workdir/fs3399/application/module_test
+
+make
+
+cp module_test.ko  /mnt/hgfs/share/
+
+
+
+
+insmod module_test.ko
+
+lsmod
+
+rmmod module_test
+
+lsmod
+
+
+
+
+
+
+
+
+
+------------------------- 实验2 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/character
+
+make
+
+make app
+
+cp character.ko /mnt/hgfs/share/
+
+cp test /mnt/hgfs/share/
+
+
+
+
+insmod character.ko
+
+chmod 777 test
+
+./test /dev/character_device
+
+rmmod character
+
+
+
+
+
+
+
+
+
+
+------------------------- 实验3 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/reg_leds
+
+make
+
+make app
+
+cp reg_leds_driver.ko /mnt/hgfs/share/
+
+cp reg_leds /mnt/hgfs/share/
+
+
+
+
+
+insmod reg_leds_driver.ko
+
+chmod 777 reg_leds
+
+./reg_leds /dev/leds_reg_device
+
+rmmod reg_leds_driver
+
+
+
+
+
+
+------------------------- 实验4 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/gpio_leds
+
+make
+
+make app
+
+cp gpio_leds.ko /mnt/hgfs/share/
+
+cp leds_test /mnt/hgfs/share/
+
+
+
+
+
+insmod gpio_leds.ko
+
+chmod 777 leds_test
+
+./leds_test /dev/leds_ctl
+
+rmmod gpio_leds
+
+
+
+
+
+
+------------------------- 实验5 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/pwm_led
+
+make
+
+make app
+
+cp pwm_led_driver.ko /mnt/hgfs/share/
+
+cp pwm_led /mnt/hgfs/share/
+
+
+
+
+
+insmod pwm_led_driver.ko
+
+chmod 777 pwm_led
+
+./pwm_led /dev/leds_pwm_device
+
+rmmod pwm_led_driver
+
+
+
+
+
+
+
+
+------------------------- 实验6 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/buzzer
+
+make
+
+make app
+
+cp buzzer_driver.ko /mnt/hgfs/share/
+
+cp buzzer /mnt/hgfs/share/
+
+
+
+
+
+insmod buzzer_driver.ko
+
+chmod 777 buzzer
+
+./buzzer /dev/buzzer_ctl
+
+rmmod buzzer_driver
+
+
+
+
+
+
+
+
+------------------------- 实验7 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/keys
+
+make
+
+make app
+
+cp farsight_keys.ko /mnt/hgfs/share/
+
+cp keys /mnt/hgfs/share/
+
+
+
+
+
+insmod farsight_keys.ko
+
+chmod 777 keys
+
+./keys /dev/farsight_keys
+
+rmmod farsight_keys
+
+
+
+
+
+
+
+
+
+------------------------- 实验8 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/lm75
+
+make
+
+make app
+
+cp farsight_lm75.ko /mnt/hgfs/share/
+
+cp lm75 /mnt/hgfs/share/
+
+
+
+
+
+insmod farsight_lm75.ko
+
+chmod 777 lm75
+
+./lm75
+
+rmmod farsight_lm75
+
+
+
+
+
+
+
+------------------------- 实验9 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/zlg72xx
+
+make
+
+make app
+
+cp zlg72xx_driver.ko /mnt/hgfs/share/
+
+cp zlg72xx /mnt/hgfs/share/
+
+
+
+
+
+insmod zlg72xx_driver.ko
+
+chmod 777 zlg72xx
+
+./zlg72xx
+
+rmmod zlg72xx_driver
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------- 实验10 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/adc
+
+make
+
+make app
+
+cp farsight_adc.ko /mnt/hgfs/share/
+
+cp adc_test /mnt/hgfs/share/
+
+
+
+
+
+insmod farsight_adc.ko
+
+chmod 777 adc_test
+
+./adc_test /dev/adc_ctrl -4
+
+./adc_test /dev/adc_ctrl -0
+
+./adc_test /dev/adc_ctrl -1
+
+./adc_test /dev/adc_ctrl -2
+
+./adc_test /dev/adc_ctrl -3
+
+rmmod farsight_adc
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------- 实验11 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/relay
+
+make
+
+make app
+
+cp relay_driver.ko /mnt/hgfs/share/
+
+cp relay /mnt/hgfs/share/
+
+
+
+
+
+insmod relay_driver.ko
+
+chmod 777 relay
+
+./relay
+
+rmmod relay_driver
+
+
+
+
+
+
+------------------------- 实验12 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/itr
+
+make
+
+make app
+
+cp itr_driver.ko /mnt/hgfs/share/
+
+cp itr /mnt/hgfs/share/
+
+
+
+
+
+insmod itr_driver.ko
+
+chmod 777 itr
+
+./itr
+
+rmmod itr_driver
+
+
+
+
+
+
+
+
+
+
+
+------------------------- 实验13 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/buzzer_pwm
+
+make
+
+make app
+
+cp buzzer_pwm_driver.ko /mnt/hgfs/share/
+
+cp buzzer_pwm /mnt/hgfs/share/
+
+
+
+
+
+
+insmod buzzer_pwm_driver.ko
+
+chmod 777 buzzer_pwm
+
+./buzzer_pwm
+
+rmmod buzzer_pwm_driver
+
+
+
+
+
+
+------------------------- 实验14 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/servo
+
+make
+
+make app
+
+cp servo_driver.ko /mnt/hgfs/share/
+
+cp servo /mnt/hgfs/share/
+
+
+
+
+
+insmod servo_driver.ko
+
+chmod 777 servo
+
+./servo
+
+rmmod servo_driver
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------- 实验15 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/stepper
+
+make
+
+make app
+
+cp stepper_driver.ko /mnt/hgfs/share/
+
+cp stepper /mnt/hgfs/share/
+
+
+
+
+
+
+insmod stepper_driver.ko
+
+chmod 777 stepper
+
+./stepper
+
+rmmod stepper_driver
+
+
+
+
+
+------------------------- 实验16 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/dcmotor
+
+make
+
+make app
+
+cp dcmotor_driver.ko /mnt/hgfs/share/
+
+cp dcmotor /mnt/hgfs/share/
+
+
+
+
+
+insmod dcmotor_driver.ko
+
+chmod 777 dcmotor
+
+./dcmotor
+
+rmmod dcmotor_driver
+
+
+
+
+
+
+
+
+
+------------------------- 实验17 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/ir
+
+aarch64-linux-gnu-gcc ir.c -o ir
+
+cp ir /mnt/hgfs/share/
+
+
+
+
+
+chmod 777 ir
+
+./ir /dev/input/event0
+
+
+
+
+
+
+
+
+------------------------- 实验18 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/ak8963
+
+aarch64-linux-gnu-gcc ak8963.c -o ak8963
+
+cp ak8963 /mnt/hgfs/share/
+
+
+
+
+
+chmod 777 ak8963
+
+./ak8963 iio:device0
+
+
+
+
+
+
+
+
+------------------------- 实验19 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/rs485
+
+aarch64-linux-gnu-gcc rs485_test.c -o rs485_test
+
+cp rs485_test /mnt/hgfs/share/
+
+
+
+
+
+chmod 777 rs485_test
+
+chmod 777 /sys/class/gpio/export
+
+echo 90 > /sys/class/gpio/export
+
+echo out > /sys/class/gpio/gpio90/direction
+
+echo 1 > /sys/class/gpio/gpio90/value
+
+./rs485_test -r /dev/ttyS0
+
+
+
+
+chmod 777 rs485_test
+
+chmod 777 /sys/class/gpio/export
+
+echo 90 > /sys/class/gpio/export
+
+echo out > /sys/class/gpio/gpio90/direction
+
+echo 1 > /sys/class/gpio/gpio90/value
+
+./rs485_test -s /dev/ttyS0
+
+
+
+
+
+
+
+
+------------------------- 实验20 --------------------------------
+
+cd /home/linux/workdir/fs3399/application/can
+
+aarch64-linux-gnu-gcc canwrite.c libsocketcan.c -o canwrite
+
+aarch64-linux-gnu-gcc canread.c libsocketcan.c -o canread
+
+cp canwrite /mnt/hgfs/share/
+
+cp canread /mnt/hgfs/share/
+
+
+
+
+chmod 777 canread
+
+./canread
+
+
+
+
+chmod 777 canwrite
+
+./canwrite
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------以下为在 Ubuntu 上执行的命令-------------------------------------
+
+
+
+cd /home/linux/workdir/fs3399/application/module_test
+
+make
+
+cp module_test.ko  /mnt/hgfs/share/
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/character
+
+make
+
+make app
+
+cp character.ko /mnt/hgfs/share/
+
+cp test /mnt/hgfs/share/
+
+
+
+
+cd /home/linux/workdir/fs3399/application/reg_leds
+
+make
+
+make app
+
+cp reg_leds_driver.ko /mnt/hgfs/share/
+
+cp reg_leds /mnt/hgfs/share/
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/gpio_leds
+
+make
+
+make app
+
+cp gpio_leds.ko /mnt/hgfs/share/
+
+cp leds_test /mnt/hgfs/share/
+
+
+
+
+cd /home/linux/workdir/fs3399/application/pwm_led
+
+make
+
+make app
+
+cp pwm_led_driver.ko /mnt/hgfs/share/
+
+cp pwm_led /mnt/hgfs/share/
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/buzzer
+
+make
+
+make app
+
+cp buzzer_driver.ko /mnt/hgfs/share/
+
+cp buzzer /mnt/hgfs/share/
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/keys
+
+make
+
+make app
+
+cp farsight_keys.ko /mnt/hgfs/share/
+
+cp keys /mnt/hgfs/share/
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/lm75
+
+make
+
+make app
+
+cp farsight_lm75.ko /mnt/hgfs/share/
+
+cp lm75 /mnt/hgfs/share/
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/zlg72xx
+
+make
+
+make app
+
+cp zlg72xx_driver.ko /mnt/hgfs/share/
+
+cp zlg72xx /mnt/hgfs/share/
+
+
+
+
+cd /home/linux/workdir/fs3399/application/adc
+
+make
+
+make app
+
+cp farsight_adc.ko /mnt/hgfs/share/
+
+cp adc_test /mnt/hgfs/share/
+
+
+
+
+cd /home/linux/workdir/fs3399/application/relay
+
+make
+
+make app
+
+cp relay_driver.ko /mnt/hgfs/share/
+
+cp relay /mnt/hgfs/share/
+
+
+
+
+cd /home/linux/workdir/fs3399/application/itr
+
+make
+
+make app
+
+cp itr_driver.ko /mnt/hgfs/share/
+
+cp itr /mnt/hgfs/share/
+
+
+
+
+cd /home/linux/workdir/fs3399/application/buzzer_pwm
+
+make
+
+make app
+
+cp buzzer_pwm_driver.ko /mnt/hgfs/share/
+
+cp buzzer_pwm /mnt/hgfs/share/
+
+
+
+
+cd /home/linux/workdir/fs3399/application/servo
+
+make
+
+make app
+
+cp servo_driver.ko /mnt/hgfs/share/
+
+cp servo /mnt/hgfs/share/
+
+
+
+
+cd /home/linux/workdir/fs3399/application/stepper
+
+make
+
+make app
+
+cp stepper_driver.ko /mnt/hgfs/share/
+
+cp stepper /mnt/hgfs/share/
+
+
+
+
+cd /home/linux/workdir/fs3399/application/dcmotor
+
+make
+
+make app
+
+cp dcmotor_driver.ko /mnt/hgfs/share/
+
+cp dcmotor /mnt/hgfs/share/
+
+
+
+cd /home/linux/workdir/fs3399/application/ir
+
+aarch64-linux-gnu-gcc ir.c -o ir
+
+cp ir /mnt/hgfs/share/
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/ak8963
+
+aarch64-linux-gnu-gcc ak8963.c -o ak8963
+
+cp ak8963 /mnt/hgfs/share/
+
+
+
+cd /home/linux/workdir/fs3399/application/rs485
+
+aarch64-linux-gnu-gcc rs485_test.c -o rs485_test
+
+cp rs485_test /mnt/hgfs/share/
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/can
+
+aarch64-linux-gnu-gcc canwrite.c libsocketcan.c -o canwrite
+
+aarch64-linux-gnu-gcc canread.c libsocketcan.c -o canread
+
+cp canwrite /mnt/hgfs/share/
+
+cp canread /mnt/hgfs/share/
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------以下为在Xshell 4上执行的命令-----------------------
+
+
+su
+
+mkdir app
+
+cd app
+
+
+
+
+
+
+-------实验1-----------
+
+lsmod
+
+
+
+
+
+insmod module_test.ko
+
+lsmod
+
+
+
+
+
+
+rmmod module_test
+
+lsmod
+
+
+
+
+
+
+
+
+-------实验2-----------
+
+insmod character.ko
+
+chmod 777 test
+
+./test /dev/character_device
+
+
+
+
+
+
+
+
+
+-------实验3-----------
+
+rmmod character
+
+insmod reg_leds_driver.ko
+
+chmod 777 reg_leds
+
+./reg_leds /dev/leds_reg_device
+
+
+
+
+
+
+
+-------实验4-----------
+
+rmmod reg_leds_driver
+
+insmod gpio_leds.ko
+
+chmod 777 leds_test
+
+./leds_test /dev/leds_ctl
+
+
+
+
+
+
+
+
+
+-------实验5-----------
+
+rmmod gpio_leds
+
+insmod pwm_led_driver.ko
+
+chmod 777 pwm_led
+
+./pwm_led /dev/leds_pwm_device
+
+
+
+
+
+
+
+
+-------实验6-----------
+
+rmmod pwm_led_driver
+
+insmod buzzer_driver.ko
+
+chmod 777 buzzer
+
+./buzzer /dev/buzzer_ctl
+
+
+
+
+
+
+
+
+-------实验7-----------
+
+rmmod buzzer_driver
+
+insmod farsight_keys.ko
+
+chmod 777 keys
+
+./keys /dev/farsight_keys
+
+
+
+
+
+
+
+
+
+-------实验8-----------
+
+rmmod farsight_keys
+
+insmod farsight_lm75.ko
+
+chmod 777 lm75
+
+./lm75
+
+
+
+
+
+
+
+
+-------实验9-----------
+
+rmmod farsight_lm75
+
+insmod zlg72xx_driver.ko
+
+chmod 777 zlg72xx
+
+./zlg72xx
+
+
+
+
+
+
+-------实验10-----------
+
+rmmod zlg72xx_driver
+
+insmod farsight_adc.ko
+
+chmod 777 adc_test
+
+./adc_test /dev/adc_ctrl -4
+
+./adc_test /dev/adc_ctrl -0
+
+./adc_test /dev/adc_ctrl -1
+
+./adc_test /dev/adc_ctrl -2
+
+./adc_test /dev/adc_ctrl -3
+
+
+
+
+
+
+
+
+-------实验11-----------
+
+rmmod farsight_adc
+
+insmod relay_driver.ko
+
+chmod 777 relay
+
+./relay
+
+
+
+
+
+
+-------实验12-----------
+
+rmmod relay_driver
+
+insmod itr_driver.ko
+
+chmod 777 itr
+
+./itr
+
+
+
+
+
+
+-------实验13-----------
+
+rmmod itr_driver
+
+insmod buzzer_pwm_driver.ko
+
+chmod 777 buzzer_pwm
+
+./buzzer_pwm
+
+
+
+
+
+-------实验14-----------
+
+rmmod buzzer_pwm_driver
+
+insmod servo_driver.ko
+
+chmod 777 servo
+
+./servo
+
+
+
+
+
+
+-------实验15-----------
+
+rmmod servo_driver
+
+insmod stepper_driver.ko
+
+chmod 777 stepper
+
+./stepper
+
+
+
+
+
+
+-------实验16-----------
+
+rmmod stepper_driver
+
+insmod dcmotor_driver.ko
+
+chmod 777 dcmotor
+
+./dcmotor
+
+
+
+
+
+
+
+-------实验17-----------
+
+rmmod dcmotor_driver
+
+chmod 777 ir
+
+./ir /dev/input/event0
+
+
+
+
+
+
+
+
+-------实验18-----------
+
+chmod 777 ak8963
+
+./ak8963 iio:device0
+
+
+
+
+
+
+
+
+-------实验19-----------
+
+chmod 777 rs485_test
+
+chmod 777 /sys/class/gpio/export
+
+echo 90 > /sys/class/gpio/export
+
+echo out > /sys/class/gpio/gpio90/direction
+
+echo 1 > /sys/class/gpio/gpio90/value
+
+./rs485_test -r /dev/ttyS0
+
+
+
+
+
+
+
+chmod 777 rs485_test
+
+chmod 777 /sys/class/gpio/export
+
+echo 90 > /sys/class/gpio/export
+
+echo out > /sys/class/gpio/gpio90/direction
+
+echo 1 > /sys/class/gpio/gpio90/value
+
+./rs485_test -s /dev/ttyS0
+
+
+
+
+
+
+
+
+
+-------实验20-----------
+
+chmod 777 canread
+
+./canread
+
+
+
+
+
+
+
+chmod 777 canwrite
+
+./canwrite
+
+
+
+

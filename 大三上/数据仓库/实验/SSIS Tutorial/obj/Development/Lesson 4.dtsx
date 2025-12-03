@@ -1,0 +1,2232 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/20/2025 10:39:56 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-HECMFQL9"
+  DTS:CreatorName="LAPTOP-HECMFQL9\amun"
+  DTS:DTSID="{80486E6E-7C0C-49AA-B269-89F1057E1EF3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="2052"
+  DTS:ObjectName="Lesson 4"
+  DTS:PackageType="5"
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{DC8DE1B8-E27C-48A2-9806-8208E9CA5C48}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TutorialLog.log]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{D52659BA-4E86-47C7-BC70-2F2491C827B8}"
+      DTS:ObjectName="TutorialLog.log">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="C:\Users\amun\Desktop\数据仓库\实验\Creating a Simple ETL Package\TutorialLog.log" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[示例平面文件源数据]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{FBB23152-F4E3-4801-9929-E7C422356F31}"
+      DTS:ObjectName="示例平面文件源数据">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\amun\Desktop\数据仓库\实验\Creating a Simple ETL Package\Sample Data\SampleCurrencyData.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AverageRate"
+              DTS:DTSID="{0443AE88-9B64-4FF0-9C08-4AFF40AE4738}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CurrencyID"
+              DTS:DTSID="{1E6275BA-9E2A-4C35-8581-4C07DDE49A17}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="133"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CurrencyDate"
+              DTS:DTSID="{7A31BB90-DE11-40BC-AA2C-5844C50C5D29}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EndOfDayRate"
+              DTS:DTSID="{FD5F4E0E-EB75-427D-B879-F93E4FC9B541}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[错误数据]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{ADEEF2F6-1474-4793-9B59-1BB6232B3E81}"
+      DTS:ObjectName="错误数据">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\amun\Desktop\数据仓库\实验\Creating a Simple ETL Package\ErrorOutput.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AverageRate"
+              DTS:DTSID="{00F31E5C-3F94-43EA-A88C-3F17AED0EDD9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CurrencyID"
+              DTS:DTSID="{678526A8-0EE2-4333-9FAB-1B93F2F6A6FB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="133"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CurrencyDate"
+              DTS:DTSID="{6164233D-910B-4240-BBCE-23303FD7BFDD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EndOfDayRate"
+              DTS:DTSID="{29A4597A-E555-475F-9D5F-1111111BC503}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ErrorCode"
+              DTS:DTSID="{CCE9A439-9B07-49E1-967A-7B7B6F46FC44}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ErrorColumn"
+              DTS:DTSID="{EBF1CE28-AF8B-47B0-9458-1DA2AAC158DC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ErrorDescription"
+              DTS:DTSID="{F977255C-8FCF-408E-B334-83B35F186EA4}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="TutorialLog.log"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="将事件的日志项写入 CSV 文件"
+      DTS:DTSID="{8099D713-45B1-491A-A07E-A921215EDC6D}"
+      DTS:ObjectName="Lesson 3 Log File">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2CA99D05-1506-4724-B898-9D0BF13712D4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varFileName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="2" />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach File in Folder"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach 循环容器"
+      DTS:DTSID="{35260D00-8BB7-4A65-B105-7A0E27FD5220}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="1033"
+      DTS:ObjectName="Foreach File in Folder">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{ECB84548-D7A9-4B59-A9A1-300EBE0DD3A8}"
+        DTS:ObjectName="{ECB84548-D7A9-4B59-A9A1-300EBE0DD3A8}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Users\amun\Desktop\数据仓库\实验\Creating a Simple ETL Package\Sample Data" />
+            <FEFEProperty
+              FileSpec="*Currency_*.txt*" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach File in Folder\Extract Sample Currency Data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="数据流任务"
+          DTS:DTSID="{7FFA4EE2-F598-4B3D-B108-25A2AE42B77E}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="1033"
+          DTS:ObjectName="Extract Sample Currency Data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">2,21,PipelineExecutionPlan,22,PipelineExecutionTrees</DTS:Property>
+            <DTS:Property
+              DTS:EventName="PipelineExecutionPlan"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+            <DTS:Property
+              DTS:EventName="PipelineExecutionTrees"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+            <DTS:SelectedLogProviders>
+              <DTS:SelectedLogProvider
+                DTS:InstanceID="{8099D713-45B1-491A-A07E-A921215EDC6D}" />
+            </DTS:SelectedLogProviders>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="平面文件源;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;1"
+                  description="平面文件源"
+                  localeId="1033"
+                  name="Extract Sample Currency Data"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="指定是否将长度为 0 的列视为 Null。"
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="指定包含该文件名的输出列的名称。如果未指定名称，则不会生成包含该文件名的输出列。"
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[示例平面文件源数据]"
+                      connectionManagerRefId="Package.ConnectionManagers[示例平面文件源数据]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出]"
+                      name="平面文件源输出">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[AverageRate]"
+                          dataType="r4"
+                          errorOrTruncationOperation="转换"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].ExternalColumns[AverageRate]"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[AverageRate]"
+                          name="AverageRate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="指示该列是否使用更快、不分区域设置的分析例程。"
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="指示数据是否为二进制格式。"
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="转换"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].ExternalColumns[CurrencyID]"
+                          length="3"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyID]"
+                          name="CurrencyID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="指示该列是否使用更快、不分区域设置的分析例程。"
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="指示数据是否为二进制格式。"
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyDate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="转换"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].ExternalColumns[CurrencyDate]"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyDate]"
+                          name="CurrencyDate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="指示该列是否使用更快、不分区域设置的分析例程。"
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="指示数据是否为二进制格式。"
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[EndOfDayRate]"
+                          dataType="r4"
+                          errorOrTruncationOperation="转换"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].ExternalColumns[EndOfDayRate]"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[EndOfDayRate]"
+                          name="EndOfDayRate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="指示该列是否使用更快、不分区域设置的分析例程。"
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="指示数据是否为二进制格式。"
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].ExternalColumns[AverageRate]"
+                          dataType="r4"
+                          name="AverageRate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].ExternalColumns[CurrencyID]"
+                          dataType="wstr"
+                          length="3"
+                          name="CurrencyID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].ExternalColumns[CurrencyDate]"
+                          dataType="dbDate"
+                          name="CurrencyDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].ExternalColumns[EndOfDayRate]"
+                          dataType="r4"
+                          name="EndOfDayRate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源错误输出]"
+                      isErrorOut="true"
+                      name="平面文件源错误输出">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源错误输出].Columns[平面文件源错误输出列]"
+                          codePage="936"
+                          dataType="text"
+                          description="平面文件源错误输出列"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源错误输出].Columns[平面文件源错误输出列]"
+                          name="平面文件源错误输出列" />
+                        <outputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源错误输出].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源错误输出].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源错误输出].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源错误输出].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="查找;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;6"
+                  description="通过在表中查找值，将其他列与数据流联接起来。例如，将 &quot;employee id&quot; 列与 employees 表联接，以获取 &quot;hire date&quot; 和 &quot;employee name&quot;。建议在可将查找表放入内存中的情况下使用此转换。"
+                  name="Lookup Currency Key"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="指定生成查找表的 SQL 语句。"
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT * FROM [dbo].[DimCurrency]
+WHERE [CurrencyAlternateKey]
+IN ('ARS', 'AUD', 'BRL', 'CAD', 'CNY',
+    'DEM', 'EUR', 'FRF', 'GBP', 'JPY',
+    'MXN', 'SAR', 'USD', 'VEB')</property>
+                    <property
+                      dataType="System.String"
+                      description="指定使用参数生成查找表的 SQL 语句。"
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT * FROM [dbo].[DimCurrency]
+WHERE [CurrencyAlternateKey]
+IN ('ARS', 'AUD', 'BRL', 'CAD', 'CNY',
+    'DEM', 'EUR', 'FRF', 'GBP', 'JPY',
+    'MXN', 'SAR', 'USD', 'VEB')) [refTable]
+where [refTable].[CurrencyAlternateKey] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="指定用于访问引用数据集的连接类型。"
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="指定查找表的缓存类型。"
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="指定查找转换如何处理在引用数据集中无匹配项的行。"
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="指定为在引用数据集中没有匹配项的行分配的缓存百分比。"
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="引用缓存在 32 位平台上的最大内存使用量。"
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="引用缓存在 64 位平台上的最大内存使用量。"
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="指示是否引用 XML 格式的元数据。"
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CurrencyKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CurrencyAlternateKey" dataType="DT_WSTR" length="3" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CurrencyName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="指定世系标识符列表，这些标识符映射到 SQLCommand 属性中 SQL 语句使用的参数。列表中的项与项之间用分号分隔。"
+                      name="ParameterMap">#{Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyID]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="指定当数据源中没有代码页信息时使用的列代码页。"
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="确定在使用完全缓存模式时引用数据中的重复键是否应视作错误。"
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Connections[OleDbConnection]"
+                      connectionManagerID="{31B39FD5-518F-4D88-9DBB-984CFFC3F3DC}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[localhost.AdventureWorksDW2012]"
+                      description="用于访问查找数据的连接管理器。"
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Inputs[查找输入]"
+                      name="查找输入">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Inputs[查找输入].Columns[CurrencyID]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="CurrencyID"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyID]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="指定某列在引用表中联接的列。"
+                              name="JoinToReferenceColumn">CurrencyAlternateKey</property>
+                            <property
+                              dataType="System.Null"
+                              description="指定属于某列复制源的引用表中的列。"
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找匹配输出]"
+                      errorOrTruncationOperation="查找"
+                      errorRowDisposition="RedirectRow"
+                      exclusionGroup="1"
+                      name="查找匹配输出"
+                      synchronousInputId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Inputs[查找输入]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找匹配输出].Columns[CurrencyKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="复制列"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找匹配输出].Columns[CurrencyKey]"
+                          name="CurrencyKey"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="指定属于某列复制源的引用表中的列。"
+                              name="CopyFromReferenceColumn">CurrencyKey</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找无匹配输出]"
+                      description="用于处理在引用数据集中无匹配项的行的查找输出。当 NoMatchBehavior 属性设置为“将没有匹配项的行发送至无匹配输出。”时使用此输出。"
+                      exclusionGroup="1"
+                      name="查找无匹配输出"
+                      synchronousInputId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Inputs[查找输入]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找错误输出]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="查找错误输出"
+                      synchronousInputId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Inputs[查找输入]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找错误输出].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找错误输出].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找错误输出].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找错误输出].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="查找;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;6"
+                  description="通过在表中查找值，将其他列与数据流联接起来。例如，将 &quot;employee id&quot; 列与 employees 表联接，以获取 &quot;hire date&quot; 和 &quot;employee name&quot;。建议在可将查找表放入内存中的情况下使用此转换。"
+                  name="Lookup Date Key"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="指定生成查找表的 SQL 语句。"
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimDate]</property>
+                    <property
+                      dataType="System.String"
+                      description="指定使用参数生成查找表的 SQL 语句。"
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimDate]) [refTable]
+where [refTable].[FullDateAlternateKey] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="指定用于访问引用数据集的连接类型。"
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="指定查找表的缓存类型。"
+                      name="CacheType"
+                      typeConverter="CacheType">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="指定查找转换如何处理在引用数据集中无匹配项的行。"
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="指定为在引用数据集中没有匹配项的行分配的缓存百分比。"
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="引用缓存在 32 位平台上的最大内存使用量。"
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="引用缓存在 64 位平台上的最大内存使用量。"
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="指示是否引用 XML 格式的元数据。"
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FullDateAlternateKey" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayNumberOfWeek" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EnglishDayNameOfWeek" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SpanishDayNameOfWeek" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FrenchDayNameOfWeek" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayNumberOfMonth" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayNumberOfYear" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="WeekNumberOfYear" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EnglishMonthName" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SpanishMonthName" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FrenchMonthName" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MonthNumberOfYear" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CalendarQuarter" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CalendarYear" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CalendarSemester" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FiscalQuarter" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FiscalYear" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FiscalSemester" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="指定世系标识符列表，这些标识符映射到 SQLCommand 属性中 SQL 语句使用的参数。列表中的项与项之间用分号分隔。"
+                      name="ParameterMap">#{Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyDate]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="指定当数据源中没有代码页信息时使用的列代码页。"
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="确定在使用完全缓存模式时引用数据中的重复键是否应视作错误。"
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Connections[OleDbConnection]"
+                      connectionManagerID="{31B39FD5-518F-4D88-9DBB-984CFFC3F3DC}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[localhost.AdventureWorksDW2012]"
+                      description="用于访问查找数据的连接管理器。"
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Inputs[查找输入]"
+                      name="查找输入">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Inputs[查找输入].Columns[CurrencyDate]"
+                          cachedDataType="dbDate"
+                          cachedName="CurrencyDate"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyDate]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="指定某列在引用表中联接的列。"
+                              name="JoinToReferenceColumn">FullDateAlternateKey</property>
+                            <property
+                              dataType="System.Null"
+                              description="指定属于某列复制源的引用表中的列。"
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Outputs[查找匹配输出]"
+                      errorOrTruncationOperation="查找"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="查找匹配输出"
+                      synchronousInputId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Inputs[查找输入]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Outputs[查找匹配输出].Columns[DateKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="复制列"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Outputs[查找匹配输出].Columns[DateKey]"
+                          name="DateKey"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="指定属于某列复制源的引用表中的列。"
+                              name="CopyFromReferenceColumn">DateKey</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Outputs[查找无匹配输出]"
+                      description="用于处理在引用数据集中无匹配项的行的查找输出。当 NoMatchBehavior 属性设置为“将没有匹配项的行发送至无匹配输出。”时使用此输出。"
+                      exclusionGroup="1"
+                      name="查找无匹配输出"
+                      synchronousInputId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Inputs[查找输入]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Outputs[查找错误输出]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="查找错误输出"
+                      synchronousInputId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Inputs[查找输入]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Outputs[查找错误输出].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Outputs[查找错误输出].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Outputs[查找错误输出].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Outputs[查找错误输出].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB 目标;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB 目标"
+                  name="Sample OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。"
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="指定用于打开行集的数据库对象的名称。"
+                      name="OpenRowset">[NewFactCurrencyRate]</property>
+                    <property
+                      dataType="System.String"
+                      description="指定包含用于打开行集的数据库对象名的变量。"
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="要执行的 SQL 命令。"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="指定当数据源中没有代码页信息时使用的列代码页。"
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="描述字符数据时，强制使用 DefaultCodePage 属性值。"
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="指定用于访问数据库的模式。"
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="指示是否将为标识列提供的值复制到目标。如果设置为 False，则将在目标中为标识列自动生成值。仅当启用了快速加载时适用。"
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="指示对于包含 Null 值的列是否将 Null 值插入目标中。如果为 False，则对于包含 Null 值的列会将其默认值插入目标中。仅当启用了快速加载时适用。"
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="指定将用于快速加载的选项。仅当启用了快速加载时适用。"
+                      name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="指定在插入数据期间何时发出提交命令。如果值为 0，则指定在数据插入结束时发出一个提交命令。仅当启用了快速加载时适用。"
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{31B39FD5-518F-4D88-9DBB-984CFFC3F3DC}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[localhost.AdventureWorksDW2012]"
+                      description="指定用于访问数据库的 OLE DB 运行时连接。"
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入]"
+                      errorOrTruncationOperation="插入"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB 目标输入">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].Columns[AverageRate]"
+                          cachedDataType="r4"
+                          cachedName="AverageRate"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[AverageRate]"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[AverageRate]" />
+                        <inputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].Columns[CurrencyID]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="CurrencyID"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[CurrencyID]"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyID]" />
+                        <inputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].Columns[CurrencyDate]"
+                          cachedDataType="dbDate"
+                          cachedName="CurrencyDate"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[CurrencyDate]"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyDate]" />
+                        <inputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].Columns[EndOfDayRate]"
+                          cachedDataType="r4"
+                          cachedName="EndOfDayRate"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[EndOfDayRate]"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[EndOfDayRate]" />
+                        <inputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].Columns[CurrencyKey]"
+                          cachedDataType="i4"
+                          cachedName="CurrencyKey"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[CurrencyKey]"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找匹配输出].Columns[CurrencyKey]" />
+                        <inputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].Columns[DateKey]"
+                          cachedDataType="i4"
+                          cachedName="DateKey"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[DateKey]"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Outputs[查找匹配输出].Columns[DateKey]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[AverageRate]"
+                          dataType="r4"
+                          name="AverageRate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[CurrencyID]"
+                          dataType="wstr"
+                          length="3"
+                          name="CurrencyID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[CurrencyDate]"
+                          dataType="dbDate"
+                          name="CurrencyDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[EndOfDayRate]"
+                          dataType="r4"
+                          name="EndOfDayRate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[CurrencyKey]"
+                          dataType="i4"
+                          name="CurrencyKey" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入].ExternalColumns[DateKey]"
+                          dataType="i4"
+                          name="DateKey" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Outputs[OLE DB 目标错误输出]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB 目标错误输出"
+                      synchronousInputId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Outputs[OLE DB 目标错误输出].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Outputs[OLE DB 目标错误输出].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Outputs[OLE DB 目标错误输出].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Outputs[OLE DB 目标错误输出].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行"
+                  componentClassID="Microsoft.FlatFileDestination"
+                  contactInfo="平面文件目标;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;1"
+                  description="平面文件目标"
+                  localeId="1033"
+                  name="失败的行"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="指定数据是覆盖目标文件还是追加到目标文件中。"
+                      name="Overwrite">false</property>
+                    <property
+                      dataType="System.Null"
+                      description="指定在将任何数据写入目标文件之前应先写入的文本。"
+                      expressionType="Notify"
+                      name="Header" />
+                    <property
+                      dataType="System.Boolean"
+                      description="启用文本限定符后，指定是否转义从数据中写入到目标文件的文本限定符。"
+                      name="EscapeQualifier">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[错误数据]"
+                      connectionManagerRefId="Package.ConnectionManagers[错误数据]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入]"
+                      hasSideEffects="true"
+                      name="平面文件目标输入">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].Columns[AverageRate]"
+                          cachedDataType="r4"
+                          cachedName="AverageRate"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].ExternalColumns[AverageRate]"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[AverageRate]" />
+                        <inputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].Columns[CurrencyID]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="CurrencyID"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].ExternalColumns[CurrencyID]"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyID]" />
+                        <inputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].Columns[CurrencyDate]"
+                          cachedDataType="dbDate"
+                          cachedName="CurrencyDate"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].ExternalColumns[CurrencyDate]"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[CurrencyDate]" />
+                        <inputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].Columns[EndOfDayRate]"
+                          cachedDataType="r4"
+                          cachedName="EndOfDayRate"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].ExternalColumns[EndOfDayRate]"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出].Columns[EndOfDayRate]" />
+                        <inputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].Columns[ErrorCode]"
+                          cachedDataType="i4"
+                          cachedName="ErrorCode"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].ExternalColumns[ErrorCode]"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找错误输出].Columns[ErrorCode]" />
+                        <inputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].Columns[ErrorColumn]"
+                          cachedDataType="i4"
+                          cachedName="ErrorColumn"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].ExternalColumns[ErrorColumn]"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找错误输出].Columns[ErrorColumn]" />
+                        <inputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].Columns[ErrorDescription]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="ErrorDescription"
+                          externalMetadataColumnId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].ExternalColumns[ErrorDescription]"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\获取错误说明.Outputs[输出 0].Columns[ErrorDescription]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].ExternalColumns[AverageRate]"
+                          dataType="r4"
+                          name="AverageRate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].ExternalColumns[CurrencyID]"
+                          dataType="wstr"
+                          length="3"
+                          name="CurrencyID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].ExternalColumns[CurrencyDate]"
+                          dataType="dbDate"
+                          name="CurrencyDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].ExternalColumns[EndOfDayRate]"
+                          dataType="r4"
+                          name="EndOfDayRate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].ExternalColumns[ErrorCode]"
+                          dataType="i4"
+                          name="ErrorCode" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].ExternalColumns[ErrorColumn]"
+                          dataType="i4"
+                          name="ErrorColumn" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入].ExternalColumns[ErrorDescription]"
+                          dataType="wstr"
+                          length="50"
+                          name="ErrorDescription" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                </component>
+                <component
+                  refId="Package\Foreach File in Folder\Extract Sample Currency Data\获取错误说明"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="包含并运行自定义脚本代码。例如，应用限制 &quot;income&quot; 列中的有效值范围的业务规则，或在两个列中添加值并计算和的平均值。;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;13"
+                  description="包含并运行自定义脚本代码。例如，应用限制 &quot;income&quot; 列中的有效值范围的业务规则，或在两个列中添加值并计算和的平均值。"
+                  name="获取错误说明"
+                  version="13">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="存储组件的源代码"
+                      isArray="true"
+                      name="SourceCode"
+                      state="cdata">
+                      <arrayElements
+                        arrayElementCount="30">
+                        <arrayElement
+                          dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public override void ProcessInput(int InputID, string InputName, PipelineBuffer Buffer, OutputNameMap OutputMap)
+    {
+
+        if (InputName.Equals(@"输入 0", StringComparison.Ordinal))
+        {
+            输入0_ProcessInput(new 输入0Buffer(Buffer, GetColumnIndexes(InputID), OutputMap));
+        }
+
+    }
+
+    public virtual void 输入0_ProcessInput(输入0Buffer Buffer)
+    {
+        while (Buffer.NextRow())
+        {
+            输入0_ProcessInputRow(Buffer);
+        }
+    }
+
+    public virtual void 输入0_ProcessInputRow(输入0Buffer Row)
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    public override void PreExecute()
+    {
+        base.PreExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called once for every row that passes through the component from 输入0.
+    ///
+    /// Example of reading a value from a column in the the row:
+    ///  string zipCode = Row.ZipCode
+    ///
+    /// Example of writing a value to a column in the row:
+    ///  Row.ZipCode = zipCode
+    /// </summary>
+    /// <param name="Row">The row that is currently passing through the component</param>
+    public override void 输入0_ProcessInputRow(输入0Buffer Row)
+    {
+        /*
+         * Add your code here
+         */
+        Row.ErrorDescription = this.ComponentMetaData.GetErrorDescription(Row.ErrorCode);
+
+    }
+
+}
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class 输入0Buffer: ScriptBuffer
+
+{
+    public 输入0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public Int32 ErrorCode
+    {
+        get
+        {
+            return Buffer.GetInt32(BufferColumnIndexes[0]);
+        }
+    }
+    public bool ErrorCode_IsNull
+    {
+        get
+        {
+            return IsNull(0);
+        }
+    }
+
+    public String ErrorDescription
+    {
+        set
+        {
+            this[1] = value;
+        }
+    }
+    public bool ErrorDescription_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(1);
+            }
+            else
+            {
+                throw new InvalidOperationException("无法将 IsNull 属性设置为 False。请为该列赋值。");
+            }
+        }
+    }
+
+    new public bool NextRow()
+    {
+        return base.NextRow();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[SC_14acb78751174072983fd3b6a2c67cc2.csproj]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{c31f98b0-9796-4ece-a4e3-910d5e9510c3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_14acb78751174072983fd3b6a2c67cc2</RootNamespace>
+    <AssemblyName>SC_14acb78751174072983fd3b6a2c67cc2</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptComponent" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+        <Host Name="ScriptComponent" GeneratedNamespace="SC_14acb78751174072983fd3b6a2c67cc2" IconIndex="0"></Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC160</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_14acb78751174072983fd3b6a2c67cc2.Properties.Settings.get_Default():SC_14acb78751174072983fd3b6a2c67cc2.Properties.Sett" +
+    "ings")]
+
+namespace SC_14acb78751174072983fd3b6a2c67cc2.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Project]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:Language>msBuild</msb:Language>
+    <msb:CodeName>SC_14acb78751174072983fd3b6a2c67cc2</msb:CodeName>
+    <msb:DisplayName>SC_14acb78751174072983fd3b6a2c67cc2</msb:DisplayName>
+    <msb:ProjectId>{23DF9F99-84C1-462E-BA3E-922B2760CBCA}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_14acb78751174072983fd3b6a2c67cc2.csproj" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_14acb78751174072983fd3b6a2c67cc2")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_14acb78751174072983fd3b6a2c67cc2")]
+[assembly: AssemblyCopyright("Copyright @  2025")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_14acb78751174072983fd3b6a2c67cc2.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_14acb78751174072983fd3b6a2c67cc2.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_14acb78751174072983fd3b6a2c67cc2.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_14acb78751174072983fd3b6a2c67cc2.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_14acb78751174072983fd3b6a2c67cc2.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                      </arrayElements>
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="存储组件的二进制表示形式"
+                      isArray="true"
+                      name="BinaryCode"
+                      state="cdata">
+                      <arrayElements
+                        arrayElementCount="2">
+                        <arrayElement
+                          dataType="System.String"><![CDATA[SC_14acb78751174072983fd3b6a2c67cc2.dll]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAAIB0WgAAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAAGjIA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAMgxAABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAIBIAAAAgAAAAFAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAWAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAD8
+MQAAAAAAAEgAAAACAAUAtCEAAFwPAAABAAAAAAAAABAxAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACipiAwIoEgAACgNvBgAABm8TAAAK
+bwgAAAYqHgIoDAAABioqAgMEBSgUAAAKKlICexUAAAoCexYAAAoWlG8XAAAKKiICFigYAAAKKiYC
+FwMoGQAACipaAywIAhcoGgAACipyAQAAcHMbAAAKeh4CKBwAAAoqHgIoHQAACip+AigeAAAKAgJz
+EAAABn0BAAAEAgJzEQAABn0CAAAEKpIEcj8AAHAabx8AAAosFQIFAgMoIAAACg4EcwUAAAZvDgAA
+BipKKwcCA28PAAAGA28KAAAGLfEqBio6AighAAAKAgN9AwAABCo6AighAAAKAgN9BAAABCoeAigh
+AAAKKq5+BQAABC0eckkAAHDQBwAAAigiAAAKbyMAAApzJAAACoAFAAAEfgUAAAQqGn4GAAAEKh4C
+gAYAAAQqGn4HAAAEKh4CKCUAAAoqLnMXAAAGgAcAAAQqAAAAQlNKQgEAAQAAAAAADAAAAHY0LjAu
+MzAzMTkAAAAABQBsAAAAjAUAACN+AAD4BQAA5AYAACNTdHJpbmdzAAAAANwMAAC8AAAAI1VTAJgN
+AAAQAAAAI0dVSUQAAACoDQAAtAEAACNCbG9iAAAAAAAAAAIAAAFXFaABCQEAAAD6ATMAFgAAAQAA
+ACAAAAAIAAAABwAAABgAAAAPAAAAJQAAABAAAAADAAAABwAAAAgAAAABAAAABQAAAAEAAAAAADAD
+AQAAAAAABgAqAhcFBgC+AhcFBgB2AQQFDwCLBQAABgCjAeIDBgANAuIDBgDuAeIDBgClAuIDBgBK
+AuIDBgBjAuIDBgC6AeIDBgDVAfkCCgB+AsMACgCtBMMADgCeBMMACgBUBMMACgBRBsMABgAUBpoD
+BgBZAQQFBgC+BDcFBgBIBM0DEgApARoDEgCKARoDEgARAbgDBgA+ARcFFgABAM4EBgD0A5oDBgAT
+A5oDBgA3BJoDBgDkAJoDBgCVAJoDBgDYBuIDAAAAAEcAAAAAAAEAAQABABAArQMAABAAAQABAAEA
+EACQBAAAOQABAAUAAQAQADMGAABFAAEADAABABAACAYAAEkAAwAQAAEAEADJBQAASQAEABEAAAAQ
+AD4FmgVJAAUAEgAAARAA+AWaBWEABwAWAAYACAZ/AAYAyQWDAAEAQQaHAAEAQQaHABEAoQOLABEA
+AQGPABEAdwCTAFAgAAAAAMYA3AIGAAEAWCAAAAAAxgDnAgYAAQBgIAAAAADGALQGlwABAHkgAAAA
+AIYY9wQGAAIAgSAAAAAAhhj3BCUAAgCMIAAAAACGCIcAnQAFAKEgAAAAAIYIWANHAAUAqiAAAAAA
+hggOBBAABQC0IAAAAACGCG0DoQAGAMsgAAAAAIYAzAZHAAcA0yAAAAAAhgAbBkcABwDbIAAAAACG
+GPcEBgAHAPsgAAAAAMYApwamAAcAICEAAAAAxgGfBpcACwAzIQAAAADGAbQGlwAMADUhAAAAAIYY
+9wSwAA0ARCEAAAAAhhj3BLAADgBTIQAAAACDGPcEBgAPAFshAAAAAJMIugS2AA8AhyEAAAAAkwjp
+ALsADwCOIQAAAACTCPUAwAAPAJYhAAAAAJYIJwbGABAAnSEAAAAAhhj3BAYAEAClIQAAAACRGP0E
+ywAQAAAAAQDQBgAAAQCzBAAAAgDTBQAAAwBiBAAAAQDzAgAAAQDzAgAAAQBQAAAAAgC5AAAAAwCz
+BAAABABiBAAAAQCzBAAAAQDQBgAAAQBXBgAAAQBXBgAAAQDzAgkA9wQBABEA9wQGABkA9wQKACkA
+9wQQADEA9wQQADkA9wQQAEEA9wQQAEkA9wQQAFEA9wQQAFkA9wQQAGEA9wQQAGkA9wQGAJkA9wQG
+ALkA9wQVAMkA9wQGAIkA3AIGAIkA5wIGAIkAWAAbANEAIwQgAHEA9wQlAHEAswQvAHEA0wUzAHkA
+GgA3AHEAggM8AHEAkQNBAHEAiQMBANkA9wQQAHEAzAZHAHEAGwZHAIkA9wQGAOEAAQZLAIkA5wVS
+AJEA9wQGAPEApwBYAPEA1AZfAKEA9wRlAMEA9wQGAC4ACwDqAC4AEwDzAC4AGwASAS4AIwAbAS4A
+KwBEAS4AMwBEAS4AOwBEAS4AQwAbAS4ASwBKAS4AUwBEAS4AWwBhAUMAYwCvAakAcwASAckAcwAS
+AeEAewCvAeMAawCvAQMAAQAHAAUACAAHAAAAiwDPAAAAXAPTAAAAJgTXAAAAcQPTAAAAvgTbAAAA
+CQHgAAAAKwblAAIABgADAAIABwAFAAEACAAHAAEACQAJAAIAEwALAAIAFAANAAEAFQANAAIAFgAP
+AASAAAABAAAAAAAAAAAAAAAAACMAAAAEAAAAAAAAAAAAAABtAG4AAAAAABAAAAAAAAAAAAAAAHYA
+YQYAAAAAEAAAAAAAAAAAAAAAdgB+BgAAAAAEAAAAAAAAAAAAAABtAJoDAAAAABAAAAAAAAAAAAAA
+AHYAbAQAAAAAAAAAAAEAAABIBQAAAAAAAABJRFRTQ29tcG9uZW50TWV0YURhdGExMDAAR2V0SW50
+MzIAU0NfMTRhY2I3ODc1MTE3NDA3Mjk4M2ZkM2I2YTJjNjdjYzIAPE1vZHVsZT4ASW5wdXRJRABn
+ZXRfQ29tcG9uZW50TWV0YURhdGEAbXNjb3JsaWIAZGVmYXVsdEluc3RhbmNlAGdldF9FcnJvckNv
+ZGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUASW5wdXROYW1lAE1pY3Jvc29m
+dC5TcWxTZXJ2ZXIuRHRzLlBpcGVsaW5lAFR5cGUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVz
+b3VyY2VDdWx0dXJlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAEVkaXRvckJyb3dzYWJsZVN0YXRl
+AENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUA
+RGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRs
+ZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRy
+aWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25B
+dHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RB
+dHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAU1NJU1NjcmlwdENvbXBvbmVudEVu
+dHJ5UG9pbnRBdHRyaWJ1dGUAQXNzZW1ibHlDb21wYW55QXR0cmlidXRlAFJ1bnRpbWVDb21wYXRp
+YmlsaXR5QXR0cmlidXRlAFByZUV4ZWN1dGUAUG9zdEV4ZWN1dGUAdmFsdWUAU3lzdGVtLlJ1bnRp
+bWUuVmVyc2lvbmluZwBTdHJpbmcAU3lzdGVtLkNvbXBvbmVudE1vZGVsAFNDXzE0YWNiNzg3NTEx
+NzQwNzI5ODNmZDNiNmEyYzY3Y2MyLmRsbABnZXRfRXJyb3JDb2RlX0lzTnVsbABzZXRfRXJyb3JE
+ZXNjcmlwdGlvbl9Jc051bGwAU2V0TnVsbABzZXRfSXRlbQBTeXN0ZW0AcmVzb3VyY2VNYW4AU2Ny
+aXB0TWFpbgBTeXN0ZW0uQ29uZmlndXJhdGlvbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0u
+UmVmbGVjdGlvbgBJbnZhbGlkT3BlcmF0aW9uRXhjZXB0aW9uAHNldF9FcnJvckRlc2NyaXB0aW9u
+AEdldEVycm9yRGVzY3JpcHRpb24AU3RyaW5nQ29tcGFyaXNvbgBDdWx0dXJlSW5mbwBPdXRwdXRO
+YW1lTWFwAE91dHB1dE1hcABNaWNyb3NvZnQuU3FsU2VydmVyLkRUU1BpcGVsaW5lV3JhcADovpPl
+haUwQnVmZmVyAFBpcGVsaW5lQnVmZmVyAFNjcmlwdEJ1ZmZlcgBnZXRfUmVzb3VyY2VNYW5hZ2Vy
+AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlBpcGVsaW5lLldyYXBwZXIALmN0b3IALmNjdG9yAFN5
+c3RlbS5EaWFnbm9zdGljcwBTeXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAFN5c3RlbS5S
+ZXNvdXJjZXMAU0NfMTRhY2I3ODc1MTE3NDA3Mjk4M2ZkM2I2YTJjNjdjYzIuUHJvcGVydGllcy5S
+ZXNvdXJjZXMucmVzb3VyY2VzAERlYnVnZ2luZ01vZGVzAFNDXzE0YWNiNzg3NTExNzQwNzI5ODNm
+ZDNiNmEyYzY3Y2MyLlByb3BlcnRpZXMAVmFyaWFibGVzAEJ1ZmZlckNvbHVtbkluZGV4ZXMAR2V0
+Q29sdW1uSW5kZXhlcwBTZXR0aW5ncwBFcXVhbHMAQ29ubmVjdGlvbnMAT2JqZWN0AEVuZE9mUm93
+c2V0AGdldF9EZWZhdWx0AFVzZXJDb21wb25lbnQAUGFyZW50Q29tcG9uZW50AFNjcmlwdENvbXBv
+bmVudABNaWNyb3NvZnQuU3FsU2VydmVyLlR4U2NyaXB0AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuUGlw
+ZWxpbmVIb3N0AOi+k+WFpTBfUHJvY2Vzc0lucHV0AOi+k+WFpTBfUHJvY2Vzc0lucHV0Um93AE5l
+eHRSb3cAZ2V0X0Fzc2VtYmx5AAAAAAA94GXVbAZcIABJAHMATgB1AGwAbAAgAF5cJ2C+i25/Ok4g
+AEYAYQBsAHMAZQACMPeLOk7lixdSS408UAIwAQmTj2VRIAAwAAFxUwBDAF8AMQA0AGEAYwBiADcA
+OAA3ADUAMQAxADcANAAwADcAMgA5ADgAMwBmAGQAMwBiADYAYQAyAGMANgA3AGMAYwAyAC4AUABy
+AG8AcABlAHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAAAAt2JIlFuFvE6YuGN1QxjtPAAE
+IAEBCAMgAAEFIAEBEREEIAEBDgUgAQERWQQgABJpBCABDggJIAMBEj0dCBJBAwYSPQMGHQgEIAEI
+CAQgAQIIBSACAQgcAyAAAgYgAgIOEXUFIAEdCAgGAAESeRF9BSAAEoCBByACAQ4SgIEIt3pcVhk0
+4IkIiYRdzYCAzJEDBhIUAwYSGAMGEkUDBhJRAwYSVQMGEiAFIAEBEgwDIAAIBCABAQIJIAQBCA4S
+PRJBBSABARJFBAAAElEEAAASVQUAAQESVQQAABIgAwAAAQMoAAgDKAACAygADgQIABJRBAgAElUE
+CAASIAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAj
+U0NfMTRhY2I3ODc1MTE3NDA3Mjk4M2ZkM2I2YTJjNjdjYzIAAAUBAAAAABYBABFDb3B5cmlnaHQg
+QCAgMjAyNQAATQEAHC5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC43LjIBAFQOFEZyYW1ld29ya0Rp
+c3BsYXlOYW1lFC5ORVQgRnJhbWV3b3JrIDQuNy4yBAEAAAC0AAAAzsrvvgEAAACRAAAAbFN5c3Rl
+bS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1
+bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVz
+b3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAA8DEAAAAAAAAA
+AAAACjIAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPwxAAAAAAAAAAAAAAAAX0NvckRsbE1haW4A
+bXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA
+SAAAAFhAAADsAwAAAAAAAAAAAADsAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAA
+AAAAvQTv/gAAAQAAAAEAAAAAAAAAAQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQA
+AAABAFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBu
+AAAAAAAAALAETAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAKAMAAAEAMAAwADAA
+MAAwADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBu
+AHkATgBhAG0AZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAA
+AABTAEMAXwAxADQAYQBjAGIANwA4ADcANQAxADEANwA0ADAANwAyADkAOAAzAGYAZAAzAGIANgBh
+ADIAYwA2ADcAYwBjADIAAAAwAAgAAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4A
+MAAuADAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAQwBfADEANABhAGMAYgA3
+ADgANwA1ADEAMQA3ADQAMAA3ADIAOQA4ADMAZgBkADMAYgA2AGEAMgBjADYANwBjAGMAMgAuAGQA
+bABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkAZwBo
+AHQAIABAACAAIAAyADAAMgA1AAAAKgABAAEATABlAGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMA
+AAAAAAAAAAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8AMQA0
+AGEAYwBiADcAOAA3ADUAMQAxADcANAAwADcAMgA5ADgAMwBmAGQAMwBiADYAYQAyAGMANgA3AGMA
+YwAyAC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAQwBfADEANABh
+AGMAYgA3ADgANwA1ADEAMQA3ADQAMAA3ADIAOQA4ADMAZgBkADMAYgA2AGEAMgBjADYANwBjAGMA
+MgAAADQACAABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4
+AAgAAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAHDIAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
+                      </arrayElements>
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="指定 Microsoft Visual Studio Tools for Applications 项目的名称。项目名称在包中必须是唯一的。"
+                      name="VSTAProjectName"
+                      typeConverter="NOTBROWSABLE">SC_14acb78751174072983fd3b6a2c67cc2</property>
+                    <property
+                      dataType="System.String"
+                      description="指定脚本使用的编程语言。"
+                      name="ScriptLanguage"
+                      typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                    <property
+                      dataType="System.String"
+                      description="指定以逗号分隔的只读变量列表。"
+                      name="ReadOnlyVariables"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                    <property
+                      dataType="System.String"
+                      description="指定以逗号分隔的读/写变量列表。"
+                      name="ReadWriteVariables"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                    <property
+                      dataType="System.String"
+                      description="该脚本中存在断点列表。"
+                      isArray="true"
+                      name="BreakpointCollection"
+                      typeConverter="NOTBROWSABLE">
+                      <arrayElements
+                        arrayElementCount="0" />
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="执行校验和检查以便根据编译后的代码匹配组件元数据。"
+                      name="MetadataChecksum140"
+                      typeConverter="NOTBROWSABLE">AA</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\获取错误说明.Inputs[输入 0]"
+                      hasSideEffects="true"
+                      name="输入 0">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\获取错误说明.Inputs[输入 0].Columns[ErrorCode]"
+                          cachedDataType="i4"
+                          cachedName="ErrorCode"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找错误输出].Columns[ErrorCode]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach File in Folder\Extract Sample Currency Data\获取错误说明.Outputs[输出 0]"
+                      name="输出 0"
+                      synchronousInputId="Package\Foreach File in Folder\Extract Sample Currency Data\获取错误说明.Inputs[输入 0]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach File in Folder\Extract Sample Currency Data\获取错误说明.Outputs[输出 0].Columns[ErrorDescription]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Foreach File in Folder\Extract Sample Currency Data\获取错误说明.Outputs[输出 0].Columns[ErrorDescription]"
+                          name="ErrorDescription" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach File in Folder\Extract Sample Currency Data.Paths[平面文件源输出]"
+                  endId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Inputs[查找输入]"
+                  name="平面文件源输出"
+                  startId="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data.Outputs[平面文件源输出]" />
+                <path
+                  refId="Package\Foreach File in Folder\Extract Sample Currency Data.Paths[查找匹配输出]"
+                  endId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Inputs[查找输入]"
+                  name="查找匹配输出"
+                  startId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找匹配输出]" />
+                <path
+                  refId="Package\Foreach File in Folder\Extract Sample Currency Data.Paths[查找匹配输出1]"
+                  endId="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination.Inputs[OLE DB 目标输入]"
+                  name="查找匹配输出"
+                  startId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key.Outputs[查找匹配输出]" />
+                <path
+                  refId="Package\Foreach File in Folder\Extract Sample Currency Data.Paths[查找错误输出]"
+                  endId="Package\Foreach File in Folder\Extract Sample Currency Data\获取错误说明.Inputs[输入 0]"
+                  name="查找错误输出"
+                  startId="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key.Outputs[查找错误输出]" />
+                <path
+                  refId="Package\Foreach File in Folder\Extract Sample Currency Data.Paths[输出 0]"
+                  endId="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行.Inputs[平面文件目标输入]"
+                  name="输出 0"
+                  startId="Package\Foreach File in Folder\Extract Sample Currency Data\获取错误说明.Outputs[输出 0]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{27E0D497-3CB3-4C3F-A390-D065544652DC}"
+          DTS:ObjectName="{27E0D497-3CB3-4C3F-A390-D065544652DC}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::varFileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--此 CDATA 部分包含包的布局信息。该部分包括(x,y)坐标、宽度和高度之类的信息。-->
+<!--如果您手动编辑此部分并且出错，则可以删除此部分。 -->
+<!--该包仍将能够正常加载，但以前的布局信息将丢失，并且设计器将自动在设计图面上重新排列这些元素。-->
+<Objects
+  Version="8">
+  <!--下面的每个节点都将包含不会影响运行时行为的属性。-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="238.666666666667,42.6666666666667"
+          Id="Package\Foreach File in Folder\Extract Sample Currency Data"
+          TopLeft="5.50000000000006,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="249.333333333334,103.333333333334"
+          Size="249.333333333334,146.666666666667"
+          Id="Package\Foreach File in Folder"
+          TopLeft="320.555554494078,254.681807831669" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach File in Folder\Extract Sample Currency Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="238.666666666667,42.6666666666667"
+          Id="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key"
+          TopLeft="384.249988548458,260.666658898195" />
+        <NodeLayout
+          Size="238.666666666667,42.6666666666667"
+          Id="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key"
+          TopLeft="384.249988548458,381.333321968715" />
+        <NodeLayout
+          Size="238.666666666667,42.6666666666667"
+          Id="Package\Foreach File in Folder\Extract Sample Currency Data\Extract Sample Currency Data"
+          TopLeft="384.249988548458,139.999995827675" />
+        <NodeLayout
+          Size="238.666666666667,42.6666666666667"
+          Id="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination"
+          TopLeft="384.249988548458,501.999985039235" />
+        <EdgeLayout
+          Id="Package\Foreach File in Folder\Extract Sample Currency Data.Paths[查找匹配输出1]"
+          TopLeft="503.583321881791,423.999988635381">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77.9999964038532"
+              Start="0,0"
+              End="0,70.4999964038532">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.4999964038532" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-30.47265625,29.4111310144266,60.9453125,11.677734375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach File in Folder\Extract Sample Currency Data.Paths[查找匹配输出]"
+          TopLeft="503.583321881791,303.333325564862">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77.9999964038532"
+              Start="0,0"
+              End="0,70.4999964038532">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.4999964038532" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-30.47265625,29.4111310144266,60.9453125,11.677734375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach File in Folder\Extract Sample Currency Data.Paths[平面文件源输出]"
+          TopLeft="503.583321881791,182.666662494342">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77.9999964038532"
+              Start="0,0"
+              End="0,70.4999964038532">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.4999964038532" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\Foreach File in Folder\Extract Sample Currency Data\获取错误说明"
+          TopLeft="643.888886756736,288.499991282821" />
+        <EdgeLayout
+          Id="Package\Foreach File in Folder\Extract Sample Currency Data.Paths[查找错误输出]"
+          TopLeft="622.916655215125,265.999991282821">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="96.9722315416109,22.5"
+              Start="0,0"
+              End="96.9722315416109,15">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="92.9722315416109,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="92.9722315416109,0"
+                    Point2="96.9722315416109,0"
+                    Point3="96.9722315416109,4" />
+                  <mssgle:LineSegment
+                    End="96.9722315416109,15" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="66.4995752916109,-17.677734375,60.9453125,11.677734375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="128,42.6666666666667"
+          Id="Package\Foreach File in Folder\Extract Sample Currency Data\失败的行"
+          TopLeft="652.777776521297,381.257564110656" />
+        <EdgeLayout
+          Id="Package\Foreach File in Folder\Extract Sample Currency Data.Paths[输出 0]"
+          TopLeft="718.333331639016,331.166657949488">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.0909061611685"
+              Start="0,0"
+              End="0,42.5909061611685">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5909061611685" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Currency Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach File in Folder\Extract Sample Currency Data\Lookup Date Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach File in Folder\Extract Sample Currency Data\Sample OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

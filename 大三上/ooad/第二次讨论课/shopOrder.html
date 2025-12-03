@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OOMALL 订单管理系统</title>
+  <!-- 引入Tailwind CSS -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <!-- 引入Font Awesome图标 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <style type="text/tailwindcss">
+    @theme {
+      --color-primary: #e53e3e; /* 红色主色调，与参考界面一致 */
+      --color-secondary: #2563eb; /* 蓝色辅助色，用于按钮 */
+      --color-gray-100: #f3f4f6;
+      --color-gray-200: #e5e7eb;
+      --color-gray-700: #374151;
+    }
+    @utility nav-active {
+      @apply bg-primary/10 text-primary border-l-4 border-primary font-medium;
+    }
+    @utility card-hover {
+      @apply transition-all duration-300 hover:shadow-md;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+<!-- 顶部导航栏 -->
+<header class="bg-primary text-white shadow-md">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">OOMALL</h1>
+    <nav class="hidden md:flex space-x-6">
+      <a href="#" class="hover:opacity-90 transition-opacity"><i class="fas fa-home mr-1"></i>首页</a>
+      <a href="#" class="hover:opacity-90 transition-opacity"><i class="fas fa-box mr-1"></i>我的订单</a>
+      <a href="#" class="hover:opacity-90 transition-opacity"><i class="fas fa-bell mr-1"></i>消息提醒</a>
+      <a href="#" class="hover:opacity-90 transition-opacity"><i class="fas fa-question-circle mr-1"></i>帮助</a>
+      <a href="#" class="hover:opacity-90 transition-opacity"><i class="fas fa-user mr-1"></i>账号管理</a>
+    </nav>
+    <button class="md:hidden text-xl">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<!-- 主内容区 -->
+<div class="container mx-auto px-4 py-6 flex flex-col md:flex-row gap-6">
+  <!-- 左侧导航 -->
+  <aside class="w-full md:w-64 lg:w-72 shrink-0">
+    <div class="bg-white rounded-lg shadow-sm p-4">
+      <h2 class="text-lg font-semibold mb-4">项目类目</h2>
+      <div class="space-y-1">
+        <a href="#" class="flex items-center px-3 py-2.5 rounded text-gray-700 hover:bg-gray-100 transition-colors">
+          <i class="fas fa-tags mr-3 w-5 text-center"></i>
+          <span>商品管理</span>
+        </a>
+        <a href="#" class="flex items-center px-3 py-2.5 rounded text-gray-700 hover:bg-gray-100 transition-colors">
+          <i class="fas fa-shopping-cart mr-3 w-5 text-center"></i>
+          <span>订单管理</span>
+          <i class="fas fa-chevron-down ml-auto text-xs"></i>
+        </a>
+        <div class="pl-10 pr-3 space-y-1 mb-2">
+          <a href="#" data-page="query-order" class="block py-2 text-sm text-gray-700 hover:text-primary transition-colors nav-active pl-2">
+            查询订单
+          </a>
+          <a href="#" data-page="accept-order" class="block py-2 text-sm text-gray-700 hover:text-primary transition-colors pl-2">
+            接受订单
+          </a>
+          <a href="#" data-page="cancel-order" class="block py-2 text-sm text-gray-700 hover:text-primary transition-colors pl-2">
+            取消订单
+          </a>
+          <a href="#" data-page="ship-order" class="block py-2 text-sm text-gray-700 hover:text-primary transition-colors pl-2">
+            发货订单
+          </a>
+        </div>
+        <a href="#" class="flex items-center px-3 py-2.5 rounded text-gray-700 hover:bg-gray-100 transition-colors">
+          <i class="fas fa-truck mr-3 w-5 text-center"></i>
+          <span>物流管理</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 右侧内容区 -->
+  <main class="flex-1 min-w-0">
+    <!-- 查询订单页面（默认显示） -->
+    <div id="query-order" class="page-content">
+      <div class="mb-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-2">订单查询列表</h2>
+        <p class="text-gray-600">共 45 条记录，28 条待处理</p>
+      </div>
+      
+      <!-- 搜索与筛选 -->
+      <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+        <div class="flex flex-col md:flex-row gap-4">
+          <div class="relative flex-1">
+            <input type="text" placeholder="搜索订单号、商品、买家姓名..." 
+              class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all">
+            <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          </div>
+          
+          <button class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors">
+            <i class="fas fa-filter mr-1"></i>筛选
+          </button>
+        </div>
+      </div>
+      
+      <!-- 订单列表 -->
+      <div class="space-y-4">
+        <!-- 订单示例1 -->
+        <div class="bg-white rounded-lg shadow-sm p-4 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800">DD202510090002</h3>
+              <p class="text-gray-600 mb-1">商品：华为 Mate 60 Pro 128GB 黑色</p>
+              <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
+                <span>买家：张三</span>
+                <span>申请时间：2025-10-09</span>
+                <span>状态：待处理</span>
+              </div>
+            </div>
+            <button class="view-order-detail bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors" 
+              data-id="DD202510090002">
+              查看详情
+            </button>
+          </div>
+        </div>
+        
+        <!-- 订单示例2 -->
+        <div class="bg-white rounded-lg shadow-sm p-4 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800">DD202510080856</h3>
+              <p class="text-gray-600 mb-1">商品：小米 13 Ultra 256GB 白</p>
+              <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
+                <span>买家：李四</span>
+                <span>申请时间：2025-10-08 16:42:15</span>
+                <span>状态：待处理</span>
+              </div>
+            </div>
+            <button class="view-order-detail bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors" 
+              data-id="DD202510080856">
+              查看详情
+            </button>
+          </div>
+        </div>
+        
+        <!-- 订单示例3 -->
+        <div class="bg-white rounded-lg shadow-sm p-4 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800">DD2025100808432</h3>
+              <p class="text-gray-600 mb-1">商品：AirPods Pro 第二代</p>
+              <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
+                <span>买家：王五</span>
+                <span>申请时间：2025-10-08 11:23:40</span>
+                <span>状态：待处理</span>
+              </div>
+            </div>
+            <button class="view-order-detail bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors" 
+              data-id="DD2025100808432">
+              查看详情
+            </button>
+          </div>
+        </div>
+        
+        <!-- 订单示例4 -->
+        <div class="bg-white rounded-lg shadow-sm p-4 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800">DD2025100707890</h3>
+              <p class="text-gray-600 mb-1">商品：三星 Galaxy S23 Ultra 256GB</p>
+              <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
+                <span>买家：赵六</span>
+                <span>申请时间：2025-10-07 19:05:22</span>
+                <span>状态：待处理</span>
+              </div>
+            </div>
+            <button class="view-order-detail bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors" 
+              data-id="DD2025100707890">
+              查看详情
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 加载更多 -->
+      <div class="text-center py-6">
+        <button class="border border-gray-200 bg-white text-gray-700 px-6 py-2 rounded-md hover:bg-gray-50 transition-colors">
+          <i class="fas fa-refresh mr-1"></i> 加载更多内容
+        </button>
+      </div>
+    </div>
+
+    <!-- 接受订单页面 -->
+    <div id="accept-order" class="page-content hidden">
+      <div class="mb-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-2">待接受订单列表</h2>
+        <p class="text-gray-600">共 15 条记录，等待商户接受</p>
+      </div>
+      
+      <!-- 订单列表 -->
+      <div class="space-y-4">
+        <!-- 订单示例 -->
+        <div class="bg-white rounded-lg shadow-sm p-4 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800">DD202510100123</h3>
+              <p class="text-gray-600 mb-1">商品：iPhone 15 Pro 256GB 蓝色</p>
+              <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
+                <span>买家：孙七</span>
+                <span>下单时间：2025-10-10 10:30:00</span>
+                <span>金额：¥7999.00</span>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button class="view-order-detail bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors" 
+                data-id="DD202510100123">
+                查看详情
+              </button>
+              <button class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors">
+                接受订单
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 取消订单页面 -->
+    <div id="cancel-order" class="page-content hidden">
+      <div class="mb-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-2">可取消订单列表</h2>
+        <p class="text-gray-600">共 8 条记录，可执行取消操作</p>
+      </div>
+      
+      <!-- 订单列表 -->
+      <div class="space-y-4">
+        <!-- 订单示例 -->
+        <div class="bg-white rounded-lg shadow-sm p-4 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800">DD202510090156</h3>
+              <p class="text-gray-600 mb-1">商品：MacBook Air M2 256GB</p>
+              <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
+                <span>买家：周八</span>
+                <span>下单时间：2025-10-09 14:20:00</span>
+                <span>金额：¥9499.00</span>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button class="view-order-detail bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors" 
+                data-id="DD202510090156">
+                查看详情
+              </button>
+              <button class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors">
+                取消订单
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 发货订单页面 -->
+    <div id="ship-order" class="page-content hidden">
+      <div class="mb-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-2">待发货订单列表</h2>
+        <p class="text-gray-600">共 12 条记录，等待商户发货</p>
+      </div>
+      
+      <!-- 订单列表 -->
+      <div class="space-y-4">
+        <!-- 订单示例 -->
+        <div class="bg-white rounded-lg shadow-sm p-4 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800">DD202510080245</h3>
+              <p class="text-gray-600 mb-1">商品：iPad Pro 11英寸 256GB</p>
+              <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
+                <span>买家：吴九</span>
+                <span>下单时间：2025-10-08 15:10:00</span>
+                <span>金额：¥6799.00</span>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button class="view-order-detail bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors" 
+                data-id="DD202510080245">
+                查看详情
+              </button>
+              <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors">
+                发货
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- 订单详情模态框 -->
+<div id="order-detail-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-bold text-gray-800" id="modal-title">订单详情</h3>
+      <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+    <div id="modal-content" class="space-y-4">
+      <!-- 详情内容将通过JS动态填充 -->
+    </div>
+    <div class="mt-6 flex justify-end gap-3">
+      <button id="modal-close-btn" class="px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors">
+        关闭
+      </button>
+      <!-- 不同操作页面的按钮（如取消、发货等）会动态显示 -->
+      <button id="modal-action-btn" class="hidden px-4 py-2 rounded-md hover:bg-gray-50 transition-colors">
+        操作按钮
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 页面切换逻辑：左侧导航点击切换右侧内容
+  const navLinks = document.querySelectorAll('[data-page]');
+  const pageContents = document.querySelectorAll('.page-content');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetPage = link.getAttribute('data-page');
+      
+      // 隐藏所有页面
+      pageContents.forEach(content => {
+        content.classList.add('hidden');
+      });
+      
+      // 显示目标页面
+      document.getElementById(targetPage).classList.remove('hidden');
+      
+      // 更新导航激活状态
+      navLinks.forEach(l => {
+        l.classList.remove('nav-active');
+      });
+      link.classList.add('nav-active');
+    });
+  });
+  
+  // 订单详情模态框逻辑：点击“查看详情”弹出详情
+  const viewDetailBtns = document.querySelectorAll('.view-order-detail');
+  const detailModal = document.getElementById('order-detail-modal');
+  const closeModalBtn = document.getElementById('close-modal');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
+  const modalActionBtn = document.getElementById('modal-action-btn');
+  const modalTitle = document.getElementById('modal-title');
+  const modalContent = document.getElementById('modal-content');
+  
+  viewDetailBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const orderId = btn.getAttribute('data-id');
+      
+      modalTitle.textContent = `订单详情 - ${orderId}`;
+      
+      // 动态生成详情内容（模拟数据）
+      let detailHtml = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p class="text-gray-500">订单号</p>
+            <p>${orderId}</p>
+          </div>
+          <div>
+            <p class="text-gray-500">下单时间</p>
+            <p>${orderId.includes('1010') ? '2025-10-10 10:30:00' : orderId.includes('1009') ? '2025-10-09 14:20:00' : '2025-10-08 15:10:00'}</p>
+          </div>
+          <div>
+            <p class="text-gray-500">商品信息</p>
+            <p>${orderId === 'DD202510100123' ? 'iPhone 15 Pro 256GB 蓝色' : orderId === 'DD202510090156' ? 'MacBook Air M2 256GB' : orderId === 'DD202510080245' ? 'iPad Pro 11英寸 256GB' : '华为 Mate 60 Pro 128GB 黑色'}</p>
+          </div>
+          <div>
+            <p class="text-gray-500">订单金额</p>
+            <p>${orderId === 'DD202510100123' ? '¥7999.00' : orderId === 'DD202510090156' ? '¥9499.00' : '¥6799.00'}</p>
+          </div>
+          <div class="md:col-span-2">
+            <p class="text-gray-500">买家信息</p>
+            <p class="bg-gray-50 p-3 rounded-md">
+              姓名：${orderId === 'DD202510100123' ? '孙七' : orderId === 'DD202510090156' ? '周八' : orderId === 'DD202510080245' ? '吴九' : '张三'}<br>
+              电话：138****${Math.floor(Math.random() * 10000) + 1000}<br>
+              地址：${orderId.includes('1010') ? '北京市海淀区XX街道XX小区1号楼101' : orderId.includes('1009') ? '上海市浦东新区XX街道XX大厦20层' : '广州市天河区XX路XX号XX花园3栋502'}
+            </p>
+          </div>
+          <div class="md:col-span-2">
+            <p class="text-gray-500">订单状态</p>
+            <p>${orderId.includes('1010') ? '待接受' : orderId.includes('1009') ? '可取消' : '待发货'}</p>
+          </div>
+          <div class="md:col-span-2">
+            <p class="text-gray-500">物流信息</p>
+            <p class="bg-gray-50 p-3 rounded-md">
+              ${orderId.includes('1010') ? '订单未接受，暂无物流信息' : orderId.includes('1009') ? '订单未发货，暂无物流信息' : '已生成物流单号：SF1234567890，等待揽收'}
+            </p>
+          </div>
+        </div>
+      `;
+      
+      modalContent.innerHTML = detailHtml;
+      
+      // 显示对应操作按钮（根据页面类型）
+      const parentPage = btn.closest('.page-content').id;
+      if (parentPage === 'accept-order') {
+        modalActionBtn.textContent = '接受订单';
+        modalActionBtn.className = 'bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors';
+        modalActionBtn.classList.remove('hidden');
+      } else if (parentPage === 'cancel-order') {
+        modalActionBtn.textContent = '取消订单';
+        modalActionBtn.className = 'bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors';
+        modalActionBtn.classList.remove('hidden');
+      } else if (parentPage === 'ship-order') {
+        modalActionBtn.textContent = '发货';
+        modalActionBtn.className = 'bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors';
+        modalActionBtn.classList.remove('hidden');
+      } else {
+        modalActionBtn.classList.add('hidden');
+      }
+      
+      // 显示模态框
+      detailModal.classList.remove('hidden');
+    });
+  });
+  
+  // 关闭模态框的逻辑
+  closeModalBtn.addEventListener('click', () => {
+    detailModal.classList.add('hidden');
+  });
+  
+  modalCloseBtn.addEventListener('click', () => {
+    detailModal.classList.add('hidden');
+  });
+  
+  modalActionBtn.addEventListener('click', () => {
+    alert('操作已提交（模拟）');
+    detailModal.classList.add('hidden');
+  });
+  
+  // 点击模态框外部区域关闭
+  detailModal.addEventListener('click', (e) => {
+    if (e.target === detailModal) {
+      detailModal.classList.add('hidden');
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OOMALL 账户管理系统</title>
+  <!-- 引入Tailwind CSS -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <!-- 引入Font Awesome图标 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <style type="text/tailwindcss">
+    @theme {
+      --color-primary: #e53e3e; /* 红色主色调，与参考界面一致 */
+      --color-secondary: #3182ce; /* 蓝色辅助色，用于按钮等交互元素 */
+      --font-inter: 'Inter', sans-serif;
+    }
+    @utility smooth-transition {
+      transition: all 0.3s ease-in-out;
+    }
+    @utility card-shadow {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    @utility card-shadow-hover {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-inter">
+  <!-- 顶部导航栏 -->
+  <header class="bg-primary text-white">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">OOMALL</h1>
+      <nav class="flex space-x-6">
+        <a href="#" class="hover:scale-105 smooth-transition"><i class="fas fa-home mr-1"></i>首页</a>
+        <a href="#" class="hover:scale-105 smooth-transition"><i class="fas fa-box mr-1"></i>我的订单</a>
+        <a href="#" class="hover:scale-105 smooth-transition"><i class="fas fa-bell mr-1"></i>消息提醒</a>
+        <a href="#" class="hover:scale-105 smooth-transition"><i class="fas fa-question-circle mr-1"></i>帮助</a>
+        <a href="#" class="hover:scale-105 smooth-transition"><i class="fas fa-user mr-1"></i>账号管理</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 主内容区域（左侧导航 + 右侧内容） -->
+  <div class="container mx-auto px-4 py-6 flex">
+    <!-- 左侧导航菜单 -->
+    <aside class="w-64 pr-6">
+      <div class="bg-white rounded-lg shadow-md p-4 sticky top-4">
+        <h2 class="font-semibold text-lg mb-4">项目类目</h2>
+        <div class="space-y-2">
+          <button class="w-full text-left px-3 py-2 rounded bg-gray-100 font-medium" data-tab="open-account">开户申请</button>
+          <button class="w-full text-left px-3 py-2 rounded hover:bg-gray-100 smooth-transition" data-tab="close-account">销户申请</button>
+          <button class="w-full text-left px-3 py-2 rounded hover:bg-gray-100 smooth-transition" data-tab="modify-account">修改账户</button>
+          <button class="w-full text-left px-3 py-2 rounded hover:bg-gray-100 smooth-transition" data-tab="modify-attributes">修改账户属性</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 右侧内容区域 -->
+    <main class="flex-1">
+      <!-- 开户申请列表（默认显示） -->
+      <section id="open-account" class="tab-content">
+        <h2 class="text-xl font-bold mb-4">开户申请列表</h2>
+        <p class="text-gray-600 mb-6">共 15 条记录，3 条待处理</p>
+        <div class="space-y-4">
+          <!-- 示例记录1 -->
+          <div class="bg-white rounded-lg p-4 card-shadow hover:card-shadow-hover smooth-transition">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-semibold">商户名称：测试商户A</h3>
+                <p class="text-sm text-gray-500">申请时间：2025-10-16 10:30:00</p>
+                <p class="text-sm text-gray-500">联系人：张三</p>
+              </div>
+              <button class="bg-secondary text-white px-3 py-1 rounded hover:bg-secondary/90 smooth-transition view-detail" data-type="open" data-id="1">
+                查看详情
+              </button>
+            </div>
+          </div>
+          <!-- 示例记录2 -->
+          <div class="bg-white rounded-lg p-4 card-shadow hover:card-shadow-hover smooth-transition">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-semibold">商户名称：测试商户B</h3>
+                <p class="text-sm text-gray-500">申请时间：2025-10-15 15:45:00</p>
+                <p class="text-sm text-gray-500">联系人：李四</p>
+              </div>
+              <button class="bg-secondary text-white px-3 py-1 rounded hover:bg-secondary/90 smooth-transition view-detail" data-type="open" data-id="2">
+                查看详情
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 销户申请列表（默认隐藏） -->
+      <section id="close-account" class="tab-content hidden">
+        <h2 class="text-xl font-bold mb-4">销户申请列表</h2>
+        <p class="text-gray-600 mb-6">共 8 条记录，2 条待处理</p>
+        <div class="space-y-4">
+          <!-- 示例记录 -->
+          <div class="bg-white rounded-lg p-4 card-shadow hover:card-shadow-hover smooth-transition">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-semibold">商户名称：商户C</h3>
+                <p class="text-sm text-gray-500">申请时间：2025-10-14 09:15:00</p>
+                <p class="text-sm text-gray-500">联系人：王五</p>
+              </div>
+              <button class="bg-secondary text-white px-3 py-1 rounded hover:bg-secondary/90 smooth-transition view-detail" data-type="close" data-id="1">
+                查看详情
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 修改账户列表（默认隐藏） -->
+      <section id="modify-account" class="tab-content hidden">
+        <h2 class="text-xl font-bold mb-4">修改账户列表</h2>
+        <p class="text-gray-600 mb-6">共 12 条记录，5 条待处理</p>
+        <div class="space-y-4">
+          <!-- 示例记录 -->
+          <div class="bg-white rounded-lg p-4 card-shadow hover:card-shadow-hover smooth-transition">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-semibold">商户名称：商户D</h3>
+                <p class="text-sm text-gray-500">申请时间：2025-10-13 14:20:00</p>
+                <p class="text-sm text-gray-500">修改类型：商户名称</p>
+              </div>
+              <button class="bg-secondary text-white px-3 py-1 rounded hover:bg-secondary/90 smooth-transition view-detail" data-type="modify" data-id="1">
+                查看详情
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 修改账户属性列表（默认隐藏） -->
+      <section id="modify-attributes" class="tab-content hidden">
+        <h2 class="text-xl font-bold mb-4">修改账户属性列表</h2>
+        <p class="text-gray-600 mb-6">共 9 条记录，1 条待处理</p>
+        <div class="space-y-4">
+          <!-- 示例记录 -->
+          <div class="bg-white rounded-lg p-4 card-shadow hover:card-shadow-hover smooth-transition">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-semibold">商户名称：商户E</h3>
+                <p class="text-sm text-gray-500">申请时间：2025-10-12 16:30:00</p>
+                <p class="text-sm text-gray-500">修改属性：免邮门槛</p>
+              </div>
+              <button class="bg-secondary text-white px-3 py-1 rounded hover:bg-secondary/90 smooth-transition view-detail" data-type="attributes" data-id="1">
+                查看详情
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- 详细记录模态框（所有详情共用一个模态框） -->
+  <div id="detail-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold" id="modal-title">详细信息</h3>
+        <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      <div id="modal-content" class="space-y-4">
+        <!-- 详情内容将通过JavaScript动态插入 -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 标签页切换逻辑
+    const tabs = document.querySelectorAll('[data-tab]');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // 移除所有标签的激活样式
+        tabs.forEach(t => {
+          t.classList.remove('bg-gray-100', 'font-medium');
+          t.classList.add('hover:bg-gray-100');
+        });
+        // 为当前标签添加激活样式
+        tab.classList.add('bg-gray-100', 'font-medium');
+        tab.classList.remove('hover:bg-gray-100');
+
+        // 隐藏所有内容区域
+        tabContents.forEach(content => content.classList.add('hidden'));
+        // 显示对应内容区域
+        const targetTab = tab.getAttribute('data-tab');
+        document.getElementById(targetTab).classList.remove('hidden');
+      });
+    });
+
+    // 详情模态框逻辑
+    const viewDetailBtns = document.querySelectorAll('.view-detail');
+    const detailModal = document.getElementById('detail-modal');
+    const closeModalBtn = document.getElementById('close-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalContent = document.getElementById('modal-content');
+
+    viewDetailBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const type = btn.getAttribute('data-type');
+        const id = btn.getAttribute('data-id');
+
+        // 根据类型设置模态框标题
+        let titleText = '';
+        if (type === 'open') titleText = '开户申请详情';
+        else if (type === 'close') titleText = '销户申请详情';
+        else if (type === 'modify') titleText = '修改账户详情';
+        else if (type === 'attributes') titleText = '修改账户属性详情';
+        modalTitle.textContent = titleText;
+
+        // 生成模拟的详情内容（结构统一，数据为示例）
+        const detailHtml = `
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <p class="text-gray-500">申请ID</p>
+              <p>${id}</p>
+            </div>
+            <div>
+              <p class="text-gray-500">申请时间</p>
+              <p>2025-10-16 10:30:00</p>
+            </div>
+            <div>
+              <p class="text-gray-500">商户名称</p>
+              <p>测试商户${id}</p>
+            </div>
+            <div>
+              <p class="text-gray-500">联系人</p>
+              <p>姓名${id}</p>
+            </div>
+            <div class="col-span-2">
+              <p class="text-gray-500">联系信息</p>
+              <p>电话：138****${id}123</p>
+              <p>地址：测试地址${id}号</p>
+            </div>
+            <div class="col-span-2">
+              <p class="text-gray-500">申请说明</p>
+              <p>这是${titleText.toLowerCase()}的测试说明内容，详细信息可根据实际业务补充...${id}</p>
+            </div>
+          </div>
+        `;
+        modalContent.innerHTML = detailHtml;
+
+        // 显示模态框
+        detailModal.classList.remove('hidden');
+      });
+    });
+
+    // 关闭模态框
+    closeModalBtn.addEventListener('click', () => {
+      detailModal.classList.add('hidden');
+    });
+
+    // 点击模态框外部区域关闭
+    detailModal.addEventListener('click', (e) => {
+      if (e.target === detailModal) {
+        detailModal.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

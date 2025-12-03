@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OOMALL 促销活动管理</title>
+  <!-- 引入Tailwind CSS -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <!-- 引入Font Awesome图标 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <style type="text/tailwindcss">
+    @theme {
+      --color-primary: #e53e3e; /* 红色主色调，与参考界面一致 */
+      --color-secondary: #2563eb; /* 蓝色辅助色，用于按钮/交互元素 */
+      --color-gray-100: #f3f4f6;
+      --color-gray-200: #e5e7eb;
+      --color-gray-700: #374151;
+    }
+    @utility nav-active {
+      @apply bg-primary/10 text-primary border-l-4 border-primary font-medium;
+    }
+    @utility card-hover {
+      @apply transition-all duration-300 hover:shadow-md;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+<!-- 顶部导航栏 -->
+<header class="bg-primary text-white shadow-md">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">OOMALL</h1>
+    <nav class="hidden md:flex space-x-6">
+      <a href="#" class="hover:opacity-90 transition-opacity"><i class="fas fa-home mr-1"></i>首页</a>
+      <a href="#" class="hover:opacity-90 transition-opacity"><i class="fas fa-box mr-1"></i>我的订单</a>
+      <a href="#" class="hover:opacity-90 transition-opacity"><i class="fas fa-bell mr-1"></i>消息提醒</a>
+      <a href="#" class="hover:opacity-90 transition-opacity"><i class="fas fa-question-circle mr-1"></i>帮助</a>
+      <a href="#" class="hover:opacity-90 transition-opacity"><i class="fas fa-user mr-1"></i>账号管理</a>
+    </nav>
+    <button class="md:hidden text-xl">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<!-- 主内容区 -->
+<div class="container mx-auto px-4 py-6 flex flex-col md:flex-row gap-6">
+  <!-- 左侧导航 -->
+  <aside class="w-full md:w-64 lg:w-72 shrink-0">
+    <div class="bg-white rounded-lg shadow-sm p-4">
+      <h2 class="text-lg font-semibold mb-4">项目类目</h2>
+      <div class="space-y-1">
+        <a href="#" class="flex items-center px-3 py-2.5 rounded text-gray-700 hover:bg-gray-100 transition-colors">
+          <i class="fas fa-shopping-cart mr-3 w-5 text-center"></i>
+          <span>商品管理</span>
+        </a>
+        <div class="border-t border-gray-200 my-2"></div>
+        <a href="#" class="flex items-center px-3 py-2.5 rounded text-gray-700 hover:bg-gray-100 transition-colors">
+          <i class="fas fa-tags mr-3 w-5 text-center"></i>
+          <span>促销活动</span>
+          <i class="fas fa-chevron-down ml-auto text-xs"></i>
+        </a>
+        <div class="pl-10 pr-3 space-y-1 mb-2">
+          <a href="#" data-page="query-activity" class="block py-2 text-sm text-gray-700 hover:text-primary transition-colors nav-active pl-2">
+            查询活动
+          </a>
+          <a href="#" data-page="add-promotion" class="block py-2 text-sm text-gray-700 hover:text-primary transition-colors pl-2">
+            新增优惠活动
+          </a>
+          <a href="#" data-page="add-groupbuy" class="block py-2 text-sm text-gray-700 hover:text-primary transition-colors pl-2">
+            新增团购活动
+          </a>
+          <a href="#" data-page="cancel-activity" class="block py-2 text-sm text-gray-700 hover:text-primary transition-colors pl-2">
+            取消活动
+          </a>
+          <a href="#" data-page="specify-sales" class="block py-2 text-sm text-gray-700 hover:text-primary transition-colors pl-2">
+            指定参与销售
+          </a>
+        </div>
+        <div class="border-t border-gray-200 my-2"></div>
+        <a href="#" class="flex items-center px-3 py-2.5 rounded text-gray-700 hover:bg-gray-100 transition-colors">
+          <i class="fas fa-truck mr-3 w-5 text-center"></i>
+          <span>物流管理</span>
+        </a>
+        <a href="#" class="flex items-center px-3 py-2.5 rounded text-gray-700 hover:bg-gray-100 transition-colors">
+          <i class="fas fa-user-circle mr-3 w-5 text-center"></i>
+          <span>客户管理</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 右侧内容区 -->
+  <main class="flex-1 min-w-0">
+    <!-- 查询活动页面（默认显示） -->
+    <div id="query-activity" class="page-content">
+      <div class="mb-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-2">活动查询列表</h2>
+        <p class="text-gray-600">共 28 条记录，15 条进行中，8 条未开始，5 条已结束</p>
+      </div>
+      
+      <!-- 搜索与筛选 -->
+      <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+        <div class="flex flex-col md:flex-row gap-4">
+          <div class="relative flex-1">
+            <input type="text" placeholder="搜索活动名称、类型、商品..." 
+              class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all">
+            <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          </div>
+          
+          <div class="flex flex-wrap gap-3">
+            <select class="border border-gray-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary">
+              <option>所有活动类型</option>
+              <option>优惠活动</option>
+              <option>团购活动</option>
+            </select>
+            
+            <select class="border border-gray-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary">
+              <option>所有状态</option>
+              <option>进行中</option>
+              <option>未开始</option>
+              <option>已结束</option>
+            </select>
+            
+            <button class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors">
+              <i class="fas fa-filter mr-1"></i>筛选
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 活动列表 -->
+      <div class="space-y-4">
+        <!-- 优惠活动示例 -->
+        <div class="bg-white rounded-lg shadow-sm p-4 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <h3 class="text-lg font-semibold text-gray-800">H20251016001</h3>
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">优惠活动</span>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">进行中</span>
+              </div>
+              <p class="text-gray-600 mb-1">活动名称：国庆数码产品特惠</p>
+              <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
+                <span>活动时间：2025-10-01 至 2025-10-10</span>
+                <span>折扣：8.5折</span>
+                <span>参与商品：12件</span>
+              </div>
+            </div>
+            <button class="view-activity-detail bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors" 
+              data-id="H20251016001" data-type="promotion">
+              查看详情
+            </button>
+          </div>
+        </div>
+        
+        <!-- 团购活动示例 -->
+        <div class="bg-white rounded-lg shadow-sm p-4 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <h3 class="text-lg font-semibold text-gray-800">G20251016002</h3>
+                <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">团购活动</span>
+                <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">未开始</span>
+              </div>
+              <p class="text-gray-600 mb-1">活动名称：家电团购节</p>
+              <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
+                <span>活动时间：2025-10-20 至 2025-10-30</span>
+                <span>成团人数：10人</span>
+                <span>参与商品：8件</span>
+              </div>
+            </div>
+            <button class="view-activity-detail bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors" 
+              data-id="G20251016002" data-type="groupbuy">
+              查看详情
+            </button>
+          </div>
+        </div>
+        
+        <!-- 已结束活动示例 -->
+        <div class="bg-white rounded-lg shadow-sm p-4 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <h3 class="text-lg font-semibold text-gray-800">H20250920003</h3>
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">优惠活动</span>
+                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full">已结束</span>
+              </div>
+              <p class="text-gray-600 mb-1">活动名称：中秋食品特惠</p>
+              <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
+                <span>活动时间：2025-09-20 至 2025-09-29</span>
+                <span>满减：满200减50</span>
+                <span>参与商品：23件</span>
+              </div>
+            </div>
+            <button class="view-activity-detail bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors" 
+              data-id="H20250920003" data-type="promotion">
+              查看详情
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 加载更多 -->
+      <div class="text-center py-6">
+        <button class="border border-gray-200 bg-white text-gray-700 px-6 py-2 rounded-md hover:bg-gray-50 transition-colors">
+          <i class="fas fa-refresh mr-1"></i> 加载更多内容
+        </button>
+      </div>
+    </div>
+
+    <!-- 新增优惠活动页面 -->
+    <div id="add-promotion" class="page-content hidden">
+      <div class="mb-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-2">新增优惠活动</h2>
+        <p class="text-gray-600">创建新的商品优惠活动，设置活动规则和参与商品</p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+        <form>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">活动名称 <span class="text-danger">*</span></label>
+              <input type="text" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" placeholder="输入活动名称">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">活动类型 <span class="text-danger">*</span></label>
+              <select class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary">
+                <option value="">请选择活动类型</option>
+                <option value="discount">折扣活动</option>
+                <option value="full-reduction">满减活动</option>
+                <option value="gift">赠品活动</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">开始时间 <span class="text-danger">*</span></label>
+              <input type="datetime-local" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">结束时间 <span class="text-danger">*</span></label>
+              <input type="datetime-local" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary">
+            </div>
+            
+            <div class="md:col-span-2">
+              <label class="block text-sm font-medium text-gray-700 mb-1">活动规则 <span class="text-danger">*</span></label>
+              <textarea class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" rows="3" placeholder="输入活动规则（如折扣比例、满减金额等）"></textarea>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-3">参与商品</label>
+            <div class="border border-dashed border-gray-200 rounded-md p-4 text-center hover:border-secondary transition-colors">
+              <button type="button" class="flex items-center justify-center gap-2 text-secondary hover:text-secondary/80 transition-colors">
+                <i class="fas fa-plus"></i>
+                <span>选择参与活动的商品</span>
+              </button>
+            </div>
+          </div>
+          
+          <div class="flex justify-end gap-3">
+            <button type="button" class="px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors">
+              取消
+            </button>
+            <button type="submit" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors">
+              提交申请
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 新增团购活动页面 -->
+    <div id="add-groupbuy" class="page-content hidden">
+      <div class="mb-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-2">新增团购活动</h2>
+        <p class="text-gray-600">创建新的商品团购活动，设置团购规则和参与条件</p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+        <form>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">活动名称 <span class="text-danger">*</span></label>
+              <input type="text" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" placeholder="输入活动名称">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">团购类型 <span class="text-danger">*</span></label>
+              <select class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary">
+                <option value="">请选择团购类型</option>
+                <option value="fixed">固定人数团购</option>
+                <option value="time-limited">限时团购</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">开始时间 <span class="text-danger">*</span></label>
+              <input type="datetime-local" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">结束时间 <span class="text-danger">*</span></label>
+              <input type="datetime-local" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">成团人数 <span class="text-danger">*</span></label>
+              <input type="number" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" placeholder="输入成团人数">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">团购价格 <span class="text-danger">*</span></label>
+              <input type="number" step="0.01" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" placeholder="输入团购价格">
+            </div>
+            
+            <div class="md:col-span-2">
+              <label class="block text-sm font-medium text-gray-700 mb-1">活动规则 <span class="text-danger">*</span></label>
+              <textarea class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" rows="3" placeholder="输入团购规则（如参与条件、退款规则等）"></textarea>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-3">参与商品</label>
+            <div class="border border-dashed border-gray-200 rounded-md p-4 text-center hover:border-secondary transition-colors">
+              <button type="button" class="flex items-center justify-center gap-2 text-secondary hover:text-secondary/80 transition-colors">
+                <i class="fas fa-plus"></i>
+                <span>选择参与团购的商品</span>
+              </button>
+            </div>
+          </div>
+          
+          <div class="flex justify-end gap-3">
+            <button type="button" class="px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors">
+              取消
+            </button>
+            <button type="submit" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors">
+              提交申请
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 取消活动页面 -->
+    <div id="cancel-activity" class="page-content hidden">
+      <div class="mb-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-2">取消活动列表</h2>
+        <p class="text-gray-600">查看并取消已通过审核的活动</p>
+      </div>
+      
+      <!-- 搜索与筛选 -->
+      <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+        <div class="flex flex-col md:flex-row gap-4">
+          <div class="relative flex-1">
+            <input type="text" placeholder="搜索活动名称、ID、类型..." 
+              class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all">
+            <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          </div>
+          
+          <div class="flex flex-wrap gap-3">
+            <select class="border border-gray-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary">
+              <option>所有活动类型</option>
+              <option>优惠活动</option>
+              <option>团购活动</option>
+            </select>
+            
+            <button class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors">
+              <i class="fas fa-filter mr-1"></i>筛选
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 活动列表 -->
+      <div class="space-y-4">
+        <!-- 优惠活动示例 -->
+        <div class="bg-white rounded-lg shadow-sm p-4 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <h3 class="text-lg font-semibold text-gray-800">H20251016001</h3>
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">优惠活动</span>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">进行中</span>
+              </div>
+              <p class="text-gray-600 mb-1">活动名称：国庆数码产品特惠</p>
+              <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
+                <span>活动时间：2025-10-01 至 2025-10-10</span>
+                <span>折扣：8.5折</span>
+                <span>关联销售：12笔</span>
+              </div>
+            </div>
+            <button class="view-activity-detail bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors" 
+              data-id="H20251016001" data-type="promotion">
+              取消活动
+            </button>
+          </div>
+        </div>
+        
+        <!-- 团购活动示例 -->
+        <div class="bg-white rounded-lg shadow-sm p-4 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <h3 class="text-lg font-semibold text-gray-800">G20251020002</h3>
+                <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">团购活动</span>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">进行中</span>
+              </div>
+              <p class="text-gray-600 mb-1">活动名称：家电团购节</p>
+              <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
+                <span>活动时间：2025-10-20 至 2025-10-30</span>
+                <span>成团人数：10人</span>
+                <span>关联销售：8笔</span>
+              </div>
+            </div>
+            <button class="view-activity-detail bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors" 
+              data-id="G20251020002" data-type="groupbuy">
+              取消活动
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 加载更多 -->
+      <div class="text-center py-6">
+        <button class="border border-gray-200 bg-white text-gray-700 px-6 py-2 rounded-md hover:bg-gray-50 transition-colors">
+          <i class="fas fa-refresh mr-1"></i> 加载更多内容
+        </button>
+      </div>
+    </div>
+
+    <!-- 指定参与销售页面 -->
+    <div id="specify-sales" class="page-content hidden">
+      <div class="mb-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-2">指定参与活动的销售</h2>
+        <p class="text-gray-600">为活动指定参与的商品销售</p>
+      </div>
+      
+      <!-- 活动选择 -->
+      <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+        <label class="block text-sm font-medium text-gray-700 mb-2">选择活动</label>
+        <div class="relative">
+          <select class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary appearance-none">
+            <option value="">请选择活动</option>
+            <option value="H20251016001">国庆数码产品特惠（优惠活动）</option>
+            <option value="G20251020002">家电团购节（团购活动）</option>
+          </select>
+          <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+            <i class="fas fa-chevron-down text-gray-400"></i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 销售列表 -->
+      <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-semibold text-gray-800">可选销售商品</h3>
+          <div class="flex gap-2">
+            <button class="text-secondary hover:text-secondary/80 transition-colors">
+              <i class="fas fa-search mr-1"></i>搜索
+            </button>
+            <button class="text-secondary hover:text-secondary/80 transition-colors">
+              <i class="fas fa-filter mr-1"></i>筛选
+            </button>
+          </div>
+        </div>
+        
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">商品名称</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SKU</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">原价</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">库存</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">操作</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <img class="h-10 w-10 rounded-md object-cover" src="https://picsum.photos/200/200?random=1" alt="商品图片">
+                    <div class="ml-3">
+                      <div class="text-sm font-medium text-gray-900">华为 Mate 60 Pro 128GB 黑色</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">SKU-001</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">¥6999.00</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">120</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <button class="text-secondary hover:text-secondary/80 transition-colors">
+                    <i class="fas fa-plus-circle mr-1"></i>添加
+                  </button>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <img class="h-10 w-10 rounded-md object-cover" src="https://picsum.photos/200/200?random=2" alt="商品图片">
+                    <div class="ml-3">
+                      <div class="text-sm font-medium text-gray-900">小米 13 Ultra 256GB 白色</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">SKU-002</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">¥5999.00</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">85</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <button class="text-secondary hover:text-secondary/80 transition-colors">
+                    <i class="fas fa-plus-circle mr-1"></i>添加
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- 已选销售商品 -->
+        <div class="mt-6">
+          <h3 class="text-lg font-semibold text-gray-800 mb-3">已选参与销售的商品</h3>
+          <div class="flex flex-wrap gap-2">
+            <div class="bg-gray-50 px-3 py-1 rounded-full text-sm flex items-center">
+              <span>华为 Mate 60 Pro 128GB 黑色</span>
+              <button class="ml-2 text-gray-400 hover:text-gray-600 transition-colors">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex justify-end gap-3">
+        <button class="px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors">
+          取消
+        </button>
+        <button class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors">
+          提交
+        </button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- 活动详情模态框 -->
+<div id="activity-detail-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-bold text-gray-800" id="modal-title">活动详情</h3>
+      <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+    <div id="modal-content" class="space-y-4">
+      <!-- 详情内容将通过JS动态填充 -->
+    </div>
+    <div class="mt-6 flex justify-end gap-3">
+      <button id="modal-close-btn" class="px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors">
+        关闭
+      </button>
+      <!-- 取消活动时显示取消按钮 -->
+      <button id="modal-cancel-btn" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors hidden">
+        取消活动
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 页面切换逻辑：左侧导航点击切换右侧内容
+  const navLinks = document.querySelectorAll('[data-page]');
+  const pageContents = document.querySelectorAll('.page-content');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetPage = link.getAttribute('data-page');
+      
+      // 隐藏所有页面
+      pageContents.forEach(content => {
+        content.classList.add('hidden');
+      });
+      
+      // 显示目标页面
+      document.getElementById(targetPage).classList.remove('hidden');
+      
+      // 更新导航激活状态
+      navLinks.forEach(l => {
+        l.classList.remove('nav-active');
+      });
+      link.classList.add('nav-active');
+    });
+  });
+  
+  // 活动详情模态框逻辑：点击“查看详情/取消活动”弹出详情
+  const viewDetailBtns = document.querySelectorAll('.view-activity-detail');
+  const detailModal = document.getElementById('activity-detail-modal');
+  const closeModalBtn = document.getElementById('close-modal');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
+  const modalCancelBtn = document.getElementById('modal-cancel-btn');
+  const modalTitle = document.getElementById('modal-title');
+  const modalContent = document.getElementById('modal-content');
+  
+  viewDetailBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const activityId = btn.getAttribute('data-id');
+      const activityType = btn.getAttribute('data-type');
+      let typeText = activityType === 'promotion' ? '优惠活动' : '团购活动';
+      
+      modalTitle.textContent = `${typeText}详情 - ${activityId}`;
+      
+      // 动态生成详情内容（模拟数据）
+      let detailHtml = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p class="text-gray-500">活动ID</p>
+            <p>${activityId}</p>
+          </div>
+          <div>
+            <p class="text-gray-500">活动类型</p>
+            <p>${typeText}</p>
+          </div>
+          <div>
+            <p class="text-gray-500">活动名称</p>
+            <p>${activityId === 'H20251016001' ? '国庆数码产品特惠' : '家电团购节'}</p>
+          </div>
+          <div>
+            <p class="text-gray-500">活动状态</p>
+            <p>${activityId === 'G20251016002' ? '未开始' : '进行中'}</p>
+          </div>
+          <div>
+            <p class="text-gray-500">开始时间</p>
+            <p>${activityId === 'H20251016001' ? '2025-10-01 00:00:00' : '2025-10-20 00:00:00'}</p>
+          </div>
+          <div>
+            <p class="text-gray-500">结束时间</p>
+            <p>${activityId === 'H20251016001' ? '2025-10-10 23:59:59' : '2025-10-30 23:59:59'}</p>
+          </div>
+          <div class="md:col-span-2">
+            <p class="text-gray-500">活动规则</p>
+            <p class="bg-gray-50 p-3 rounded-md">
+              ${activityType === 'promotion' 
+                ? '活动期间，所有参与的数码产品享受8.5折优惠，每人限购2件。' 
+                : '成团人数达到10人即可享受团购价，活动期间可随时参团，团购价有效期至活动结束。'}
+            </p>
+          </div>
+          <div class="md:col-span-2">
+            <p class="text-gray-500">参与商品</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              ${activityId === 'H20251016001' 
+                ? `
+                <div class="bg-gray-50 p-3 rounded-md">
+                  <p class="font-medium">华为 Mate 60 Pro 128GB 黑色</p>
+                  <p class="text-sm text-gray-500">原价：¥6999.00 | 活动价：¥5949.15</p>
+                </div>
+                <div class="bg-gray-50 p-3 rounded-md">
+                  <p class="font-medium">小米 13 Ultra 256GB 白色</p>
+                  <p class="text-sm text-gray-500">原价：¥5999.00 | 活动价：¥5099.15</p>
+                </div>
+                ` 
+                : `
+                <div class="bg-gray-50 p-3 rounded-md">
+                  <p class="font-medium">美的 空调 KFR-35GW</p>
+                  <p class="text-sm text-gray-500">原价：¥3299.00 | 团购价：¥2999.00</p>
+                </div>
+                <div class="bg-gray-50 p-3 rounded-md">
+                  <p class="font-medium">海尔 冰箱 BCD-477WDPCU1</p>
+                  <p class="text-sm text-gray-500">原价：¥4599.00 | 团购价：¥4199.00</p>
+                </div>
+                `}
+            </div>
+          </div>
+        </div>
+      `;
+      
+      modalContent.innerHTML = detailHtml;
+      
+      // 显示“取消活动”按钮（仅取消活动页面的按钮需要）
+      modalCancelBtn.classList.toggle('hidden', !btn.textContent.includes('取消活动'));
+      
+      // 显示模态框
+      detailModal.classList.remove('hidden');
+    });
+  });
+  
+  // 关闭模态框的逻辑
+  closeModalBtn.addEventListener('click', () => {
+    detailModal.classList.add('hidden');
+  });
+  
+  modalCloseBtn.addEventListener('click', () => {
+    detailModal.classList.add('hidden');
+  });
+  
+  modalCancelBtn.addEventListener('click', () => {
+    alert('活动取消操作已提交（模拟）');
+    detailModal.classList.add('hidden');
+  });
+  
+  // 点击模态框外部区域关闭
+  detailModal.addEventListener('click', (e) => {
+    if (e.target === detailModal) {
+      detailModal.classList.add('hidden');
+    }
+  });
+</script>
+</body>
+</html>

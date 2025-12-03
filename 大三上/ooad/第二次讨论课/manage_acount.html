@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OOMALL 商户账户中心</title>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <style type="text/tailwindcss">
+    @theme {
+      --color-primary: #e53e3e; /* 红色主色调 */
+      --color-secondary: #2563eb; /* 蓝色辅助色 */
+      --color-gray-100: #f3f4f6;
+      --color-gray-200: #e5e7eb;
+      --color-gray-700: #374151;
+    }
+    @utility nav-active {
+      @apply bg-primary/10 text-primary border-l-4 border-primary font-medium;
+    }
+    @utility tab-active {
+      @apply text-secondary border-secondary;
+    }
+    @utility card-hover {
+      @apply transition-all duration-300 hover:shadow-md;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+<!-- 顶部导航栏 -->
+<header class="bg-primary text-white shadow-md">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">OOMALL</h1>
+    <nav class="hidden md:flex space-x-6">
+      <a href="#" class="hover:opacity-90 transition-opacity"><i class="fas fa-home mr-1"></i>首页</a>
+      <a href="#" class="hover:opacity-90 transition-opacity"><i class="fas fa-box mr-1"></i>我的订单</a>
+      <a href="#" class="hover:opacity-90 transition-opacity"><i class="fas fa-bell mr-1"></i>消息提醒</a>
+      <a href="#" class="hover:opacity-90 transition-opacity"><i class="fas fa-question-circle mr-1"></i>帮助</a>
+      <a href="#" class="hover:opacity-90 transition-opacity"><i class="fas fa-user mr-1"></i>商户中心</a>
+    </nav>
+    <button class="md:hidden text-xl">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<!-- 主内容区 -->
+<div class="container mx-auto px-4 py-6 flex flex-col md:flex-row gap-6">
+  <!-- 左侧导航 -->
+  <aside class="w-full md:w-64 lg:w-72 shrink-0">
+    <div class="bg-white rounded-lg shadow-sm p-4">
+      <h2 class="text-lg font-semibold mb-4">账户管理</h2>
+      <div class="space-y-1">
+        <a href="#" data-page="account-center" class="block py-2.5 px-3 rounded text-gray-700 hover:bg-gray-100 transition-colors nav-active">
+          <i class="fas fa-user-circle mr-3 w-5 text-center"></i>账户信息中心
+        </a>
+        <a href="#" class="block py-2.5 px-3 rounded text-gray-700 hover:bg-gray-100 transition-colors">
+          <i class="fas fa-history mr-3 w-5 text-center"></i>操作记录查询
+        </a>
+        <a href="#" class="block py-2.5 px-3 rounded text-gray-700 hover:bg-gray-100 transition-colors">
+          <i class="fas fa-cog mr-3 w-5 text-center"></i>账户安全设置
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 右侧内容区：账户信息中心（整合页面） -->
+  <main class="flex-1 min-w-0">
+    <div id="account-center" class="page-content">
+      <div class="mb-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-2">账户信息中心</h2>
+        <p class="text-gray-600">管理您的商户账户信息、申请状态及属性设置</p>
+      </div>
+
+      <!-- 账户状态概览卡片 -->
+      <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800">商户基本信息</h3>
+            <p class="text-sm text-gray-500">最后更新时间：2023-10-10 15:30</p>
+          </div>
+          <button id="edit-basic-info" class="text-secondary hover:text-secondary/80 transition-colors flex items-center gap-1 self-start">
+            <i class="fas fa-edit"></i>编辑基本信息
+          </button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <p class="text-sm text-gray-500">商户ID</p>
+            <p class="font-medium text-lg">SH20231001001</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">商户名称</p>
+            <p class="font-medium">测试商户A</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">商户类型</p>
+            <p>零售商户</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">联系人</p>
+            <p>张三</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">联系电话</p>
+            <p>138****1234</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">账户状态</p>
+            <p><span class="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full">正常运营</span></p>
+          </div>
+          <div class="md:col-span-3">
+            <p class="text-sm text-gray-500">联系地址</p>
+            <p>北京市海淀区XX街道XX大厦15层</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 功能标签页 -->
+      <div class="border-b border-gray-200 mb-6">
+        <div class="flex flex-wrap -mb-px">
+          <button class="tab-btn tab-active py-3 px-4 border-b-2 border-transparent text-sm font-medium hover:text-secondary transition-colors" data-tab="opening">
+            开户申请管理
+          </button>
+          <button class="tab-btn py-3 px-4 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-secondary transition-colors" data-tab="cancellation">
+            销户申请管理
+          </button>
+          <button class="tab-btn py-3 px-4 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-secondary transition-colors" data-tab="attr-modify">
+            账户属性管理
+          </button>
+        </div>
+      </div>
+
+      <!-- 1. 开户申请管理标签内容 -->
+      <div class="tab-content" id="opening-content">
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-800">开户申请记录</h3>
+            <button id="open-application-btn" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors self-start">
+              <i class="fas fa-plus mr-1"></i>发起新开户申请
+            </button>
+          </div>
+          
+          <div class="space-y-4">
+            <!-- 开户申请记录1 -->
+            <div class="border border-gray-200 rounded-lg p-4 card-hover">
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <h4 class="font-medium">KH20231015001</h4>
+                    <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-0.5 rounded-full">审核中</span>
+                  </div>
+                  <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
+                    <span>申请时间：2023-10-15 09:30</span>
+                    <span>商户名称：测试商户A</span>
+                    <span>联系人：张三</span>
+                  </div>
+                </div>
+                <button class="view-record-detail text-secondary hover:text-secondary/80 transition-colors" 
+                  data-type="opening" data-id="KH20231015001">
+                  查看详情
+                </button>
+              </div>
+            </div>
+            
+            <!-- 开户申请记录2 -->
+            <div class="border border-gray-200 rounded-lg p-4 card-hover">
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <h4 class="font-medium">KH20231010002</h4>
+                    <span class="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full">已通过</span>
+                  </div>
+                  <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
+                    <span>申请时间：2023-10-10 14:20</span>
+                    <span>商户名称：测试商户B</span>
+                    <span>联系人：李四</span>
+                  </div>
+                </div>
+                <button class="view-record-detail text-secondary hover:text-secondary/80 transition-colors" 
+                  data-type="opening" data-id="KH20231010002">
+                  查看详情
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 销户申请管理标签内容 -->
+      <div class="tab-content hidden" id="cancellation-content">
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-800">销户申请记录</h3>
+            <button id="close-application-btn" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors self-start">
+              <i class="fas fa-plus mr-1"></i>发起销户申请
+            </button>
+          </div>
+          
+          <div class="space-y-4">
+            <!-- 销户申请记录1 -->
+            <div class="border border-gray-200 rounded-lg p-4 card-hover">
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <h4 class="font-medium">XH20231012001</h4>
+                    <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-0.5 rounded-full">审核中</span>
+                  </div>
+                  <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
+                    <span>申请时间：2023-10-12 11:45</span>
+                    <span>商户名称：测试商户C</span>
+                    <span>申请人：王五</span>
+                  </div>
+                </div>
+                <button class="view-record-detail text-secondary hover:text-secondary/80 transition-colors" 
+                  data-type="cancellation" data-id="XH20231012001">
+                  查看详情
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. 账户属性管理标签内容 -->
+      <div class="tab-content hidden" id="attr-modify-content">
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+            <h3 class="text-lg font-semibold text-gray-800">当前账户属性</h3>
+            <button id="modify-attr-btn" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors self-start">
+              <i class="fas fa-edit mr-1"></i>修改账户属性
+            </button>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div>
+              <p class="text-sm text-gray-500">商品发布上限</p>
+              <p class="font-medium text-lg">500件</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">单月交易限额</p>
+              <p class="font-medium text-lg">¥500,000</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">免邮门槛</p>
+              <p class="font-medium text-lg">¥200</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">账期</p>
+              <p class="font-medium text-lg">7天</p>
+            </div>
+          </div>
+          
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">属性修改记录</h3>
+          <div class="space-y-4">
+            <div class="border border-gray-200 rounded-lg p-4 card-hover">
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <h4 class="font-medium">SX20230928001</h4>
+                    <span class="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full">已生效</span>
+                  </div>
+                  <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
+                    <span>修改时间：2023-09-28 10:15</span>
+                    <span>修改属性：免邮门槛（从150元调整为200元）</span>
+                  </div>
+                </div>
+                <button class="view-record-detail text-secondary hover:text-secondary/80 transition-colors" 
+                  data-type="attributes" data-id="SX20230928001">
+                  查看详情
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- 1. 编辑基本信息弹窗 -->
+<div id="edit-basic-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-bold text-gray-800">修改账户基本信息</h3>
+      <button class="close-modal text-gray-500 hover:text-gray-700">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+    <form id="edit-basic-form">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">商户ID</label>
+          <input type="text" class="w-full px-3 py-2 border border-gray-200 rounded-md bg-gray-50" value="SH20231001001" readonly>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">商户名称 <span class="text-red-500">*</span></label>
+          <input type="text" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" value="测试商户A">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">联系人 <span class="text-red-500">*</span></label>
+          <input type="text" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" value="张三">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">联系电话 <span class="text-red-500">*</span></label>
+          <input type="tel" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" value="138****1234">
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-gray-700 mb-1">联系地址 <span class="text-red-500">*</span></label>
+          <textarea class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" rows="2">北京市海淀区XX街道XX大厦15层</textarea>
+        </div>
+      </div>
+      <div class="flex justify-end gap-3">
+        <button type="button" class="close-modal px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors">
+          取消
+        </button>
+        <button type="submit" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors">
+          保存修改
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- 2. 开户申请表单弹窗 -->
+<div id="opening-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-bold text-gray-800">发起开户申请</h3>
+      <button class="close-modal text-gray-500 hover:text-gray-700">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+    <form id="opening-form">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">商户名称 <span class="text-red-500">*</span></label>
+          <input type="text" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" placeholder="请输入商户名称">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">商户类型 <span class="text-red-500">*</span></label>
+          <select class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary">
+            <option value="">请选择商户类型</option>
+            <option value="retail">零售商户</option>
+            <option value="wholesale">批发商户</option>
+            <option value="service">服务商户</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">联系人 <span class="text-red-500">*</span></label>
+          <input type="text" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" placeholder="请输入联系人姓名">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">联系电话 <span class="text-red-500">*</span></label>
+          <input type="tel" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" placeholder="请输入联系电话">
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-gray-700 mb-1">联系地址 <span class="text-red-500">*</span></label>
+          <textarea class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" rows="2" placeholder="请输入详细联系地址"></textarea>
+        </div>
+      </div>
+      <div class="flex justify-end gap-3">
+        <button type="button" class="close-modal px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors">
+          取消
+        </button>
+        <button type="submit" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors">
+          提交申请
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- 3. 销户申请表单弹窗 -->
+<div id="cancellation-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-bold text-gray-800">发起销户申请</h3>
+      <button class="close-modal text-gray-500 hover:text-gray-700">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+    <form id="cancellation-form">
+      <div class="mb-6">
+        <label class="block text-sm font-medium text-gray-700 mb-1">商户ID <span class="text-red-500">*</span></label>
+        <input type="text" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" value="SH20231001001" readonly>
+      </div>
+      <div class="mb-6">
+        <label class="block text-sm font-medium text-gray-700 mb-1">商户名称 <span class="text-red-500">*</span></label>
+        <input type="text" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" value="测试商户A" readonly>
+      </div>
+      <div class="mb-6">
+        <label class="block text-sm font-medium text-gray-700 mb-1">销户原因 <span class="text-red-500">*</span></label>
+        <textarea class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" rows="4" placeholder="请详细说明销户原因"></textarea>
+      </div>
+      <div class="mb-6">
+        <label class="flex items-center">
+          <input type="checkbox" class="h-4 w-4 text-secondary border-gray-300 rounded">
+          <span class="ml-2 block text-sm text-gray-700">我已了解销户后将无法继续使用平台服务</span>
+        </label>
+      </div>
+      <div class="flex justify-end gap-3">
+        <button type="button" class="close-modal px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors">
+          取消
+        </button>
+        <button type="submit" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors">
+          提交申请
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- 4. 修改账户属性表单弹窗 -->
+<div id="modify-attr-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-bold text-gray-800">修改账户属性</h3>
+      <button class="close-modal text-gray-500 hover:text-gray-700">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+    <form id="modify-attr-form">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">商品发布上限 <span class="text-red-500">*</span></label>
+          <div class="flex items-center">
+            <input type="number" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" value="500">
+            <span class="ml-2 text-gray-500">件</span>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">单月交易限额 <span class="text-red-500">*</span></label>
+          <div class="flex items-center">
+            <span class="mr-2 text-gray-500">¥</span>
+            <input type="number" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" value="500000">
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">免邮门槛 <span class="text-red-500">*</span></label>
+          <div class="flex items-center">
+            <span class="mr-2 text-gray-500">¥</span>
+            <input type="number" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" value="200">
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">账期 <span class="text-red-500">*</span></label>
+          <div class="flex items-center">
+            <input type="number" class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary" value="7">
+            <span class="ml-2 text-gray-500">天</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-end gap-3">
+        <button type="button" class="close-modal px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors">
+          取消
+        </button>
+        <button type="submit" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors">
+          提交修改
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- 记录详情弹窗（通用） -->
+<div id="record-detail-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-bold text-gray-800" id="detail-modal-title">记录详情</h3>
+      <button class="close-modal text-gray-500 hover:text-gray-700">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+    <div id="detail-modal-content" class="space-y-4">
+      <!-- 详情内容通过JS动态填充 -->
+    </div>
+    <div class="mt-6 flex justify-end">
+      <button class="close-modal px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors">
+        关闭
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 标签页切换逻辑
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetTab = btn.getAttribute('data-tab');
+      
+      // 更新标签按钮状态
+      tabBtns.forEach(b => {
+        b.classList.remove('tab-active');
+      });
+      btn.classList.add('tab-active');
+      
+      // 更新内容区域
+      tabContents.forEach(content => {
+        content.classList.add('hidden');
+      });
+      document.getElementById(`${targetTab}-content`).classList.remove('hidden');
+    });
+  });
+  
+  // 弹窗控制逻辑
+  const modals = {
+    editBasic: document.getElementById('edit-basic-modal'),
+    opening: document.getElementById('opening-modal'),
+    cancellation: document.getElementById('cancellation-modal'),
+    modifyAttr: document.getElementById('modify-attr-modal'),
+    recordDetail: document.getElementById('record-detail-modal')
+  };
+  
+  // 打开弹窗按钮
+  document.getElementById('edit-basic-info').addEventListener('click', () => {
+    modals.editBasic.classList.remove('hidden');
+  });
+  
+  document.getElementById('open-application-btn').addEventListener('click', () => {
+    modals.opening.classList.remove('hidden');
+  });
+  
+  document.getElementById('close-application-btn').addEventListener('click', () => {
+    modals.cancellation.classList.remove('hidden');
+  });
+  
+  document.getElementById('modify-attr-btn').addEventListener('click', () => {
+    modals.modifyAttr.classList.remove('hidden');
+  });
+  
+  // 关闭弹窗按钮（所有关闭按钮共用逻辑）
+  document.querySelectorAll('.close-modal').forEach(btn => {
+    btn.addEventListener('click', () => {
+      Object.values(modals).forEach(modal => {
+        modal.classList.add('hidden');
+      });
+    });
+  });
+  
+  // 点击弹窗外部关闭
+  Object.values(modals).forEach(modal => {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+      }
+    });
+  });
+  
+  // 表单提交逻辑（模拟）
+  const forms = [
+    'edit-basic-form',
+    'opening-form', 
+    'cancellation-form', 
+    'modify-attr-form'
+  ];
+  
+  forms.forEach(formId => {
+    document.getElementById(formId).addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('操作已提交，等待处理！');
+      // 关闭当前表单所在的弹窗
+      Object.values(modals).forEach(modal => {
+        if (!modal.classList.contains('hidden')) {
+          modal.classList.add('hidden');
+        }
+      });
+    });
+  });
+  
+  // 记录详情弹窗逻辑
+  document.querySelectorAll('.view-record-detail').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const type = btn.getAttribute('data-type');
+      const id = btn.getAttribute('data-id');
+      let title = '';
+      let content = '';
+      
+      // 根据类型生成不同详情内容
+      if (type === 'opening') {
+        title = `开户申请详情 - ${id}`;
+        content = `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <p class="text-sm text-gray-500">申请ID</p>
+              <p class="font-medium">${id}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">申请时间</p>
+              <p>${id === 'KH20231015001' ? '2023-10-15 09:30' : '2023-10-10 14:20'}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">商户名称</p>
+              <p>${id === 'KH20231015001' ? '测试商户A' : '测试商户B'}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">商户类型</p>
+              <p>${id === 'KH20231015001' ? '零售商户' : '批发商户'}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">联系人</p>
+              <p>${id === 'KH20231015001' ? '张三' : '李四'}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">联系电话</p>
+              <p>${id === 'KH20231015001' ? '138****1234' : '139****5678'}</p>
+            </div>
+            <div class="md:col-span-2">
+              <p class="text-sm text-gray-500">联系地址</p>
+              <p>${id === 'KH20231015001' ? '北京市海淀区XX街道XX大厦15层' : '上海市浦东新区XX路XX号'}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">当前状态</p>
+              <p>${id === 'KH20231015001' ? '<span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-0.5 rounded-full">审核中</span>' : '<span class="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full">已通过</span>'}</p>
+            </div>
+          </div>
+        `;
+      } else if (type === 'cancellation') {
+        title = `销户申请详情 - ${id}`;
+        content = `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <p class="text-sm text-gray-500">申请ID</p>
+              <p class="font-medium">${id}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">申请时间</p>
+              <p>2023-10-12 11:45</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">商户ID</p>
+              <p>SH20231001001</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">商户名称</p>
+              <p>测试商户A</p>
+            </div>
+            <div class="md:col-span-2">
+              <p class="text-sm text-gray-500">销户原因</p>
+              <p class="bg-gray-50 p-3 rounded-md">业务调整，暂时不需要使用该账户</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">当前状态</p>
+              <p><span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-0.5 rounded-full">审核中</span></p>
+            </div>
+          </div>
+        `;
+      } else if (type === 'attributes') {
+        title = `属性修改详情 - ${id}`;
+        content = `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <p class="text-sm text-gray-500">修改记录ID</p>
+              <p class="font-medium">${id}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">修改时间</p>
+              <p>2023-09-28 10:15</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">商户ID</p>
+              <p>SH20231001001</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">商户名称</p>
+              <p>测试商户A</p>
+            </div>
+            <div class="md:col-span-2">
+              <p class="text-sm text-gray-500">修改内容</p>
+              <div class="bg-gray-50 p-3 rounded-md space-y-2">
+                <p><span class="text-gray-500">免邮门槛：</span>从150元 修改为 200元</p>
+              </div>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">状态</p>
+              <p><span class="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full">已生效</span></p>
+            </div>
+          </div>
+        `;
+      }
+      
+      // 填充详情内容并显示弹窗
+      document.getElementById('detail-modal-title').textContent = title;
+      document.getElementById('detail-modal-content').innerHTML = content;
+      modals.recordDetail.classList.remove('hidden');
+    });
+  });
+</script>
+</body>
+</html>

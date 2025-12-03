@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOMALL售后管理系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#e53e3e', // 红色主色调
+                        secondary: '#3182ce', // 蓝色辅助色
+                        success: '#38a169', // 绿色成功色
+                        danger: '#e53e3e',  // 红色危险色
+                        neutral: {
+                            100: '#f7fafc',
+                            200: '#edf2f7',
+                            300: '#e2e8f0',
+                            400: '#cbd5e0',
+                            500: '#a0aec0',
+                            600: '#718096',
+                            700: '#4a5568',
+                            800: '#2d3748',
+                            900: '#1a202c',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+                        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .nav-item-active {
+                @apply bg-neutral-200 text-neutral-800 font-medium;
+            }
+            .nav-item {
+                @apply text-neutral-700 hover:bg-neutral-200 transition-colors duration-200;
+            }
+            .btn-primary {
+                @apply bg-secondary text-white px-4 py-2 rounded hover:bg-secondary/90 transition-all duration-200 transform hover:scale-105;
+            }
+            .btn-success {
+                @apply bg-success text-white px-4 py-2 rounded hover:bg-success/90 transition-all duration-200;
+            }
+            .btn-danger {
+                @apply bg-danger text-white px-4 py-2 rounded hover:bg-danger/90 transition-all duration-200;
+            }
+            .btn-secondary {
+                @apply bg-neutral-200 text-neutral-700 px-4 py-2 rounded hover:bg-neutral-300 transition-all duration-200;
+            }
+            .card {
+                @apply bg-white rounded-lg shadow-card p-4 mb-4 hover:shadow-card-hover transition-shadow duration-300;
+            }
+            .badge {
+                @apply text-xs px-2 py-1 rounded-full;
+            }
+        }
+    </style>
+</head>
+<body class="bg-neutral-100 min-h-screen">
+    <!-- 顶部导航 -->
+    <header class="bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold mr-8">OOMALL</h1>
+                    <nav class="hidden md:block">
+                        <ul class="flex space-x-6">
+                            <li><a href="#" class="hover:scale-110 transition-transform duration-200">首页</a></li>
+                            <li><a href="#" class="hover:scale-110 transition-transform duration-200">我的订单</a></li>
+                            <li><a href="#" class="hover:scale-110 transition-transform duration-200">消息提醒</a></li>
+                            <li><a href="#" class="hover:scale-110 transition-transform duration-200">帮助</a></li>
+                            <li><a href="#" class="hover:scale-110 transition-transform duration-200">账号管理</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="md:hidden">
+                    <button type="button" class="text-white hover:scale-110 transition-transform duration-200">
+                        <i class="fa fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 界面切换控制 -->
+    <div class="bg-white border-b border-neutral-300">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-2 space-x-1 md:space-x-4 no-scrollbar">
+                <button id="btn-audit" class="whitespace-nowrap px-3 py-1 rounded bg-secondary text-white">审核售后</button>
+                <button id="btn-cancel" class="whitespace-nowrap px-3 py-1 rounded hover:bg-neutral-200">取消售后</button>
+                <button id="btn-accept" class="whitespace-nowrap px-3 py-1 rounded hover:bg-neutral-200">验收售后</button>
+                <button id="btn-receive" class="whitespace-nowrap px-3 py-1 rounded hover:bg-neutral-200">售后收件</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-6">
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- 左侧导航 -->
+            <aside class="w-full md:w-64 lg:w-72 shrink-0">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="p-4 border-b border-neutral-200">
+                        <h2 class="font-medium text-neutral-800">项目类目</h2>
+                    </div>
+                    
+                    <div class="p-2">
+                        <div class="mb-2">
+                            <div class="flex items-center px-3 py-2 rounded cursor-pointer">
+                                <i class="fa fa-headphones text-neutral-500 mr-3"></i>
+                                <span class="text-neutral-800">售后</span>
+                                <i class="fa fa-chevron-down text-xs text-neutral-500 ml-auto"></i>
+                            </div>
+                            
+                            <div class="ml-6 mt-1 space-y-1">
+                                <a href="#" class="flex items-center px-3 py-2 rounded nav-item">
+                                    查询售后
+                                </a>
+                                <a href="#" class="flex items-center px-3 py-2 rounded nav-item-active" id="nav-audit">
+                                    审核售后
+                                </a>
+                                <a href="#" class="flex items-center px-3 py-2 rounded nav-item" id="nav-cancel">
+                                    取消售后
+                                </a>
+                                <a href="#" class="flex items-center px-3 py-2 rounded nav-item" id="nav-accept">
+                                    验收售后
+                                </a>
+                                <a href="#" class="flex items-center px-3 py-2 rounded nav-item" id="nav-receive">
+                                    售后收件
+                                </a>
+                                <a href="#" class="flex items-center px-3 py-2 rounded nav-item">
+                                    售后软件
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-2">
+                            <div class="flex items-center px-3 py-2 rounded cursor-pointer nav-item">
+                                <i class="fa fa-cog text-neutral-500 mr-3"></i>
+                                <span class="text-neutral-800">服务</span>
+                                <i class="fa fa-chevron-down text-xs text-neutral-500 ml-auto"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-2">
+                            <div class="flex items-center px-3 py-2 rounded cursor-pointer nav-item">
+                                <i class="fa fa-list text-neutral-500 mr-3"></i>
+                                <span class="text-neutral-800">菜单</span>
+                                <i class="fa fa-chevron-down text-xs text-neutral-500 ml-auto"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- 主内容区 -->
+            <main class="flex-1">
+                <!-- 审核售后界面 -->
+                <div id="audit-after-sales" class="space-y-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-neutral-800 mb-2">售后审核列表</h2>
+                        <p class="text-neutral-500">共 45 条记录，28 条待审核</p>
+                    </div>
+                    
+                    <!-- 搜索与筛选 -->
+                    <div class="bg-white rounded-lg shadow-md p-4">
+                        <div class="flex flex-col md:flex-row md:items-center gap-4">
+                            <div class="relative flex-1">
+                                <input 
+                                    type="text" 
+                                    placeholder="搜索售后类型、订单号、买家姓名..." 
+                                    class="w-full pl-10 pr-4 py-2 border border-neutral-300 rounded focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all"
+                                >
+                                <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400"></i>
+                            </div>
+                            
+                            <div class="flex gap-2">
+                                <div class="relative">
+                                    <button class="flex items-center gap-2 btn-secondary">
+                                        <i class="fa fa-filter"></i>
+                                        <span>筛选</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 审核列表 -->
+                    <div class="space-y-4">
+                        <div class="card">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                <div>
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <h3 class="text-lg font-semibold text-neutral-800">DD20231009002</h3>
+                                        <span class="badge bg-blue-100 text-blue-800">退款</span>
+                                    </div>
+                                    <p class="text-neutral-600 mb-1">商品：华为 Mate 60 Pro 128GB 黑色</p>
+                                    <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500">
+                                        <span>买家：张三</span>
+                                        <span>申请时间：2023-10-09 09:15:30</span>
+                                    </div>
+                                </div>
+                                <button class="btn-primary audit-btn" data-id="DD20231009002">审核</button>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                <div>
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <h3 class="text-lg font-semibold text-neutral-800">DD20231008567</h3>
+                                        <span class="badge bg-green-100 text-green-800">换货</span>
+                                    </div>
+                                    <p class="text-neutral-600 mb-1">商品：小米 13 Ultra 256GB 白色</p>
+                                    <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500">
+                                        <span>买家：李四</span>
+                                        <span>申请时间：2023-10-08 16:42:15</span>
+                                    </div>
+                                </div>
+                                <button class="btn-primary audit-btn" data-id="DD20231008567">审核</button>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                <div>
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <h3 class="text-lg font-semibold text-neutral-800">DD20231008432</h3>
+                                        <span class="badge bg-yellow-100 text-yellow-800">维修</span>
+                                    </div>
+                                    <p class="text-neutral-600 mb-1">商品：AirPods Pro 第二代</p>
+                                    <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500">
+                                        <span>买家：王五</span>
+                                        <span>申请时间：2023-10-08 11:23:40</span>
+                                    </div>
+                                </div>
+                                <button class="btn-primary audit-btn" data-id="DD20231008432">审核</button>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                <div>
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <h3 class="text-lg font-semibold text-neutral-800">DD20231007890</h3>
+                                        <span class="badge bg-blue-100 text-blue-800">退款</span>
+                                    </div>
+                                    <p class="text-neutral-600 mb-1">商品：三星 Galaxy S23 Ultra 256GB</p>
+                                    <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500">
+                                        <span>买家：赵六</span>
+                                        <span>申请时间：2023-10-07 19:05:22</span>
+                                    </div>
+                                </div>
+                                <button class="btn-primary audit-btn" data-id="DD20231007890">审核</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center py-4">
+                        <button class="text-neutral-600 hover:text-secondary transition-colors">
+                            加载更多内容...
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 取消售后界面 -->
+                <div id="cancel-after-sales" class="space-y-6 hidden">
+                    <div>
+                        <h2 class="text-2xl font-bold text-neutral-800 mb-2">取消售后</h2>
+                        <p class="text-neutral-500">管理售后取消申请及审核结果</p>
+                    </div>
+                    
+                    <!-- 待申请取消的售后单 -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-neutral-800 mb-4">待申请取消的售后单</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="card">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-neutral-800 mb-1">DD20231009123</h3>
+                                        <p class="text-neutral-600 mb-1">商品：OPPO Find X6 Pro 128GB 青色</p>
+                                        <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500">
+                                            <span>售后进度：待审核</span>
+                                            <span>买家：钱七</span>
+                                            <span>申请类型：退款</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn-primary cancel-apply-btn" data-id="DD20231009123">申请取消</button>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-neutral-800 mb-1">DD20231008765</h3>
+                                        <p class="text-neutral-600 mb-1">商品：vivo X90 Pro+ 256GB 黑色</p>
+                                        <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500">
+                                            <span>售后进度：处理中</span>
+                                            <span>买家：孙八</span>
+                                            <span>申请类型：换货</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn-primary cancel-apply-btn" data-id="DD20231008765">申请取消</button>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-neutral-800 mb-1">DD20231008234</h3>
+                                        <p class="text-neutral-600 mb-1">商品：一加 11 12+256GB 苍绿色</p>
+                                        <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500">
+                                            <span>售后进度：商户已收件</span>
+                                            <span>买家：周九</span>
+                                            <span>申请类型：维修</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <button class="btn-primary cancel-apply-btn" data-id="DD20231008234">申请取消</button>
+                                        <button class="btn-secondary create-express-btn" data-id="DD20231008234">创建快递单</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 取消申请审核结果 -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-neutral-800 mb-4">取消申请审核结果</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="card">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-neutral-800 mb-1">DD20231007456</h3>
+                                        <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500 mb-2">
+                                            <span>取消申请时间：2023-10-08 09:30:15</span>
+                                            <span>审核状态：<span class="text-success">通过</span></span>
+                                            <span>审核人：张客服</span>
+                                            <span>审核时间：2023-10-08 10:15:30</span>
+                                        </div>
+                                        <p class="text-sm text-neutral-600">商品：荣耀 Magic5 Pro 12+256GB 亮黑色</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-neutral-800 mb-1">DD20231006789</h3>
+                                        <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500 mb-2">
+                                            <span>取消申请时间：2023-10-07 15:45:20</span>
+                                            <span>审核状态：<span class="text-danger">驳回</span></span>
+                                            <span>审核人：李客服</span>
+                                            <span>审核时间：2023-10-07 16:20:10</span>
+                                        </div>
+                                        <p class="text-sm text-neutral-600 mb-2">商品：真我 GT Neo5 150W 12+256GB</p>
+                                        <div class="flex items-center gap-2 text-sm">
+                                            <span class="text-neutral-500">驳回原因：</span>
+                                            <span class="text-neutral-700">已超过取消申请时限</span>
+                                            <a href="#" class="text-secondary hover:underline ml-2">查看售后规则</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center py-4">
+                        <button class="text-neutral-600 hover:text-secondary transition-colors">
+                            加载更多内容...
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 验收售后界面 -->
+                <div id="accept-after-sales" class="space-y-6 hidden">
+                    <div>
+                        <h2 class="text-2xl font-bold text-neutral-800 mb-2">待验收售后单列表</h2>
+                        <p class="text-neutral-500">共 18 条记录，7 条即将超期</p>
+                    </div>
+                    
+                    <!-- 搜索与筛选 -->
+                    <div class="bg-white rounded-lg shadow-md p-4">
+                        <div class="flex flex-col md:flex-row md:items-center gap-4">
+                            <div class="relative flex-1">
+                                <input 
+                                    type="text" 
+                                    placeholder="搜索售后单号、商品名称、服务商..." 
+                                    class="w-full pl-10 pr-4 py-2 border border-neutral-300 rounded focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all"
+                                >
+                                <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400"></i>
+                            </div>
+                            
+                            <div class="flex gap-2">
+                                <div class="relative">
+                                    <button class="flex items-center gap-2 btn-secondary">
+                                        <i class="fa fa-filter"></i>
+                                        <span>筛选</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 待验收列表 -->
+                    <div class="space-y-4">
+                        <div class="card">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-neutral-800 mb-1">SH20231009001</h3>
+                                    <p class="text-neutral-600 mb-1">商品：大疆 DJI Mini 3 Pro 无人机</p>
+                                    <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500">
+                                        <span>服务商：大疆官方售后</span>
+                                        <span>提交时间：2023-10-07 14:30:00</span>
+                                        <span class="text-danger">验收截止：2023-10-10 18:00（剩余1天）</span>
+                                    </div>
+                                </div>
+                                <button class="btn-primary accept-btn" data-id="SH20231009001">验收</button>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-neutral-800 mb-1">SH20231008056</h3>
+                                    <p class="text-neutral-600 mb-1">商品：索尼 WH-1000XM5 耳机</p>
+                                    <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500">
+                                        <span>服务商：索尼授权服务中心</span>
+                                        <span>提交时间：2023-10-06 09:15:20</span>
+                                        <span>验收截止：2023-10-12 18:00（剩余3天）</span>
+                                    </div>
+                                </div>
+                                <button class="btn-primary accept-btn" data-id="SH20231008056">验收</button>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-neutral-800 mb-1">SH20231007034</h3>
+                                    <p class="text-neutral-600 mb-1">商品：微软 Surface Pro 9 平板电脑</p>
+                                    <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500">
+                                        <span>服务商：微软售后中心</span>
+                                        <span>提交时间：2023-10-05 16:40:10</span>
+                                        <span class="text-danger">验收截止：2023-10-09 18:00（今天截止）</span>
+                                    </div>
+                                </div>
+                                <button class="btn-primary accept-btn" data-id="SH20231007034">验收</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center py-4">
+                        <button class="text-neutral-600 hover:text-secondary transition-colors">
+                            加载更多内容...
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 售后收件界面 -->
+                <div id="receive-after-sales" class="space-y-6 hidden">
+                    <div>
+                        <h2 class="text-2xl font-bold text-neutral-800 mb-2">待收件售后物流单列表</h2>
+                        <p class="text-neutral-500">共 23 条记录，15 条可收件，8 条收货失败</p>
+                    </div>
+                    
+                    <!-- 搜索与筛选 -->
+                    <div class="bg-white rounded-lg shadow-md p-4">
+                        <div class="flex flex-col md:flex-row md:items-center gap-4">
+                            <div class="relative flex-1">
+                                <input 
+                                    type="text" 
+                                    placeholder="搜索物流单号、商品名称..." 
+                                    class="w-full pl-10 pr-4 py-2 border border-neutral-300 rounded focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all"
+                                >
+                                <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400"></i>
+                            </div>
+                            
+                            <div class="flex gap-2">
+                                <div class="relative">
+                                    <button class="flex items-center gap-2 btn-secondary">
+                                        <i class="fa fa-filter"></i>
+                                        <span>筛选</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 可收件列表 -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-neutral-800 mb-4">可收件</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="card">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-neutral-800 mb-1">SF1234567890123</h3>
+                                        <p class="text-neutral-600 mb-1">商品：Apple iPhone 14 Pro 256GB 暗紫色</p>
+                                        <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500">
+                                            <span>提交时间：2023-10-08 10:20:30</span>
+                                            <span>快递公司：顺丰速运</span>
+                                            <span>售后单号：SH20231008002</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <button class="btn-primary confirm-receive-btn" data-id="SF1234567890123">确认收件</button>
+                                        <button class="btn-secondary cancel-after-receive-btn" data-id="SF1234567890123">取消售后</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-neutral-800 mb-1">YD9876543210987</h3>
+                                        <p class="text-neutral-600 mb-1">商品：华为笔记本电脑 MateBook X Pro</p>
+                                        <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500">
+                                            <span>提交时间：2023-10-08 09:15:45</span>
+                                            <span>快递公司：韵达快递</span>
+                                            <span>售后单号：SH20231007056</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <button class="btn-primary confirm-receive-btn" data-id="YD9876543210987">确认收件</button>
+                                        <button class="btn-secondary cancel-after-receive-btn" data-id="YD9876543210987">取消售后</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 收货失败列表 -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-neutral-800 mb-4">收货失败</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="card">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-neutral-800 mb-1">ZT5678901234567</h3>
+                                        <p class="text-neutral-600 mb-1">商品：小米平板 5 Pro 12.4英寸</p>
+                                        <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500">
+                                            <span>提交时间：2023-10-07 16:30:20</span>
+                                            <span>快递公司：中通快递</span>
+                                            <span>售后单号：SH20231006034</span>
+                                            <span class="text-danger">状态：收货失败</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn-secondary view-fail-reason-btn" data-id="ZT5678901234567">查看失败原因</button>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-neutral-800 mb-1">JD8901234567890</h3>
+                                        <p class="text-neutral-600 mb-1">商品：OPPO Pad 2 11.6英寸</p>
+                                        <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-500">
+                                            <span>提交时间：2023-10-06 14:25:10</span>
+                                            <span>快递公司：京东物流</span>
+                                            <span>售后单号：SH20231005078</span>
+                                            <span class="text-danger">状态：收货失败</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn-secondary view-fail-reason-btn" data-id="JD8901234567890">查看失败原因</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center py-4">
+                        <button class="text-neutral-600 hover:text-secondary transition-colors">
+                            加载更多内容...
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- 审核详情模态框 -->
+    <div id="audit-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-neutral-200">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-neutral-800">售后审核详情</h3>
+                    <button id="close-audit-modal" class="text-neutral-500 hover:text-neutral-800">
+                        <i class="fa fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="text-sm font-medium text-neutral-500 mb-1">订单号</h4>
+                        <p class="text-lg font-semibold text-neutral-800" id="audit-order-id">DD20231009002</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-sm font-medium text-neutral-500 mb-1">商品信息</h4>
+                        <p class="text-neutral-800">华为 Mate 60 Pro 128GB 黑色</p>
+                        <p class="text-secondary font-medium mt-1">¥6999.00</p>
+                        <p class="text-sm text-neutral-500 mt-1">购买时间：2023-09-15 10:30:25</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-sm font-medium text-neutral-500 mb-1">买家信息</h4>
+                        <p class="text-neutral-800">张三 (138****5678)</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-sm font-medium text-neutral-500 mb-1">售后类型</h4>
+                        <span class="badge bg-blue-100 text-blue-800">退款</span>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-sm font-medium text-neutral-500 mb-1">申请时间</h4>
+                        <p class="text-neutral-800">2023-10-09 09:15:30</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-sm font-medium text-neutral-500 mb-1">售后原因</h4>
+                        <p class="text-neutral-800">商品收到后发现屏幕有划痕，未激活使用，申请退款。</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-sm font-medium text-neutral-500 mb-1">售后证明</h4>
+                        <div class="grid grid-cols-2 gap-3 mt-2">
+                            <img src="https://picsum.photos/300/200?random=1" alt="商品划痕照片1" class="rounded-md w-full h-40 object-cover">
+                            <img src="https://picsum.photos/300/200?random=2" alt="商品划痕照片2" class="rounded-md w-full h-40 object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-6 border-t border-neutral-200">
+                <div class="mb-4 hidden" id="reject-reason-container">
+                    <label class="block text-sm font-medium text-neutral-700 mb-1">拒绝原因</label>
+                    <textarea class="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all" rows="3" placeholder="请输入拒绝原因..."></textarea>
+                </div>
+                
+                <div class="flex justify-end gap-3">
+                    <button id="reject-btn" class="btn-danger">拒绝申请</button>
+                    <button id="approve-btn" class="btn-success">通过申请</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 申请取消模态框 -->
+    <div id="cancel-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg w-full max-w-md">
+            <div class="p-6 border-b border-neutral-200">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-neutral-800">申请取消售后</h3>
+                    <button id="close-cancel-modal" class="text-neutral-500 hover:text-neutral-800">
+                        <i class="fa fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div>
+                    <p class="text-neutral-800 mb-2">订单号：<span id="cancel-order-id">DD20231009123</span></p>
+                    <label class="block text-sm font-medium text-neutral-700 mb-1">取消原因</label>
+                    <textarea class="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all" rows="4" placeholder="请输入取消售后的原因..."></textarea>
+                </div>
+            </div>
+            
+            <div class="p-6 border-t border-neutral-200 flex justify-end gap-3">
+                <button id="cancel-cancel-btn" class="btn-secondary">取消</button>
+                <button id="submit-cancel-btn" class="btn-primary">提交申请</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 创建快递单模态框 -->
+    <div id="express-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg w-full max-w-md">
+            <div class="p-6 border-b border-neutral-200">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-neutral-800">创建快递单</h3>
+                    <button id="close-express-modal" class="text-neutral-500 hover:text-neutral-800">
+                        <i class="fa fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div>
+                    <p class="text-neutral-800 mb-4">订单号：<span id="express-order-id">DD20231008234</span></p>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-neutral-700 mb-1">收件人信息</label>
+                        <input type="text" class="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all" placeholder="收件人姓名">
+                        <input type="text" class="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all mt-2" placeholder="联系电话">
+                        <textarea class="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all mt-2" rows="2" placeholder="收件地址"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-neutral-700 mb-1">快递单号</label>
+                        <input type="text" class="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all" placeholder="请输入快递单号">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-6 border-t border-neutral-200 flex justify-end gap-3">
+                <button id="cancel-express-btn" class="btn-secondary">取消</button>
+                <button id="submit-express-btn" class="btn-primary">提交快递单</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 验收详情模态框 -->
+    <div id="accept-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-neutral-200">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-neutral-800">售后验收详情</h3>
+                    <button id="close-accept-modal" class="text-neutral-500 hover:text-neutral-800">
+                        <i class="fa fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="text-sm font-medium text-neutral-500 mb-1">售后单号</h4>
+                        <p class="text-lg font-semibold text-neutral-800" id="accept-order-id">SH20231009001</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-sm font-medium text-neutral-500 mb-1">服务商信息</h4>
+                        <p class="text-neutral-800">大疆官方售后</p>
+                        <p class="text-sm text-neutral-600 mt-1">联系方式：400-880-2315</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-sm font-medium text-neutral-500 mb-1">商品信息</h4>
+                        <p class="text-neutral-800">大疆 DJI Mini 3 Pro 无人机</p>
+                        <p class="text-secondary font-medium mt-1">¥4788.00</p>
+                        <p class="text-sm text-neutral-500 mt-1">售后类型：维修</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-sm font-medium text-neutral-500 mb-1">售后完成情况</h4>
+                        <p class="text-neutral-800 mb-2">维修报告：</p>
+                        <p class="text-neutral-700 bg-neutral-50 p-3 rounded-md">
+                            经检测，无人机云台电机故障，已更换全新云台组件。试飞测试正常，各项功能恢复正常。
+                            保修期内维修，不收取任何费用。
+                        </p>
+                        <div class="mt-3">
+                            <img src="https://picsum.photos/600/400?random=3" alt="维修后无人机照片" class="rounded-md w-full h-60 object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-6 border-t border-neutral-200">
+                <div class="mb-4 hidden" id="accept-reject-reason-container">
+                    <label class="block text-sm font-medium text-neutral-700 mb-1">拒绝原因</label>
+                    <textarea class="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all" rows="3" placeholder="请输入拒绝原因..."></textarea>
+                </div>
+                
+                <div class="flex justify-end gap-3">
+                    <button id="accept-reject-btn" class="btn-danger">拒绝</button>
+                    <button id="confirm-accept-btn" class="btn-success">确认完成</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 查看失败原因模态框 -->
+    <div id="fail-reason-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg w-full max-w-md">
+            <div class="p-6 border-b border-neutral-200">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-neutral-800">收货失败原因</h3>
+                    <button id="close-fail-reason-modal" class="text-neutral-500 hover:text-neutral-800">
+                        <i class="fa fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="text-sm font-medium text-neutral-500 mb-1">物流单号</h4>
+                        <p class="text-neutral-800" id="fail-logistics-id">ZT5678901234567</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-sm font-medium text-neutral-500 mb-1">商品信息</h4>
+                        <p class="text-neutral-800">小米平板 5 Pro 12.4英寸</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-sm font-medium text-neutral-500 mb-1">失败原因</h4>
+                        <p class="text-neutral-800 bg-neutral-50 p-3 rounded-md">
+                            收件地址不详，多次联系收件人未接通电话，无法完成派送。
+                            包裹已退回至发件地址，请核实收件信息后重新安排寄送。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-6 border-t border-neutral-200 flex justify-end">
+                <button id="close-fail-btn" class="btn-secondary">关闭</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 通知提示框 -->
+    <div id="toast" class="fixed top-4 right-4 bg-neutral-800 text-white px-6 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 z-50 flex items-center gap-2">
+        <i class="fa fa-check-circle text-success"></i>
+        <span id="toast-message">操作成功</span>
+    </div>
+
+    <script>
+        // 界面切换逻辑
+        const interfaces = {
+            audit: document.getElementById('audit-after-sales'),
+            cancel: document.getElementById('cancel-after-sales'),
+            accept: document.getElementById('accept-after-sales'),
+            receive: document.getElementById('receive-after-sales')
+        };
+        
+        const navItems = {
+            audit: document.getElementById('nav-audit'),
+            cancel: document.getElementById('nav-cancel'),
+            accept: document.getElementById('nav-accept'),
+            receive: document.getElementById('nav-receive')
+        };
+        
+        const buttons = {
+            audit: document.getElementById('btn-audit'),
+            cancel: document.getElementById('btn-cancel'),
+            accept: document.getElementById('btn-accept'),
+            receive: document.getElementById('btn-receive')
+        };
+        
+        function switchInterface(name) {
+            // 隐藏所有界面
+            Object.values(interfaces).forEach(el => el.classList.add('hidden'));
+            // 显示目标界面
+            interfaces[name].classList.remove('hidden');
+            
+            // 重置所有导航项样式
+            Object.values(navItems).forEach(el => {
+                el.classList.remove('nav-item-active');
+                el.classList.add('nav-item');
+            });
+            // 设置当前导航项样式
+            navItems[name].classList.remove('nav-item');
+            navItems[name].classList.add('nav-item-active');
+            
+            // 重置所有按钮样式
+            Object.values(buttons).forEach(btn => {
+                btn.classList.remove('bg-secondary', 'text-white');
+                btn.classList.add('hover:bg-neutral-200');
+            });
+            // 设置当前按钮样式
+            buttons[name].classList.add('bg-secondary', 'text-white');
+            buttons[name].classList.remove('hover:bg-neutral-200');
+        }
+        
+        // 绑定界面切换事件
+        buttons.audit.addEventListener('click', () => switchInterface('audit'));
+        buttons.cancel.addEventListener('click', () => switchInterface('cancel'));
+        buttons.accept.addEventListener('click', () => switchInterface('accept'));
+        buttons.receive.addEventListener('click', () => switchInterface('receive'));
+        
+        navItems.audit.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchInterface('audit');
+        });
+        
+        navItems.cancel.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchInterface('cancel');
+        });
+        
+        navItems.accept.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchInterface('accept');
+        });
+        
+        navItems.receive.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchInterface('receive');
+        });
+        
+        // 审核模态框逻辑
+        const auditModal = document.getElementById('audit-modal');
+        const closeAuditModal = document.getElementById('close-audit-modal');
+        const auditBtns = document.querySelectorAll('.audit-btn');
+        const auditOrderId = document.getElementById('audit-order-id');
+        const rejectBtn = document.getElementById('reject-btn');
+        const approveBtn = document.getElementById('approve-btn');
+        const rejectReasonContainer = document.getElementById('reject-reason-container');
+        
+        auditBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const orderId = btn.getAttribute('data-id');
+                auditOrderId.textContent = orderId;
+                auditModal.classList.remove('hidden');
+                rejectReasonContainer.classList.add('hidden');
+            });
+        });
+        
+        closeAuditModal.addEventListener('click', () => {
+            auditModal.classList.add('hidden');
+        });
+        
+        rejectBtn.addEventListener('click', () => {
+            rejectReasonContainer.classList.toggle('hidden');
+            if (!rejectReasonContainer.classList.contains('hidden')) {
+                rejectBtn.textContent = '取消拒绝';
+            } else {
+                rejectBtn.textContent = '拒绝申请';
+            }
+        });
+        
+        approveBtn.addEventListener('click', () => {
+            auditModal.classList.add('hidden');
+            showToast('审核已通过');
+        });
+        
+        // 取消售后模态框逻辑
+        const cancelModal = document.getElementById('cancel-modal');
+        const closeCancelModal = document.getElementById('close-cancel-modal');
+        const cancelApplyBtns = document.querySelectorAll('.cancel-apply-btn');
+        const cancelOrderId = document.getElementById('cancel-order-id');
+        const cancelCancelBtn = document.getElementById('cancel-cancel-btn');
+        const submitCancelBtn = document.getElementById('submit-cancel-btn');
+        
+        cancelApplyBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const orderId = btn.getAttribute('data-id');
+                cancelOrderId.textContent = orderId;
+                cancelModal.classList.remove('hidden');
+            });
+        });
+        
+        closeCancelModal.addEventListener('click', () => {
+            cancelModal.classList.add('hidden');
+        });
+        
+        cancelCancelBtn.addEventListener('click', () => {
+            cancelModal.classList.add('hidden');
+        });
+        
+        submitCancelBtn.addEventListener('click', () => {
+            cancelModal.classList.add('hidden');
+            showToast('取消申请已提交');
+        });
+        
+        // 创建快递单模态框逻辑
+        const expressModal = document.getElementById('express-modal');
+        const closeExpressModal = document.getElementById('close-express-modal');
+        const createExpressBtns = document.querySelectorAll('.create-express-btn');
+        const expressOrderId = document.getElementById('express-order-id');
+        const cancelExpressBtn = document.getElementById('cancel-express-btn');
+        const submitExpressBtn = document.getElementById('submit-express-btn');
+        
+        createExpressBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const orderId = btn.getAttribute('data-id');
+                expressOrderId.textContent = orderId;
+                expressModal.classList.remove('hidden');
+            });
+        });
+        
+        closeExpressModal.addEventListener('click', () => {
+            expressModal.classList.add('hidden');
+        });
+        
+        cancelExpressBtn.addEventListener('click', () => {
+            expressModal.classList.add('hidden');
+        });
+        
+        submitExpressBtn.addEventListener('click', () => {
+            expressModal.classList.add('hidden');
+            showToast('快递单已提交');
+        });
+        
+        // 验收模态框逻辑
+        const acceptModal = document.getElementById('accept-modal');
+        const closeAcceptModal = document.getElementById('close-accept-modal');
+        const acceptBtns = document.querySelectorAll('.accept-btn');
+        const acceptOrderId = document.getElementById('accept-order-id');
+        const acceptRejectBtn = document.getElementById('accept-reject-btn');
+        const confirmAcceptBtn = document.getElementById('confirm-accept-btn');
+        const acceptRejectReasonContainer = document.getElementById('accept-reject-reason-container');
+        
+        acceptBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const orderId = btn.getAttribute('data-id');
+                acceptOrderId.textContent = orderId;
+                acceptModal.classList.remove('hidden');
+                acceptRejectReasonContainer.classList.add('hidden');
+            });
+        });
+        
+        closeAcceptModal.addEventListener('click', () => {
+            acceptModal.classList.add('hidden');
+        });
+        
+        acceptRejectBtn.addEventListener('click', () => {
+            acceptRejectReasonContainer.classList.toggle('hidden');
+            if (!acceptRejectReasonContainer.classList.contains('hidden')) {
+                acceptRejectBtn.textContent = '取消拒绝';
+            } else {
+                acceptRejectBtn.textContent = '拒绝';
+            }
+        });
+        
+        confirmAcceptBtn.addEventListener('click', () => {
+            acceptModal.classList.add('hidden');
+            showToast('已确认验收完成');
+        });
+        
+        // 查看失败原因模态框逻辑
+        const failReasonModal = document.getElementById('fail-reason-modal');
+        const closeFailReasonModal = document.getElementById('close-fail-reason-modal');
+        const viewFailReasonBtns = document.querySelectorAll('.view-fail-reason-btn');
+        const failLogisticsId = document.getElementById('fail-logistics-id');
+        const closeFailBtn = document.getElementById('close-fail-btn');
+        
+        viewFailReasonBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const logisticsId = btn.getAttribute('data-id');
+                failLogisticsId.textContent = logisticsId;
+                failReasonModal.classList.remove('hidden');
+            });
+        });
+        
+        closeFailReasonModal.addEventListener('click', () => {
+            failReasonModal.classList.add('hidden');
+        });
+        
+        closeFailBtn.addEventListener('click', () => {
+            failReasonModal.classList.add('hidden');
+        });
+        
+        // 确认收件按钮逻辑
+        const confirmReceiveBtns = document.querySelectorAll('.confirm-receive-btn');
+        confirmReceiveBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                showToast('收件成功');
+            });
+        });
+        
+        // 取消售后按钮逻辑
+        const cancelAfterReceiveBtns = document.querySelectorAll('.cancel-after-receive-btn');
+        cancelAfterReceiveBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                switchInterface('cancel');
+                showToast('已跳转至取消售后界面');
+            });
+        });
+        
+        // 显示提示框
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.textContent = message;
+            toast.classList.remove('translate-x-full');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+            }, 3000);
+        }
+        
+        // 点击模态框外部关闭
+        window.addEventListener('click', (e) => {
+            if (e.target === auditModal) {
+                auditModal.classList.add('hidden');
+            }
+            if (e.target === cancelModal) {
+                cancelModal.classList.add('hidden');
+            }
+            if (e.target === expressModal) {
+                expressModal.classList.add('hidden');
+            }
+            if (e.target === acceptModal) {
+                acceptModal.classList.add('hidden');
+            }
+            if (e.target === failReasonModal) {
+                failReasonModal.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

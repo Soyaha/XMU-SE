@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件上传 - MinIO存储</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- Tailwind 配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        neutral: '#64748B',
+                        danger: '#EF4444',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .shadow-soft {
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            }
+            .transition-custom {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <!-- 页面标题 -->
+        <div class="text-center mb-10">
+            <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-gray-800 mb-2">
+                <i class="fa fa-cloud-upload text-primary mr-3"></i>文件上传到MinIO
+            </h1>
+            <p class="text-neutral text-lg">请选择要上传的文件并输入组号</p>
+        </div>
+        
+        <!-- 上传表单卡片 -->
+        <div class="bg-white rounded-2xl shadow-soft p-6 md:p-8 mb-8 transform hover:scale-[1.01] transition-custom">
+            <!-- 上传结果消息 -->
+            <div th:if="${message}" class="mb-6 p-4 rounded-lg" 
+                 th:classappend="${success} ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'">
+                <div class="flex items-center">
+                    <i th:classappend="${success} ? 'fa fa-check-circle text-green-500' : 'fa fa-exclamation-circle text-red-500'" class="mr-3 text-xl"></i>
+                    <p th:text="${message}"></p>
+                </div>
+            </div>
+            
+            <!-- 文件上传表单 -->
+            <form th:action="@{/upload}" method="post" enctype="multipart/form-data" class="space-y-6">
+                <!-- 组号输入 -->
+                <div>
+                    <label for="groupNumber" class="block text-sm font-medium text-gray-700 mb-1">
+                        <i class="fa fa-users text-primary mr-1"></i>组号
+                    </label>
+                    <input type="text" id="groupNumber" name="groupNumber" required
+                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-custom"
+                           placeholder="请输入您的组号（将作为文件名）">
+                </div>
+                
+                <!-- 文件选择区域 -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        <i class="fa fa-file text-primary mr-1"></i>选择文件
+                    </label>
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary transition-custom cursor-pointer" id="dropArea">
+                        <input type="file" id="file" name="file" required
+                               class="hidden" accept="*/*">
+                        <i class="fa fa-cloud-upload text-5xl text-neutral mb-3"></i>
+                        <p class="text-gray-600 mb-1">点击或拖拽文件到此处上传</p>
+                        <p class="text-gray-400 text-sm">支持各种文件格式，建议文件大小不超过10MB</p>
+                        <div id="fileInfo" class="mt-4 hidden">
+                            <div class="flex items-center justify-center p-2 bg-gray-50 rounded">
+                                <i class="fa fa-file-text-o text-primary mr-2"></i>
+                                <span id="fileName" class="text-gray-700"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 上传按钮 -->
+                <div class="pt-2">
+                    <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-4 rounded-lg transition-custom flex items-center justify-center">
+                        <i class="fa fa-upload mr-2"></i>
+                        上传到MinIO服务器
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- 服务器信息卡片 -->
+        <div class="bg-gray-800 text-white rounded-xl p-5 shadow-soft">
+            <h3 class="font-semibold mb-3 flex items-center">
+                <i class="fa fa-server mr-2"></i>服务器信息
+            </h3>
+            <ul class="space-y-2 text-gray-300 text-sm">
+                <li class="flex"><span class="w-24 text-gray-400">服务器:</span> <span>124.70.108.214:9000</span></li>
+                <li class="flex"><span class="w-24 text-gray-400">Bucket:</span> <span>assign1</span></li>
+                <li class="flex"><span class="w-24 text-gray-400">提示:</span> <span>文件名将以组号命名</span></li>
+            </ul>
+        </div>
+        
+        <!-- 页脚 -->
+        <footer class="mt-12 text-center text-neutral text-sm">
+            <p>© 2025 文件上传系统 - 作业提交专用</p>
+        </footer>
+    </div>
+
+    <script>
+        // 文件选择和拖拽功能
+        const dropArea = document.getElementById('dropArea');
+        const fileInput = document.getElementById('file');
+        const fileInfo = document.getElementById('fileInfo');
+        const fileName = document.getElementById('fileName');
+        
+        // 点击区域触发文件选择
+        dropArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        // 文件选择变化时显示文件名
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                showFileName(e.target.files[0].name);
+            }
+        });
+        
+        // 拖拽功能
+        dropArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropArea.classList.add('border-primary');
+            dropArea.classList.add('bg-blue-50');
+        });
+        
+        dropArea.addEventListener('dragleave', () => {
+            dropArea.classList.remove('border-primary');
+            dropArea.classList.remove('bg-blue-50');
+        });
+        
+        dropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropArea.classList.remove('border-primary');
+            dropArea.classList.remove('bg-blue-50');
+            
+            if (e.dataTransfer.files.length > 0) {
+                fileInput.files = e.dataTransfer.files;
+                showFileName(e.dataTransfer.files[0].name);
+            }
+        });
+        
+        // 显示选中的文件名
+        function showFileName(name) {
+            fileName.textContent = name;
+            fileInfo.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

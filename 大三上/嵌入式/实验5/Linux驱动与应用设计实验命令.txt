@@ -1,0 +1,2283 @@
+---------------------------------- 在Ubuntu的“终端”上，执行以下命令编译实验程序 ---------------------------------
+
+
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_driver
+
+make
+
+cp zlg72xx_driver.ko /mnt/hgfs/share/
+
+
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/keys_gpio_leds
+
+aarch64-linux-gnu-gcc keys_gpio_leds.c -o keys_gpio_leds
+
+cp keys_gpio_leds /mnt/hgfs/share/
+
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/keys_buzzer
+
+aarch64-linux-gnu-gcc keys_buzzer.c -o keys_buzzer
+
+cp keys_buzzer /mnt/hgfs/share/
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/keys_buzzer_pwm
+
+aarch64-linux-gnu-gcc keys_buzzer_pwm.c -o keys_buzzer_pwm
+
+cp keys_buzzer_pwm /mnt/hgfs/share/
+
+
+
+
+
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/keys_stepper
+
+aarch64-linux-gnu-gcc keys_stepper.c -o keys_stepper -lpthread
+
+cp keys_stepper /mnt/hgfs/share/
+
+
+
+
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/keys_dcmotor
+
+aarch64-linux-gnu-gcc keys_dcmotor.c -o keys_dcmotor
+
+cp keys_dcmotor /mnt/hgfs/share/
+
+
+
+
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/keys_servo
+
+aarch64-linux-gnu-gcc keys_servo.c -o keys_servo -lpthread
+
+cp keys_servo /mnt/hgfs/share/
+
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/keys_relay
+
+aarch64-linux-gnu-gcc keys_relay.c -o keys_relay
+
+cp keys_relay /mnt/hgfs/share/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_gpio_leds
+
+aarch64-linux-gnu-gcc zlg72xx_gpio_leds.c -o zlg72xx_gpio_leds
+
+cp zlg72xx_gpio_leds /mnt/hgfs/share/
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_buzzer
+
+aarch64-linux-gnu-gcc zlg72xx_buzzer.c -o zlg72xx_buzzer
+
+cp zlg72xx_buzzer /mnt/hgfs/share/
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_buzzer_pwm
+
+aarch64-linux-gnu-gcc zlg72xx_buzzer_pwm.c -o zlg72xx_buzzer_pwm
+
+cp zlg72xx_buzzer_pwm /mnt/hgfs/share/
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_stepper
+
+aarch64-linux-gnu-gcc zlg72xx_stepper.c -o zlg72xx_stepper -lpthread
+
+cp zlg72xx_stepper /mnt/hgfs/share/
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_dcmotor
+
+aarch64-linux-gnu-gcc zlg72xx_dcmotor.c -o zlg72xx_dcmotor
+
+cp zlg72xx_dcmotor /mnt/hgfs/share/
+
+
+
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_servo
+
+aarch64-linux-gnu-gcc zlg72xx_servo.c -o zlg72xx_servo -lpthread
+
+cp zlg72xx_servo /mnt/hgfs/share/
+
+
+
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_relay
+
+aarch64-linux-gnu-gcc zlg72xx_relay.c -o zlg72xx_relay
+
+cp zlg72xx_relay /mnt/hgfs/share/
+
+
+
+
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/ir_gpio_leds
+
+aarch64-linux-gnu-gcc ir_gpio_leds.c -o ir_gpio_leds
+
+cp ir_gpio_leds /mnt/hgfs/share/
+
+
+
+
+cd /home/linux/workdir/fs3399/application/ir_buzzer
+
+aarch64-linux-gnu-gcc ir_buzzer.c -o ir_buzzer
+
+cp ir_buzzer /mnt/hgfs/share/
+
+
+
+
+cd /home/linux/workdir/fs3399/application/ir_buzzer_pwm
+
+aarch64-linux-gnu-gcc ir_buzzer_pwm.c -o ir_buzzer_pwm
+
+cp ir_buzzer_pwm /mnt/hgfs/share/
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/ir_stepper
+
+aarch64-linux-gnu-gcc ir_stepper.c -o ir_stepper -lpthread
+
+cp ir_stepper /mnt/hgfs/share/
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/ir_dcmotor
+
+aarch64-linux-gnu-gcc ir_dcmotor.c -o ir_dcmotor 
+
+cp ir_dcmotor /mnt/hgfs/share/
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/ir_servo
+
+aarch64-linux-gnu-gcc ir_servo.c -o ir_servo -lpthread
+
+cp ir_servo /mnt/hgfs/share/
+
+
+
+
+cd /home/linux/workdir/fs3399/application/ir_relay
+
+aarch64-linux-gnu-gcc ir_relay.c -o ir_relay
+
+cp ir_relay /mnt/hgfs/share/
+
+
+
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_clock
+
+aarch64-linux-gnu-gcc zlg72xx_clock.c -o zlg72xx_clock
+
+cp zlg72xx_clock /mnt/hgfs/share/
+
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_adc
+
+aarch64-linux-gnu-gcc zlg72xx_adc.c -o zlg72xx_adc
+
+cp zlg72xx_adc /mnt/hgfs/share/
+
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_lm75
+
+aarch64-linux-gnu-gcc zlg72xx_lm75.c -o zlg72xx_lm75
+
+cp zlg72xx_lm75 /mnt/hgfs/share/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/rs485_1
+
+aarch64-linux-gnu-gcc rs485_1.c -o rs485_1 -lpthread
+
+cp rs485_1 /mnt/hgfs/share/
+
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/rs485_2
+
+aarch64-linux-gnu-gcc rs485_2_r.c -o rs485_2_r -lpthread
+
+aarch64-linux-gnu-gcc rs485_2_s.c -o rs485_2_s 
+
+cp rs485_2_r /mnt/hgfs/share/
+
+cp rs485_2_s /mnt/hgfs/share/
+
+cp test.txt /mnt/hgfs/share/
+
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/can_1
+
+aarch64-linux-gnu-gcc can_1.c libsocketcan.c -o can_1 -lpthread
+
+cp can_1 /mnt/hgfs/share/
+
+
+
+
+
+
+
+cd /home/linux/workdir/fs3399/application/can_2
+
+aarch64-linux-gnu-gcc can_2_r.c libsocketcan.c -o can_2_r -lpthread
+
+aarch64-linux-gnu-gcc can_2_s.c libsocketcan.c -o can_2_s
+
+cp can_2_r /mnt/hgfs/share/
+
+cp can_2_s /mnt/hgfs/share/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------   在Xshell上执行以下命令，运行程序 -----------------------------------
+
+su
+
+cd app
+
+
+
+
+
+1、-------------------------按键、小键盘、红外遥控器  控制3个LED灯-------------------------
+
+
+insmod farsight_keys.ko
+
+insmod zlg72xx_driver.ko
+
+insmod gpio_leds.ko
+
+
+
+
+
+
+
+
+chmod 777 keys_gpio_leds
+
+chmod 777 zlg72xx_gpio_leds
+
+chmod 777 ir_gpio_leds
+
+
+
+
+
+./keys_gpio_leds
+
+
+./zlg72xx_gpio_leds
+
+
+./ir_gpio_leds
+
+
+
+
+
+
+
+
+
+
+
+
+2、-------------------------按键、小键盘、红外遥控器  控制蜂鸣器-------------------------
+
+
+rmmod gpio_leds
+
+insmod buzzer_driver.ko
+
+
+
+
+
+
+chmod 777 keys_buzzer
+
+chmod 777 zlg72xx_buzzer
+
+chmod 777 ir_buzzer
+
+
+
+
+
+./keys_buzzer
+
+
+./zlg72xx_buzzer
+
+
+./ir_buzzer
+
+
+
+
+
+3、-------------------------按键、小键盘、红外遥控器  控制蜂鸣器（底板）-------------------------
+
+将D15拨到左边，其余在右边
+
+
+rmmod buzzer_driver
+
+insmod buzzer_pwm_driver.ko
+
+
+
+
+chmod 777 keys_buzzer_pwm
+
+chmod 777 zlg72xx_buzzer_pwm
+
+chmod 777 ir_buzzer_pwm
+
+
+
+./keys_buzzer_pwm
+
+
+./zlg72xx_buzzer_pwm
+
+
+./ir_buzzer_pwm
+
+
+
+
+4、-------------------------按键、小键盘、红外遥控器  控制步进电机-------------------------
+
+将D8、D9、D10、D11拨到左边，其余在右边
+
+
+
+rmmod buzzer_pwm_driver
+
+insmod stepper_driver.ko
+
+
+
+
+chmod 777 keys_stepper
+
+chmod 777 zlg72xx_stepper
+
+chmod 777 ir_stepper
+
+
+
+
+./keys_stepper
+
+
+./zlg72xx_stepper
+
+
+./ir_stepper
+
+
+
+
+
+5、-------------------------按键、小键盘、红外遥控器  控制直流电机-------------------------
+
+将D12、D13拨到左边，其余在右边
+
+
+
+rmmod stepper_driver
+
+insmod dcmotor_driver.ko
+
+
+
+
+chmod 777 keys_dcmotor
+
+chmod 777 zlg72xx_dcmotor
+
+chmod 777 ir_dcmotor
+
+
+
+
+./keys_dcmotor
+
+
+./zlg72xx_dcmotor
+
+
+./ir_dcmotor
+
+
+
+
+6、-------------------------按键、小键盘、红外遥控器  控制陀机-------------------------
+
+将D6拨到左边，其余在右边
+
+
+rmmod dcmotor_driver
+
+insmod servo_driver.ko
+
+
+
+
+chmod 777 keys_servo
+
+chmod 777 zlg72xx_servo
+
+chmod 777 ir_servo
+
+
+
+
+
+./keys_servo
+
+
+./zlg72xx_servo
+
+
+./ir_servo
+
+
+
+
+
+7、-------------------------按键、小键盘、红外遥控器  控制继电器-------------------------
+
+将D16拨到左边，其余在右边
+
+
+rmmod servo_driver
+
+insmod relay_driver.ko
+
+
+
+
+chmod 777 keys_relay
+
+chmod 777 zlg72xx_relay
+
+chmod 777 ir_relay
+
+
+
+
+
+./keys_relay
+
+
+./zlg72xx_relay
+
+
+./ir_relay
+
+
+
+
+8、-------------------------电子钟-------------------------
+
+
+
+rmmod farsight_keys
+
+rmmod relay_driver
+
+
+
+
+chmod 777 zlg72xx_clock
+
+
+
+
+
+./zlg72xx_clock
+
+
+
+
+
+
+
+
+9、-------------------------数码管上显示ADC值-------------------------
+
+
+
+insmod farsight_adc.ko
+
+
+
+
+chmod 777 zlg72xx_adc
+
+
+
+
+./zlg72xx_adc
+
+
+
+
+
+
+
+10、-------------------------数码管上显示温度值-------------------------
+
+
+
+rmmod farsight_adc
+
+insmod farsight_lm75.ko
+
+
+
+
+
+chmod 777 zlg72xx_lm75
+
+
+
+
+./zlg72xx_lm75
+
+
+
+
+
+rmmod farsight_lm75
+
+
+
+
+
+
+11、 ------------------    RS-485双机通信实验（1） ----------------------
+
+
+
+
+chmod 777 /sys/class/gpio/export
+
+echo 90 > /sys/class/gpio/export
+
+echo out > /sys/class/gpio/gpio90/direction
+
+echo 1 > /sys/class/gpio/gpio90/value
+
+chmod 777 rs485_1
+
+./rs485_1 
+
+
+
+
+
+
+
+12、 ----------------    RS-485双机通信实验（2） ---------------------
+
+
+rm test.txt
+
+chmod 777 /sys/class/gpio/export
+
+echo 90 > /sys/class/gpio/export
+
+echo out > /sys/class/gpio/gpio90/direction
+
+echo 1 > /sys/class/gpio/gpio90/value
+
+chmod 777 rs485_2_r
+
+./rs485_2_r
+
+
+
+
+
+
+
+
+
+
+
+
+chmod 777 /sys/class/gpio/export
+
+echo 90 > /sys/class/gpio/export
+
+echo out > /sys/class/gpio/gpio90/direction
+
+echo 1 > /sys/class/gpio/gpio90/value
+
+chmod 777 rs485_2_s
+
+./rs485_2_s
+
+
+
+
+
+
+
+
+
+
+13、 ----------------    CAN总线双机通信实验（1） --------------------
+
+
+
+
+chmod 777 can_1
+
+./can_1 
+
+
+
+
+
+
+
+
+
+
+
+14、 -----------------   CAN总线双机通信实验（2） -----------------------------
+
+
+rm test.txt
+
+chmod 777 can_2_r
+
+./can_2_r 
+
+
+
+
+chmod 777 can_2_s
+
+./can_2_s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1-1、-------------------------2个按键控制2个LED灯-------------------------
+
+cd /home/linux/workdir/fs3399/application/keys_gpio_leds
+
+aarch64-linux-gnu-gcc keys_gpio_leds.c -o keys_gpio_leds
+
+cp keys_gpio_leds /mnt/hgfs/share/
+
+
+
+
+
+insmod farsight_keys.ko
+
+insmod gpio_leds.ko
+
+
+
+chmod 777 keys_gpio_leds
+
+./keys_gpio_leds
+
+
+
+rmmod farsight_keys
+
+rmmod gpio_leds
+
+
+
+
+
+
+
+
+
+
+1-2、-------------------------1个按键控制蜂鸣器-------------------------
+
+cd /home/linux/workdir/fs3399/application/keys_buzzer
+
+aarch64-linux-gnu-gcc keys_buzzer.c -o keys_buzzer
+
+cp keys_buzzer /mnt/hgfs/share/
+
+
+
+
+
+insmod farsight_keys.ko
+
+insmod buzzer_driver.ko
+
+
+
+chmod 777 keys_buzzer
+
+./keys_buzzer
+
+
+
+
+
+rmmod keys_driver
+
+rmmod buzzer_driver
+
+
+
+
+
+
+
+
+
+
+
+
+1-3、-------------------------1个按键控制蜂鸣器（底板）-------------------------
+
+cd /home/linux/workdir/fs3399/application/keys_buzzer_pwm
+
+aarch64-linux-gnu-gcc keys_buzzer_pwm.c -o keys_buzzer_pwm
+
+cp keys_buzzer_pwm /mnt/hgfs/share/
+
+
+
+
+
+insmod farsight_keys.ko
+
+insmod buzzer_pwm_driver.ko
+
+
+
+chmod 777 keys_buzzer_pwm
+
+./keys_buzzer_pwm
+
+
+
+
+
+rmmod keys_driver
+
+rmmod buzzer_pwm_driver
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1-4、-------------------------2个按键控制步进电机-------------------------
+
+cd /home/linux/workdir/fs3399/application/keys_stepper
+
+aarch64-linux-gnu-gcc keys_stepper.c -o keys_stepper -lpthread
+
+cp keys_stepper /mnt/hgfs/share/
+
+
+
+
+
+
+insmod farsight_keys.ko
+
+insmod stepper_driver.ko
+
+
+
+chmod 777 keys_stepper
+
+./keys_stepper
+
+
+
+
+
+rmmod farsight_keys
+
+rmmod stepper_driver
+
+
+
+
+
+
+
+
+
+1-5、-------------------------2个按键控制直流电机-------------------------
+
+cd /home/linux/workdir/fs3399/application/keys_dcmotor
+
+aarch64-linux-gnu-gcc keys_dcmotor.c -o keys_dcmotor
+
+cp keys_dcmotor /mnt/hgfs/share/
+
+
+
+
+
+
+insmod farsight_keys.ko
+
+insmod dcmotor_driver.ko
+
+
+
+chmod 777 keys_dcmotor
+
+./keys_dcmotor
+
+
+
+
+
+rmmod farsight_keys
+
+rmmod dcmotor_driver
+
+
+
+
+
+
+1-6、-------------------------1个按键控制陀机-------------------------
+
+cd /home/linux/workdir/fs3399/application/keys_servo
+
+aarch64-linux-gnu-gcc keys_servo.c -o keys_servo -lpthread
+
+cp keys_servo /mnt/hgfs/share/
+
+
+
+
+
+insmod farsight_keys.ko
+
+insmod servo_driver.ko
+
+
+
+chmod 777 keys_servo
+
+./keys_servo
+
+
+
+
+
+rmmod farsight_keys
+
+rmmod servo_driver
+
+
+
+
+
+
+1-7、-------------------------1个按键控制继电器-------------------------
+
+cd /home/linux/workdir/fs3399/application/keys_relay
+
+aarch64-linux-gnu-gcc keys_relay.c -o keys_relay
+
+cp keys_relay /mnt/hgfs/share/
+
+
+
+
+
+insmod farsight_keys.ko
+
+insmod relay_driver.ko
+
+
+
+chmod 777 keys_relay
+
+./keys_relay
+
+
+
+
+
+rmmod farsight_keys
+
+rmmod relay_driver
+
+
+
+
+
+
+2-1、-------------------------小键盘的3个按键控制3个LED灯-------------------------
+
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_driver
+
+make
+
+cp zlg72xx_driver.ko /mnt/hgfs/share/
+
+
+
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_gpio_leds
+
+aarch64-linux-gnu-gcc zlg72xx_gpio_leds.c -o zlg72xx_gpio_leds
+
+cp zlg72xx_gpio_leds /mnt/hgfs/share/
+
+
+
+
+
+insmod zlg72xx_driver.ko
+
+insmod gpio_leds.ko
+
+
+
+chmod 777 zlg72xx_gpio_leds
+
+./zlg72xx_gpio_leds
+
+
+
+
+
+rmmod zlg72xx_driver
+
+rmmod gpio_leds
+
+
+
+
+
+2-2、-------------------------小键盘的1个按键控制蜂鸣器-------------------------
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_buzzer
+
+aarch64-linux-gnu-gcc zlg72xx_buzzer.c -o zlg72xx_buzzer
+
+cp zlg72xx_buzzer /mnt/hgfs/share/
+
+
+
+
+
+insmod zlg72xx_driver.ko
+
+insmod buzzer_driver.ko
+
+
+
+chmod 777 zlg72xx_buzzer
+
+./zlg72xx_buzzer
+
+
+
+
+
+rmmod zlg72xx_driver
+
+rmmod buzzer_driver
+
+
+
+
+2-3、-------------------------小键盘的1个按键控制蜂鸣器（底板）-------------------------
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_buzzer_pwm
+
+aarch64-linux-gnu-gcc zlg72xx_buzzer_pwm.c -o zlg72xx_buzzer_pwm
+
+cp zlg72xx_buzzer_pwm /mnt/hgfs/share/
+
+
+
+
+
+insmod zlg72xx_driver.ko
+
+insmod buzzer_pwm_driver.ko
+
+
+
+chmod 777 zlg72xx_buzzer_pwm
+
+./zlg72xx_buzzer_pwm
+
+
+
+
+
+rmmod zlg72xx_driver
+
+rmmod buzzer_pwm_driver
+
+
+
+
+2-4、-------------------------小键盘的2个按键控制步进电机-------------------------
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_stepper
+
+aarch64-linux-gnu-gcc zlg72xx_stepper.c -o zlg72xx_stepper -lpthread
+
+cp zlg72xx_stepper /mnt/hgfs/share/
+
+
+
+
+
+insmod zlg72xx_driver.ko
+
+insmod stepper_driver.ko
+
+
+
+chmod 777 zlg72xx_stepper
+
+./zlg72xx_stepper
+
+
+
+
+
+rmmod zlg72xx_driver
+
+rmmod stepper_driver
+
+
+
+
+
+2-5、-------------------------小键盘的2个按键控制直流电机-------------------------
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_dcmotor
+
+aarch64-linux-gnu-gcc zlg72xx_dcmotor.c -o zlg72xx_dcmotor
+
+cp zlg72xx_dcmotor /mnt/hgfs/share/
+
+
+
+
+
+insmod zlg72xx_driver.ko
+
+insmod dcmotor_driver.ko
+
+
+
+chmod 777 zlg72xx_dcmotor
+
+./zlg72xx_dcmotor
+
+
+
+
+
+rmmod zlg72xx_driver
+
+rmmod dcmotor_driver
+
+
+
+
+
+
+2-6、-------------------------小键盘的1个按键控制陀机-------------------------
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_servo
+
+aarch64-linux-gnu-gcc zlg72xx_servo.c -o zlg72xx_servo -lpthread
+
+cp zlg72xx_servo /mnt/hgfs/share/
+
+
+
+
+
+insmod zlg72xx_driver.ko
+
+insmod servo_driver.ko
+
+
+
+chmod 777 zlg72xx_servo
+
+./zlg72xx_servo
+
+
+
+
+
+rmmod zlg72xx_driver
+
+rmmod servo_driver
+
+
+
+
+
+
+
+2-7、-------------------------小键盘的1个按键控制继电器-------------------------
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_relay
+
+aarch64-linux-gnu-gcc zlg72xx_relay.c -o zlg72xx_relay
+
+cp zlg72xx_relay /mnt/hgfs/share/
+
+
+
+
+
+insmod zlg72xx_driver.ko
+
+insmod relay_driver.ko
+
+
+
+chmod 777 zlg72xx_relay
+
+./zlg72xx_relay
+
+
+
+
+
+rmmod zlg72xx_driver
+
+rmmod relay_driver
+
+
+
+
+
+3-1、-------------------------红外遥控器的3个键控制3个LED灯-------------------------
+
+
+cd /home/linux/workdir/fs3399/application/ir_gpio_leds
+
+aarch64-linux-gnu-gcc ir_gpio_leds.c -o ir_gpio_leds
+
+cp ir_gpio_leds /mnt/hgfs/share/
+
+
+
+
+
+insmod gpio_leds.ko
+
+
+
+chmod 777 ir_gpio_leds
+
+./ir_gpio_leds
+
+
+
+rmmod gpio_leds
+
+
+
+
+
+
+
+
+
+
+3-2、-------------------------红外遥控器的1个键控制蜂鸣器-------------------------
+
+cd /home/linux/workdir/fs3399/application/ir_buzzer
+
+aarch64-linux-gnu-gcc ir_buzzer.c -o ir_buzzer
+
+cp ir_buzzer /mnt/hgfs/share/
+
+
+
+
+
+insmod buzzer_driver.ko
+
+
+
+chmod 777 ir_buzzer
+
+./ir_buzzer
+
+
+
+rmmod buzzer_driver
+
+
+
+
+
+
+
+
+
+
+
+
+
+3-3、-------------------------红外遥控器的1个键控制蜂鸣器（底板）-------------------------
+
+cd /home/linux/workdir/fs3399/application/ir_buzzer_pwm
+
+aarch64-linux-gnu-gcc ir_buzzer_pwm.c -o ir_buzzer_pwm
+
+cp ir_buzzer_pwm /mnt/hgfs/share/
+
+
+
+
+
+insmod buzzer_pwm_driver.ko
+
+
+
+chmod 777 ir_buzzer_pwm
+
+./ir_buzzer_pwm
+
+
+
+rmmod buzzer_pwm_driver
+
+
+
+
+
+
+
+
+3-4、-------------------------红外遥控器的2个键控制步进电机-------------------------
+
+cd /home/linux/workdir/fs3399/application/ir_stepper
+
+aarch64-linux-gnu-gcc ir_stepper.c -o ir_stepper -lpthread
+
+cp ir_stepper /mnt/hgfs/share/
+
+
+
+
+
+insmod stepper_driver.ko
+
+
+
+chmod 777 ir_stepper
+
+./ir_stepper
+
+
+
+rmmod stepper_driver
+
+
+
+
+
+
+
+
+
+3-5、-------------------------红外遥控器的2个键控制直流电机-------------------------
+
+cd /home/linux/workdir/fs3399/application/ir_dcmotor
+
+aarch64-linux-gnu-gcc ir_dcmotor.c -o ir_dcmotor 
+
+cp ir_dcmotor /mnt/hgfs/share/
+
+
+
+
+
+insmod dcmotor_driver.ko
+
+
+
+chmod 777 ir_dcmotor
+
+
+
+./ir_dcmotor
+
+rmmod dcmotor_driver
+
+
+
+
+
+3-6、-------------------------红外遥控器的1个键控制陀机-------------------------
+
+cd /home/linux/workdir/fs3399/application/ir_servo
+
+aarch64-linux-gnu-gcc ir_servo.c -o ir_servo -lpthread
+
+cp ir_servo /mnt/hgfs/share/
+
+
+
+
+
+insmod servo_driver.ko
+
+
+
+chmod 777 ir_servo
+
+./ir_servo
+
+
+
+rmmod servo_driver
+
+
+
+
+3-7、-------------------------红外遥控器的1个键控制继电器-------------------------
+
+cd /home/linux/workdir/fs3399/application/ir_relay
+
+aarch64-linux-gnu-gcc ir_relay.c -o ir_relay
+
+cp ir_relay /mnt/hgfs/share/
+
+
+
+
+
+insmod relay_driver.ko
+
+
+
+chmod 777 ir_relay
+
+./ir_relay
+
+
+
+rmmod relay_driver
+
+
+
+
+
+
+4-1、-------------------------电子钟-------------------------
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_clock
+
+aarch64-linux-gnu-gcc zlg72xx_clock.c -o zlg72xx_clock
+
+cp zlg72xx_clock /mnt/hgfs/share/
+
+
+
+
+
+insmod zlg72xx_driver.ko
+
+
+
+chmod 777 zlg72xx_clock
+
+./zlg72xx_clock
+
+
+
+rmmod zlg72xx_driver
+
+
+
+
+
+
+4-2、-------------------------数码管上显示ADC值-------------------------
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_adc
+
+aarch64-linux-gnu-gcc zlg72xx_adc.c -o zlg72xx_adc
+
+cp zlg72xx_adc /mnt/hgfs/share/
+
+
+
+
+
+insmod zlg72xx_driver.ko
+
+insmod farsight_adc.ko
+
+
+
+chmod 777 zlg72xx_adc
+
+./zlg72xx_adc
+
+
+
+
+
+rmmod zlg72xx_driver
+
+rmmod farsight_adc
+
+
+
+
+4-3、-------------------------数码管上显示温度值-------------------------
+
+cd /home/linux/workdir/fs3399/application/zlg72xx_lm75
+
+aarch64-linux-gnu-gcc zlg72xx_lm75.c -o zlg72xx_lm75
+
+cp zlg72xx_lm75 /mnt/hgfs/share/
+
+
+
+
+
+insmod zlg72xx_driver.ko
+
+insmod farsight_lm75.ko
+
+
+
+chmod 777 zlg72xx_lm75
+
+./zlg72xx_lm75
+
+
+
+
+
+rmmod zlg72xx_driver
+
+rmmod farsight_lm75
+
+
+
+
+
+5-1、 RS-485双机通信实验（1）
+
+cd /home/linux/workdir/fs3399/application/rs485_1
+
+aarch64-linux-gnu-gcc rs485_1.c -o rs485_1 -lpthread
+
+cp rs485_1 /mnt/hgfs/share/
+
+
+
+
+
+
+
+chmod 777 /sys/class/gpio/export
+
+echo 90 > /sys/class/gpio/export
+
+echo out > /sys/class/gpio/gpio90/direction
+
+echo 1 > /sys/class/gpio/gpio90/value
+
+chmod 777 rs485_1
+
+./rs485_1 
+
+
+
+
+
+
+
+5-1、 RS-485双机通信实验（2）
+
+
+cd /home/linux/workdir/fs3399/application/rs485_2
+
+aarch64-linux-gnu-gcc rs485_2_r.c -o rs485_2_r -lpthread
+
+aarch64-linux-gnu-gcc rs485_2_s.c -o rs485_2_s 
+
+cp rs485_2_r /mnt/hgfs/share/
+
+cp rs485_2_s /mnt/hgfs/share/
+
+
+
+
+
+
+chmod 777 /sys/class/gpio/export
+
+echo 90 > /sys/class/gpio/export
+
+echo out > /sys/class/gpio/gpio90/direction
+
+echo 1 > /sys/class/gpio/gpio90/value
+
+chmod 777 rs485_2_r
+
+./rs485_2_r
+
+
+
+
+
+
+
+
+
+
+
+
+chmod 777 /sys/class/gpio/export
+
+echo 90 > /sys/class/gpio/export
+
+echo out > /sys/class/gpio/gpio90/direction
+
+echo 1 > /sys/class/gpio/gpio90/value
+
+chmod 777 rs485_2_s
+
+./rs485_2_s
+
+
+
+
+
+
+
+
+
+
+6-1、 CAN总线双机通信实验（1）
+
+
+
+cd /home/linux/workdir/fs3399/application/can_1
+
+aarch64-linux-gnu-gcc can_1.c libsocketcan.c -o can_1 -lpthread
+
+cp can_1 /mnt/hgfs/share/
+
+
+
+
+chmod 777 can_1
+
+./can_1 
+
+
+
+
+
+
+
+
+
+
+
+6-2、 CAN总线双机通信实验（2）
+
+
+
+cd /home/linux/workdir/fs3399/application/can_2
+
+aarch64-linux-gnu-gcc can_2_r.c libsocketcan.c -o can_2_r -lpthread
+
+aarch64-linux-gnu-gcc can_2_s.c libsocketcan.c -o can_2_s
+
+cp can_2_r /mnt/hgfs/share/
+
+cp can_2_s /mnt/hgfs/share/
+
+
+
+
+
+chmod 777 can_2_r
+
+./can_2_r 
+
+
+
+
+chmod 777 can_2_s
+
+./can_2_s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------   以下为在Xshell上执行的命令 -----------------------------------
+
+
+1、-------------------------按键、小键盘、红外遥控器  控制3个LED灯-------------------------
+
+
+insmod farsight_keys.ko
+
+insmod zlg72xx_driver.ko
+
+insmod gpio_leds.ko
+
+
+
+chmod 777 keys_gpio_leds
+
+chmod 777 zlg72xx_gpio_leds
+
+chmod 777 ir_gpio_leds
+
+
+
+
+
+./keys_gpio_leds
+
+
+./zlg72xx_gpio_leds
+
+
+./ir_gpio_leds
+
+
+
+
+
+
+
+
+2、-------------------------按键、小键盘、红外遥控器  控制蜂鸣器-------------------------
+
+
+rmmod gpio_leds
+
+insmod buzzer_driver.ko
+
+
+
+
+chmod 777 keys_buzzer
+
+chmod 777 zlg72xx_buzzer
+
+chmod 777 ir_buzzer
+
+
+
+
+
+./keys_buzzer
+
+
+./zlg72xx_buzzer
+
+
+./ir_buzzer
+
+
+
+
+
+3、-------------------------按键、小键盘、红外遥控器  控制蜂鸣器（底板）-------------------------
+
+
+rmmod buzzer_driver
+
+insmod buzzer_pwm_driver.ko
+
+
+
+
+chmod 777 keys_buzzer_pwm
+
+chmod 777 zlg72xx_buzzer_pwm
+
+chmod 777 ir_buzzer_pwm
+
+
+
+./keys_buzzer_pwm
+
+
+./zlg72xx_buzzer_pwm
+
+
+./ir_buzzer_pwm
+
+
+
+
+4、-------------------------按键、小键盘、红外遥控器  控制步进电机-------------------------
+
+
+rmmod buzzer_pwm_driver
+
+insmod stepper_driver.ko
+
+
+
+
+chmod 777 keys_stepper
+
+chmod 777 zlg72xx_stepper
+
+chmod 777 ir_stepper
+
+
+
+
+./keys_stepper
+
+
+./zlg72xx_stepper
+
+
+./ir_stepper
+
+
+
+
+
+5、-------------------------按键、小键盘、红外遥控器  控制直流电机-------------------------
+
+
+rmmod stepper_driver
+
+insmod dcmotor_driver.ko
+
+
+
+
+chmod 777 keys_dcmotor
+
+chmod 777 zlg72xx_dcmotor
+
+chmod 777 ir_dcmotor
+
+
+
+
+./keys_dcmotor
+
+
+./zlg72xx_dcmotor
+
+
+./ir_dcmotor
+
+
+
+
+6、-------------------------按键、小键盘、红外遥控器  控制陀机-------------------------
+
+
+rmmod dcmotor_driver
+
+insmod servo_driver.ko
+
+
+
+
+chmod 777 keys_servo
+
+chmod 777 zlg72xx_servo
+
+chmod 777 ir_servo
+
+
+
+
+
+./keys_servo
+
+
+./zlg72xx_servo
+
+
+./ir_servo
+
+
+
+
+
+7、-------------------------按键、小键盘、红外遥控器  控制继电器-------------------------
+
+
+rmmod servo_driver
+
+insmod relay_driver.ko
+
+
+
+
+chmod 777 keys_relay
+
+chmod 777 zlg72xx_relay
+
+chmod 777 ir_relay
+
+
+
+
+
+./keys_relay
+
+
+./zlg72xx_relay
+
+
+./ir_relay
+
+
+
+
+4-1、-------------------------电子钟-------------------------
+
+
+
+rmmod farsight_keys
+
+rmmod relay_driver
+
+
+
+
+chmod 777 zlg72xx_clock
+
+
+
+
+
+./zlg72xx_clock
+
+
+
+
+
+
+
+
+4-2、-------------------------数码管上显示ADC值-------------------------
+
+
+
+insmod farsight_adc.ko
+
+
+
+
+chmod 777 zlg72xx_adc
+
+
+
+
+./zlg72xx_adc
+
+
+
+
+
+
+
+4-3、-------------------------数码管上显示温度值-------------------------
+
+
+
+rmmod farsight_adc
+
+insmod farsight_lm75.ko
+
+
+
+
+
+chmod 777 zlg72xx_lm75
+
+
+
+
+./zlg72xx_lm75
+
+
+
+
+
+rmmod farsight_lm75
+
+
+
+
+
+
+5-1、 ------------------    RS-485双机通信实验（1） ----------------------
+
+
+
+
+chmod 777 /sys/class/gpio/export
+
+echo 90 > /sys/class/gpio/export
+
+echo out > /sys/class/gpio/gpio90/direction
+
+echo 1 > /sys/class/gpio/gpio90/value
+
+chmod 777 rs485_1
+
+./rs485_1 
+
+
+
+
+
+
+
+5-1、 ----------------    RS-485双机通信实验（2） ---------------------
+
+
+
+
+chmod 777 /sys/class/gpio/export
+
+echo 90 > /sys/class/gpio/export
+
+echo out > /sys/class/gpio/gpio90/direction
+
+echo 1 > /sys/class/gpio/gpio90/value
+
+chmod 777 rs485_2_r
+
+./rs485_2_r
+
+
+
+
+
+
+
+
+
+
+
+
+chmod 777 /sys/class/gpio/export
+
+echo 90 > /sys/class/gpio/export
+
+echo out > /sys/class/gpio/gpio90/direction
+
+echo 1 > /sys/class/gpio/gpio90/value
+
+chmod 777 rs485_2_s
+
+./rs485_2_s
+
+
+
+
+
+
+
+
+
+
+6-1、 ----------------    CAN总线双机通信实验（1） --------------------
+
+
+
+chmod 777 can_1
+
+./can_1 
+
+
+
+
+
+
+
+
+
+
+
+6-2、 -----------------   CAN总线双机通信实验（2） -----------------------------
+
+
+
+chmod 777 can_2_r
+
+./can_2_r 
+
+
+
+
+chmod 777 can_2_s
+
+./can_2_s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

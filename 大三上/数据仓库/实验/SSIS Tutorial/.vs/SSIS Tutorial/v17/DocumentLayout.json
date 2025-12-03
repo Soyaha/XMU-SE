@@ -1,0 +1,82 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\SSIS Tutorial\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{863D1F47-3C94-45EB-9E85-F719BF927456}|SSIS Tutorial.dtproj|C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\SSIS Tutorial\\Lesson 4.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{863D1F47-3C94-45EB-9E85-F719BF927456}|SSIS Tutorial.dtproj|solutionrelative:Lesson 4.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{863D1F47-3C94-45EB-9E85-F719BF927456}|SSIS Tutorial.dtproj|C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\SSIS Tutorial\\Lesson 3.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{863D1F47-3C94-45EB-9E85-F719BF927456}|SSIS Tutorial.dtproj|solutionrelative:Lesson 3.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{863D1F47-3C94-45EB-9E85-F719BF927456}|SSIS Tutorial.dtproj|C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\SSIS Tutorial\\Lesson 2.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{863D1F47-3C94-45EB-9E85-F719BF927456}|SSIS Tutorial.dtproj|solutionrelative:Lesson 2.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{863D1F47-3C94-45EB-9E85-F719BF927456}|SSIS Tutorial.dtproj|C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\SSIS Tutorial\\Lesson 1.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{863D1F47-3C94-45EB-9E85-F719BF927456}|SSIS Tutorial.dtproj|solutionrelative:Lesson 1.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Lesson 4.dtsx [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\SSIS Tutorial\\Lesson 4.dtsx",
+              "RelativeDocumentMoniker": "Lesson 4.dtsx",
+              "ToolTip": "C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\SSIS Tutorial\\Lesson 4.dtsx [\u8BBE\u8BA1]",
+              "RelativeToolTip": "Lesson 4.dtsx [\u8BBE\u8BA1]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAO8SURBVEhLtZVNaFxVFMd/891kdJzaNjFJW20pKS6yUgxai6taENJU2uLHypVQQVEIoYguFIqCiN3YheJOt2rowqLSIoiFSv2iFKUobdFCp5PMTF4meW/uPee4eDNvJtMmdNM/HObNefee/7nnf859cDdhZqnO8\u002Btvvjd3cHp6SlWJzfCiqIA3RUQQUUQVEePav9e5dOniu3NffPxRUK82Vke\u002BDV47dnxO2xBR9V7UOdFWSzRseV2JvC6HXpdWnAbLTj/89Gv98vSPwb4jr7yTzeVz/fE6SHceRDRxplKQTqfIZFJksyny2TSFXJoN\u002BTSDhQwDhQyqnm1jo8XJycm3n5h6eSaVzmSSAD1ICEy7BOvBDMwML8bpM\u002BdoNkPM7Pj4I0/P9K\u002Bll8DfAYEZqIEqPLt/D5lMnlyuwMO7dwPs619PL4GKJM6VSFha8Yk1Q48BzcgTLDsaTUe5fD8vPT/FzNEXOXzwQLK3H9nOg6phFtf/87PX\u002BGsxnyzanGoye3icT765wnU3kPi35kJeeGo72s3tFnRFVsXMkhe6cTgxDEQNbLXfAC\u002BGt7XL29NFQk8j9cEQMbr0bW9bbO/X3NijgSq9OqcXq4kZnRPYKn/nZOuVKNFARPFqFEhxaM8YYUtRM1QNrIQITD8\u002BRuTiSfZipFJFnBjrHKBXA0nKUC7mGCrn2VIqsKm0gfI9BbwopcEcGwfz3FfMUy7mGcxn8WLIOi3e06bxCUzh58s1vr1Q4btfK5z5rcJPf87jFbxXnCpeDCeGGIjE\u002BqyFVV3kPBjG7/80\u002BH6\u002BxJmFEmdrJX65XEM8eAFREAET8N7a/\u002B\u002BAQFXQdjZqQDafmAFOFNG49iJKZTGkshhyoxGyFArloW2lkR0TkyM7JiYpDI/fSiDx9RwLtjojszhz3xbXK/xw8QZRFOJcyOhIidnZtx498dmpc\u002B\u002Bf/OocWw990NnbJTCNa9qe6Ox/lxMD2uSGKniNU5h46F52DQ/wQDHDQFrxYcSVa/VOSOgfNC\u002BKFzjy5DbeOLCLV5/ZydH9O3lu73a8gPfgfFwiDJxT6kHEfBBxsx5SrYfcrK\u002BsQaBxcJG4S\u002BJe72betVhsAyLnqQUtFhoR9SCithj/3pZAxRCzuDOSDol9KvFlKGKoj7UCaDllvhFRC6KYKGjRaLre\u002BN1Jdt5x/sIfVKq19p0fT7Gatcnbvs50lx8kWGpRrYUstLNfCCKCPoLko795ZPteJTu26u062PTYsROjW4aHqvWQyAktpzgfW/Xq\u002BVP8fXK6f89dwf/5qMc\u002BgAHYjAAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-09-22T07:20:37.717Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Lesson 3.dtsx [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\SSIS Tutorial\\Lesson 3.dtsx",
+              "RelativeDocumentMoniker": "Lesson 3.dtsx",
+              "ToolTip": "C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\SSIS Tutorial\\Lesson 3.dtsx [\u8BBE\u8BA1]",
+              "RelativeToolTip": "Lesson 3.dtsx [\u8BBE\u8BA1]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAO8SURBVEhLtZVNaFxVFMd/891kdJzaNjFJW20pKS6yUgxai6taENJU2uLHypVQQVEIoYguFIqCiN3YheJOt2rowqLSIoiFSv2iFKUobdFCp5PMTF4meW/uPee4eDNvJtMmdNM/HObNefee/7nnf859cDdhZqnO8\u002Btvvjd3cHp6SlWJzfCiqIA3RUQQUUQVEePav9e5dOniu3NffPxRUK82Vke\u002BDV47dnxO2xBR9V7UOdFWSzRseV2JvC6HXpdWnAbLTj/89Gv98vSPwb4jr7yTzeVz/fE6SHceRDRxplKQTqfIZFJksyny2TSFXJoN\u002BTSDhQwDhQyqnm1jo8XJycm3n5h6eSaVzmSSAD1ICEy7BOvBDMwML8bpM\u002BdoNkPM7Pj4I0/P9K\u002Bll8DfAYEZqIEqPLt/D5lMnlyuwMO7dwPs619PL4GKJM6VSFha8Yk1Q48BzcgTLDsaTUe5fD8vPT/FzNEXOXzwQLK3H9nOg6phFtf/87PX\u002BGsxnyzanGoye3icT765wnU3kPi35kJeeGo72s3tFnRFVsXMkhe6cTgxDEQNbLXfAC\u002BGt7XL29NFQk8j9cEQMbr0bW9bbO/X3NijgSq9OqcXq4kZnRPYKn/nZOuVKNFARPFqFEhxaM8YYUtRM1QNrIQITD8\u002BRuTiSfZipFJFnBjrHKBXA0nKUC7mGCrn2VIqsKm0gfI9BbwopcEcGwfz3FfMUy7mGcxn8WLIOi3e06bxCUzh58s1vr1Q4btfK5z5rcJPf87jFbxXnCpeDCeGGIjE\u002BqyFVV3kPBjG7/80\u002BH6\u002BxJmFEmdrJX65XEM8eAFREAET8N7a/\u002B\u002BAQFXQdjZqQDafmAFOFNG49iJKZTGkshhyoxGyFArloW2lkR0TkyM7JiYpDI/fSiDx9RwLtjojszhz3xbXK/xw8QZRFOJcyOhIidnZtx498dmpc\u002B\u002Bf/OocWw990NnbJTCNa9qe6Ox/lxMD2uSGKniNU5h46F52DQ/wQDHDQFrxYcSVa/VOSOgfNC\u002BKFzjy5DbeOLCLV5/ZydH9O3lu73a8gPfgfFwiDJxT6kHEfBBxsx5SrYfcrK\u002BsQaBxcJG4S\u002BJe72betVhsAyLnqQUtFhoR9SCithj/3pZAxRCzuDOSDol9KvFlKGKoj7UCaDllvhFRC6KYKGjRaLre\u002BN1Jdt5x/sIfVKq19p0fT7Gatcnbvs50lx8kWGpRrYUstLNfCCKCPoLko795ZPteJTu26u062PTYsROjW4aHqvWQyAktpzgfW/Xq\u002BVP8fXK6f89dwf/5qMc\u002BgAHYjAAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-09-22T06:55:03.181Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Lesson 2.dtsx [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\SSIS Tutorial\\Lesson 2.dtsx",
+              "RelativeDocumentMoniker": "Lesson 2.dtsx",
+              "ToolTip": "C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\SSIS Tutorial\\Lesson 2.dtsx [\u8BBE\u8BA1]",
+              "RelativeToolTip": "Lesson 2.dtsx [\u8BBE\u8BA1]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAO8SURBVEhLtZVNaFxVFMd/891kdJzaNjFJW20pKS6yUgxai6taENJU2uLHypVQQVEIoYguFIqCiN3YheJOt2rowqLSIoiFSv2iFKUobdFCp5PMTF4meW/uPee4eDNvJtMmdNM/HObNefee/7nnf859cDdhZqnO8\u002Btvvjd3cHp6SlWJzfCiqIA3RUQQUUQVEePav9e5dOniu3NffPxRUK82Vke\u002BDV47dnxO2xBR9V7UOdFWSzRseV2JvC6HXpdWnAbLTj/89Gv98vSPwb4jr7yTzeVz/fE6SHceRDRxplKQTqfIZFJksyny2TSFXJoN\u002BTSDhQwDhQyqnm1jo8XJycm3n5h6eSaVzmSSAD1ICEy7BOvBDMwML8bpM\u002BdoNkPM7Pj4I0/P9K\u002Bll8DfAYEZqIEqPLt/D5lMnlyuwMO7dwPs619PL4GKJM6VSFha8Yk1Q48BzcgTLDsaTUe5fD8vPT/FzNEXOXzwQLK3H9nOg6phFtf/87PX\u002BGsxnyzanGoye3icT765wnU3kPi35kJeeGo72s3tFnRFVsXMkhe6cTgxDEQNbLXfAC\u002BGt7XL29NFQk8j9cEQMbr0bW9bbO/X3NijgSq9OqcXq4kZnRPYKn/nZOuVKNFARPFqFEhxaM8YYUtRM1QNrIQITD8\u002BRuTiSfZipFJFnBjrHKBXA0nKUC7mGCrn2VIqsKm0gfI9BbwopcEcGwfz3FfMUy7mGcxn8WLIOi3e06bxCUzh58s1vr1Q4btfK5z5rcJPf87jFbxXnCpeDCeGGIjE\u002BqyFVV3kPBjG7/80\u002BH6\u002BxJmFEmdrJX65XEM8eAFREAET8N7a/\u002B\u002BAQFXQdjZqQDafmAFOFNG49iJKZTGkshhyoxGyFArloW2lkR0TkyM7JiYpDI/fSiDx9RwLtjojszhz3xbXK/xw8QZRFOJcyOhIidnZtx498dmpc\u002B\u002Bf/OocWw990NnbJTCNa9qe6Ox/lxMD2uSGKniNU5h46F52DQ/wQDHDQFrxYcSVa/VOSOgfNC\u002BKFzjy5DbeOLCLV5/ZydH9O3lu73a8gPfgfFwiDJxT6kHEfBBxsx5SrYfcrK\u002BsQaBxcJG4S\u002BJe72betVhsAyLnqQUtFhoR9SCithj/3pZAxRCzuDOSDol9KvFlKGKoj7UCaDllvhFRC6KYKGjRaLre\u002BN1Jdt5x/sIfVKq19p0fT7Gatcnbvs50lx8kWGpRrYUstLNfCCKCPoLko795ZPteJTu26u062PTYsROjW4aHqvWQyAktpzgfW/Xq\u002BVP8fXK6f89dwf/5qMc\u002BgAHYjAAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-09-22T03:09:26.086Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Lesson 1.dtsx [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\SSIS Tutorial\\Lesson 1.dtsx",
+              "RelativeDocumentMoniker": "Lesson 1.dtsx",
+              "ToolTip": "C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\SSIS Tutorial\\Lesson 1.dtsx [\u8BBE\u8BA1]",
+              "RelativeToolTip": "Lesson 1.dtsx [\u8BBE\u8BA1]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAO8SURBVEhLtZVNaFxVFMd/891kdJzaNjFJW20pKS6yUgxai6taENJU2uLHypVQQVEIoYguFIqCiN3YheJOt2rowqLSIoiFSv2iFKUobdFCp5PMTF4meW/uPee4eDNvJtMmdNM/HObNefee/7nnf859cDdhZqnO8\u002Btvvjd3cHp6SlWJzfCiqIA3RUQQUUQVEePav9e5dOniu3NffPxRUK82Vke\u002BDV47dnxO2xBR9V7UOdFWSzRseV2JvC6HXpdWnAbLTj/89Gv98vSPwb4jr7yTzeVz/fE6SHceRDRxplKQTqfIZFJksyny2TSFXJoN\u002BTSDhQwDhQyqnm1jo8XJycm3n5h6eSaVzmSSAD1ICEy7BOvBDMwML8bpM\u002BdoNkPM7Pj4I0/P9K\u002Bll8DfAYEZqIEqPLt/D5lMnlyuwMO7dwPs619PL4GKJM6VSFha8Yk1Q48BzcgTLDsaTUe5fD8vPT/FzNEXOXzwQLK3H9nOg6phFtf/87PX\u002BGsxnyzanGoye3icT765wnU3kPi35kJeeGo72s3tFnRFVsXMkhe6cTgxDEQNbLXfAC\u002BGt7XL29NFQk8j9cEQMbr0bW9bbO/X3NijgSq9OqcXq4kZnRPYKn/nZOuVKNFARPFqFEhxaM8YYUtRM1QNrIQITD8\u002BRuTiSfZipFJFnBjrHKBXA0nKUC7mGCrn2VIqsKm0gfI9BbwopcEcGwfz3FfMUy7mGcxn8WLIOi3e06bxCUzh58s1vr1Q4btfK5z5rcJPf87jFbxXnCpeDCeGGIjE\u002BqyFVV3kPBjG7/80\u002BH6\u002BxJmFEmdrJX65XEM8eAFREAET8N7a/\u002B\u002BAQFXQdjZqQDafmAFOFNG49iJKZTGkshhyoxGyFArloW2lkR0TkyM7JiYpDI/fSiDx9RwLtjojszhz3xbXK/xw8QZRFOJcyOhIidnZtx498dmpc\u002B\u002Bf/OocWw990NnbJTCNa9qe6Ox/lxMD2uSGKniNU5h46F52DQ/wQDHDQFrxYcSVa/VOSOgfNC\u002BKFzjy5DbeOLCLV5/ZydH9O3lu73a8gPfgfFwiDJxT6kHEfBBxsx5SrYfcrK\u002BsQaBxcJG4S\u002BJe72betVhsAyLnqQUtFhoR9SCithj/3pZAxRCzuDOSDol9KvFlKGKoj7UCaDllvhFRC6KYKGjRaLre\u002BN1Jdt5x/sIfVKq19p0fT7Gatcnbvs50lx8kWGpRrYUstLNfCCKCPoLko795ZPteJTu26u062PTYsROjW4aHqvWQyAktpzgfW/Xq\u002BVP8fXK6f89dwf/5qMc\u002BgAHYjAAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-09-20T14:39:56.217Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

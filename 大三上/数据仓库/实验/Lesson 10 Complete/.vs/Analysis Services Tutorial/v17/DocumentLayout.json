@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\Lesson 10 Complete\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{06773AD8-8E7A-4EC3-B7EF-C705F097B868}|Analysis Services Tutorial\\Analysis Services Tutorial.dwproj|C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\Lesson 10 Complete\\Analysis Services Tutorial\\Role.role||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{06773AD8-8E7A-4EC3-B7EF-C705F097B868}|Analysis Services Tutorial\\Analysis Services Tutorial.dwproj|solutionrelative:Analysis Services Tutorial\\Role.role||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Role.role [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\Lesson 10 Complete\\Analysis Services Tutorial\\Role.role",
+              "RelativeDocumentMoniker": "Analysis Services Tutorial\\Role.role",
+              "ToolTip": "C:\\Users\\amun\\Desktop\\\u6570\u636E\u4ED3\u5E93\\\u5B9E\u9A8C\\Lesson 10 Complete\\Analysis Services Tutorial\\Role.role [\u8BBE\u8BA1]",
+              "RelativeToolTip": "Analysis Services Tutorial\\Role.role [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-11-11T09:26:00.271Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

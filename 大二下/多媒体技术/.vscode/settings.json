@@ -1,0 +1,19 @@
+{
+    "C_Cpp.default.compileCommands": [
+        ""
+    ],
+    "python.autoComplete.extraPaths": [],
+    "editor.codeActionsOnSave": {
+    
+    },
+    "files.autoSave":"afterDelay",
+    "python.linting.flake8Enabled": true,
+    "editor.formatOnSave": true,
+    "python.formatting.provider":"yapf",
+    "python.linting.pylintEnabled":false,
+    "python.linting.pylintUseMinimalcheckers":false,
+    "editor.codeActionsonsave": null,
+    "python.linting.flake8Args":[
+        "--max-line-length=248"
+    ]
+}
