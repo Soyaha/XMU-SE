@@ -1,0 +1,2 @@
+ninja: Entering directory `F:\AndroidStudioWorker\LED\app\.cxx\Debug\g4g482l4\x86'
+ninja: no work to do.

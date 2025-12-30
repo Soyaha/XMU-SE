@@ -1,0 +1,13 @@
+#Tue Nov 19 21:53:54 CST 2024
+path.3=5/classes.dex
+path.2=4/classes.dex
+path.1=0/classes.dex
+path.0=classes.dex
+base.3=C\:\\FS3399M4\\Android\\FS3399\\LED\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
+base.2=C\:\\FS3399M4\\Android\\FS3399\\LED\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
+base.1=C\:\\FS3399M4\\Android\\FS3399\\LED\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.0=C\:\\FS3399M4\\Android\\FS3399\\LED\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex

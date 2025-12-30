@@ -1,0 +1,9 @@
+# C/C++ build system timings
+generate_cxx_metadata 25ms
+
+# C/C++ build system timings
+generate_cxx_metadata 117ms
+
+# C/C++ build system timings
+generate_cxx_metadata 23ms
+

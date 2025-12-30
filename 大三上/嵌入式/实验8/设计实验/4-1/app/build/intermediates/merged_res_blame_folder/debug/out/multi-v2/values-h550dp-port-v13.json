@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.farsight.led.app-mergeDebugResources-3:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\lily2002\\.gradle\\caches\\transforms-3\\70a4b6dd221e545640f35a03024dd34b\\transformed\\material-1.5.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "76",
+                        "endOffsets": "127"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,702 @@
+show databases ;
+select * from student;
+-- 关闭动态分区严格模式（仅当前会话有效）
+SET hive.exec.dynamic.partition.mode=nonstrict;
+SET hive.exec.debug=true;
+SET hive.root.logger=INFO,console;
+--ods层 淘宝用户行为表
+CREATE DATABASE IF NOT EXISTS ods;
+--创建一个外部表
+CREATE DATABASE IF NOT EXISTS taobao_dw;
+USE taobao_dw;
+
+CREATE EXTERNAL TABLE IF NOT EXISTS ods.taobao_user_behavior_ods (
+                                                                     user_id STRING COMMENT '用户ID',
+                                                                     item_id STRING COMMENT '商品ID',
+                                                                     category_id STRING COMMENT '商品类目ID',
+                                                                     behavior_type STRING COMMENT '行为类型：pv(浏览)/cart(加购)/buy(购买)/fav(收藏)',
+                                                                     log_ts BIGINT COMMENT '秒级时间戳'  -- 重命名为log_ts（ts=timestamp缩写）
+)
+    COMMENT '淘宝用户行为原始数据层：与源系统日志格式一致，不做清洗'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ','  -- 按数据集实际分隔符调整（CSV用,，TSV用\t）
+    LOCATION '/user/hive/warehouse/taobao_dw.db/ods/taobao_user_behavior/'  -- HDFS原始数据路径
+    TBLPROPERTIES ('skip.header.line.count' = '0');  -- 若数据集有表头，跳过第一行
+use ods;
+
+SELECT
+    FROM_UNIXTIME(MIN(CAST(log_ts AS BIGINT)), 'yyyy-MM-dd') AS min_dt,  -- ODS最早业务日期
+    FROM_UNIXTIME(MAX(CAST(log_ts AS BIGINT)), 'yyyy-MM-dd') AS max_dt   -- ODS最晚业务日期
+FROM taobao_user_behavior_ods;
+
+select * from taobao_user_behavior_ods limit 100;
+
+
+select count(*) from taobao_user_behavior_ods;
+--DIM维度表
+CREATE DATABASE IF NOT EXISTS dim;
+--时间维度表
+CREATE TABLE IF NOT EXISTS dim.dim_time (
+                                            dt STRING COMMENT '日期主键（格式：yyyy-MM-dd）',
+                                            dt_hh STRING COMMENT '日期+小时（格式：yyyy-MM-dd HH）',
+                                            year INT COMMENT '年（如2025）',
+                                            quarter INT COMMENT '季度（1-4）',
+                                            month INT COMMENT '月（1-12）',
+                                            day INT COMMENT '日（1-31）',
+                                            hour INT COMMENT '小时（0-23）',
+                                            week INT COMMENT '一年中的第几周（1-52）',
+                                            week_day INT COMMENT '周几（1=周一，7=周日）',
+                                            is_weekend STRING COMMENT '是否周末（Y=是，N=否）',
+                                            is_holiday STRING COMMENT '是否节假日（扩展字段，Y=是，N=否）'
+)
+    COMMENT '时间维度表：支持年/季/月/日/小时/周等多粒度上卷/下钻分析'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    STORED AS ORC
+    LOCATION '/user/hive/warehouse/taobao_dw.db/dim/dim_time';
+use dim;
+select * from dim_time limit 1000;
+-- 初始化时间维度表（示例：生成2025年全年日期数据，可按需扩展）
+INSERT OVERWRITE TABLE dim.dim_time
+SELECT
+    dt,
+    CONCAT(dt, ' ', LPAD(CAST(hour AS STRING), 2, '0')),
+    YEAR(dt),
+    QUARTER(dt),
+    MONTH(dt),
+    DAY(dt),
+    hour,
+    WEEKOFYEAR(dt),
+    DAYOFWEEK(dt),
+    CASE WHEN DAYOFWEEK(dt) IN (1,7) THEN 'Y' ELSE 'N' END,
+    'N'
+FROM (
+         -- 生成2025年所有日期
+         SELECT DATE_ADD('2010-01-01', t.pos) AS dt
+         FROM (SELECT posexplode(split(space(5112), '')) AS (pos, val)) t
+     ) d
+         CROSS JOIN (
+    -- 生成0-23小时
+    SELECT pos AS hour FROM (SELECT posexplode(split(space(23), '')) AS (pos, val)) t
+) h;
+
+--用户维度表
+CREATE TABLE IF NOT EXISTS dim.dim_user (
+                                            user_id STRING COMMENT '用户唯一标识（主键）',
+                                            user_lv STRING COMMENT '用户等级（扩展：L1-L5）',
+                                            reg_dt STRING COMMENT '用户注册日期（扩展，格式：yyyy-MM-dd）',
+                                            user_city STRING COMMENT '用户所在城市（扩展）',
+                                            user_province STRING COMMENT '用户所在省份（扩展）'
+)
+    COMMENT '用户维度表：描述用户基础属性，支持用户分层分析'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    STORED AS ORC
+    LOCATION '/user/hive/warehouse/taobao_dw.db/dim/dim_user';
+
+-- 初始化用户维度表（从原始数据提取用户ID，扩展字段后续补充）
+INSERT OVERWRITE TABLE dim.dim_user
+SELECT DISTINCT
+    user_id,
+    'L1',  -- 默认等级，后续可替换为真实数据
+    '2025-01-01',  -- 默认注册日期，后续可替换
+    '未知',  -- 默认城市
+    '未知'   -- 默认省份
+FROM ods.taobao_user_behavior_ods;
+
+--行为类型维度表（新增）
+CREATE TABLE IF NOT EXISTS dim.dim_behavior_type (
+                                                     behavior_type STRING COMMENT '行为类型编码（主键）',
+                                                     behavior_name STRING COMMENT '行为名称（中文）',
+                                                     behavior_weight INT COMMENT '行为权重（用于计算综合活跃度，如：buy=5, pv=1）'
+)
+    COMMENT '行为类型维度表：描述行为的具体含义和权重'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    STORED AS ORC
+    LOCATION '/user/hive/warehouse/taobao_dw.db/dim/dim_behavior_type';
+
+-- 初始化行为类型维度表
+INSERT OVERWRITE TABLE dim.dim_behavior_type
+VALUES
+    ('pv', '浏览', 1),
+    ('cart', '加入购物车', 2),
+    ('fav', '收藏', 2),
+    ('buy', '购买', 5);
+select * from dim.dim_behavior_type;
+--商品维度
+CREATE TABLE IF NOT EXISTS dim.dim_item (
+                                            item_id STRING COMMENT '商品唯一标识（主键）',
+                                            category_id STRING COMMENT '商品类目ID（关联类目维度表）',
+                                            item_name STRING COMMENT '商品名称（扩展）',
+                                            brand STRING COMMENT '商品品牌（扩展）',
+                                            price DECIMAL(10,2) COMMENT '商品价格（扩展，单位：元）'
+)
+    COMMENT '商品维度表：描述商品基础属性'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    STORED AS ORC
+    LOCATION '/user/hive/warehouse/taobao_dw.db/dim/dim_item';
+
+-- 初始化商品维度表（从原始数据提取商品/类目ID）
+INSERT OVERWRITE TABLE dim.dim_item
+SELECT DISTINCT
+    item_id,
+    category_id,
+    CONCAT('商品_', item_id),  -- 默认名称，后续替换
+    '未知品牌',  -- 默认品牌
+    0.00  -- 默认价格
+FROM ods.taobao_user_behavior_ods;
+
+--商品类目维度表
+CREATE TABLE IF NOT EXISTS dim.dim_category (
+                                                category_id STRING COMMENT '类目唯一标识（主键）',
+                                                category_name STRING COMMENT '类目名称（扩展）',
+                                                parent_cate_id STRING COMMENT '父类目ID（扩展，支持类目层级）',
+                                                cate_level INT COMMENT '类目层级（扩展，1=一级，2=二级）'
+)
+    COMMENT '商品类目维度表：描述类目层级关系，支持类目上卷分析'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    STORED AS ORC
+    LOCATION '/user/hive/warehouse/taobao_dw.db/dim/dim_category';
+
+-- 初始化类目维度表（从原始数据提取类目ID）
+INSERT OVERWRITE TABLE dim.dim_category
+SELECT DISTINCT
+    category_id,
+    CONCAT('类目_', category_id),  -- 默认名称，后续替换
+    '0',  -- 默认父类目
+    1  -- 默认一级类目
+FROM ods.taobao_user_behavior_ods;
+
+--DWD层
+CREATE DATABASE IF NOT EXISTS dwd;
+select * from dwd.taobao_user_behavior_fact ;
+CREATE TABLE IF NOT EXISTS dwd.taobao_user_behavior_fact (
+                                                             user_id STRING COMMENT '用户维度外键',
+                                                             item_id STRING COMMENT '商品维度外键',
+                                                             category_id STRING COMMENT '类目维度外键',
+                                                             behavior_type STRING COMMENT '行为类型：pv/cart/buy/fav',
+                                                             log_ts BIGINT COMMENT '原始时间戳',
+                                                             dt_hh STRING COMMENT '时间维度外键（日期+小时）'
+)
+    COMMENT '用户行为明细事实表：清洗脏数据，关联维度外键，粒度为单条行为'
+    PARTITIONED BY (dt STRING COMMENT '日期分区（yyyy-MM-dd）')
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    STORED AS ORC
+    LOCATION '/user/hive/warehouse/dwd.db/taobao_user_behavior_fact'; -- 路径匹配dwd库
+show tables in dwd;
+ALTER TABLE dwd.taobao_user_behavior_fact
+    DROP IF EXISTS PARTITION (dt < '2017-11-25'),
+        PARTITION (dt > '2017-12-03');//去除不在范围内的数据
+
+-- 从ODS层清洗数据写入DWD层 ETL
+
+INSERT OVERWRITE TABLE dwd.taobao_user_behavior_fact PARTITION (dt)
+SELECT
+    user_id,
+    item_id,
+    category_id,
+    behavior_type,
+    log_ts,
+--    FROM_UNIXTIME(log_ts, 'yyyy-MM-dd HH') AS dt_hh,
+--    FROM_UNIXTIME(log_ts, 'yyyy-MM-dd') AS dt  -- 分区字段
+--    FROM_UNIXTIME(CAST(log_ts AS BIGINT), 'yyyy-MM-dd HH') AS dt_hh,
+--    FROM_UNIXTIME(CAST(log_ts AS BIGINT), 'yyyy-MM-dd') AS dt  -- 分区字段
+    FROM_UNIXTIME(CAST(log_ts AS BIGINT) + 28800, 'yyyy-MM-dd HH') AS dt_hh, --东八区加八个小时
+    FROM_UNIXTIME(CAST(log_ts AS BIGINT) + 28800, 'yyyy-MM-dd') AS dt
+FROM ods.taobao_user_behavior_ods
+-- 清洗规则：过滤无效行为类型+非空字段
+WHERE behavior_type IN ('pv', 'cart', 'buy', 'fav')
+  AND user_id IS NOT NULL
+  AND item_id IS NOT NULL;
+select * from dwd.taobao_user_behavior_fact limit 10;
+
+SHOW PARTITIONS dwd.taobao_user_behavior_fact;
+
+--DWS层
+CREATE DATABASE IF NOT EXISTS dws;
+
+-- 查看dws库下的表
+SHOW TABLES IN dws;
+-- 查看所有数据库，确认dws存在
+SHOW DATABASES LIKE 'dws';
+-- 查看表结构（确认分区字段已包含）
+DESC dws.taobao_behavior_cate_agg;
+use dws;
+--1.日期+类目
+CREATE TABLE IF NOT EXISTS dws.taobao_behavior_cate_agg (
+                                                            category_id STRING COMMENT '类目维度外键',
+                                                            pv_cnt BIGINT COMMENT '浏览量（度量值）',
+                                                            cart_cnt BIGINT COMMENT '加购量（度量值）',
+                                                            buy_cnt BIGINT COMMENT '购买量（度量值）',
+                                                            fav_cnt BIGINT COMMENT '收藏量（度量值）'
+)
+    COMMENT '按日期+类目汇总的行为事实表：支持类目维度分析'
+    PARTITIONED BY (dt STRING COMMENT '日期分区（yyyy-MM-dd）')
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    STORED AS ORC
+    LOCATION '/user/hive/warehouse/dws.db/taobao_behavior_cate_agg'; -- 路径匹配dws库
+
+-- 从DWD层聚合数据
+-- 全局最大动态分区数（至少大于1143）
+SET hive.exec.max.dynamic.partitions=2000;
+SHOW PARTITIONS dws.taobao_behavior_cate_agg;
+ALTER TABLE dws.taobao_behavior_cate_agg DROP IF EXISTS PARTITION (dt < '99999999');
+TRUNCATE TABLE dws.taobao_behavior_cate_agg;
+INSERT OVERWRITE TABLE dws.taobao_behavior_cate_agg PARTITION (dt)
+SELECT
+    category_id,                                         -- 对应表字段 category_id
+    COUNT(CASE WHEN behavior_type = 'pv' THEN 1 END),    -- 对应表字段 pv_cnt
+    COUNT(CASE WHEN behavior_type = 'cart' THEN 1 END),  -- 对应表字段 cart_cnt
+    COUNT(CASE WHEN behavior_type = 'buy' THEN 1 END),   -- 对应表字段 buy_cnt
+    COUNT(CASE WHEN behavior_type = 'fav' THEN 1 END),   -- 对应表字段 fav_cnt
+    dt                                                   -- ✅ 正确：分区字段必须放在最后
+FROM dwd.taobao_user_behavior_fact
+GROUP BY dt, category_id;
+
+select * from dws.taobao_behavior_cate_agg ;
+
+--日期＋用户
+ALTER TABLE dws.taobao_behavior_user_agg
+    DROP IF EXISTS PARTITION (dt < '2017-11-25'),
+        PARTITION (dt > '2017-12-03');
+--日期＋用户
+CREATE TABLE IF NOT EXISTS dws.taobao_behavior_user_agg (
+                                                            user_id STRING COMMENT '用户维度外键',
+                                                            total_behavior_cnt BIGINT COMMENT '总行为数（度量值）',
+                                                            buy_cnt BIGINT COMMENT '购买次数（度量值）',
+                                                            active_hour STRING COMMENT '主要活跃小时（如10点）'
+)
+    COMMENT '按日期+用户汇总的行为事实表：支持用户活跃度分析'
+    PARTITIONED BY (dt STRING COMMENT '日期分区（yyyy-MM-dd）')
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    STORED AS ORC
+    LOCATION '/user/hive/warehouse/dws.db/taobao_behavior_user_agg';
+DROP TABLE IF EXISTS dws.taobao_behavior_user_agg;
+-- 先删除原表（若需保留历史数据，可跳过此步）
+DROP TABLE IF EXISTS dws.taobao_behavior_user_agg;
+
+-- 重建优化版DWS聚合表
+CREATE TABLE IF NOT EXISTS dws.taobao_behavior_user_agg (
+                                                            user_id STRING COMMENT '用户维度外键',
+                                                            total_behavior_cnt BIGINT COMMENT '总行为数（度量值）',
+                                                            buy_cnt BIGINT COMMENT '购买次数（度量值）',
+                                                            active_hour INT COMMENT '用户当日最活跃小时（0-23，整型更高效）'
+)
+    COMMENT '按日期+用户汇总的行为事实表：支持用户活跃度分析（适配Hive3.1.2，ORC优化）'
+    PARTITIONED BY (dt STRING COMMENT '日期分区（yyyyMMdd）')
+    STORED AS ORC
+    LOCATION '/user/hive/warehouse/dws.db/taobao_behavior_user_agg'
+    TBLPROPERTIES (
+        'orc.compress' = 'SNAPPY',
+        'orc.create.index' = 'true',
+        'orc.bloom.filter.columns' = 'user_id',
+        'comment' = 'DWS层用户行为聚合表：按日+用户粒度汇总' -- 移除无效字符|
+        );
+DESC FORMATTED dws.taobao_behavior_user_agg;
+
+INSERT OVERWRITE TABLE dws.taobao_behavior_user_agg PARTITION (dt)
+SELECT
+    t.user_id,
+    t.total_behavior_cnt,
+    t.total_buy_cnt,
+    t.hour AS active_hour,
+    t.dt
+FROM (
+         SELECT
+             user_id,
+             dt,
+             hour,
+             -- 使用窗口函数计算该用户当天的总行为数（累加所有小时的计数）
+             SUM(hour_cnt) OVER (PARTITION BY user_id, dt) AS total_behavior_cnt,
+             -- 使用窗口函数计算该用户当天的总购买数
+             SUM(hour_buy_cnt) OVER (PARTITION BY user_id, dt) AS total_buy_cnt,
+             -- 按小时内的行为数降序排名，rn=1 即为最活跃小时
+             ROW_NUMBER() OVER (PARTITION BY user_id, dt ORDER BY hour_cnt DESC) AS rn
+         FROM (
+                  -- 内层聚合：将数据粒度从“单条行为”压缩到“每小时汇总”
+                  SELECT
+                      user_id,
+                      dt,
+                      -- 修复时区问题：直接使用DWD层已经修正过的北京时间小时
+                      SPLIT(dt_hh, ' ')[1] AS hour,
+                      COUNT(*) AS hour_cnt,
+                      SUM(CASE WHEN behavior_type = 'buy' THEN 1 ELSE 0 END) AS hour_buy_cnt
+                  FROM dwd.taobao_user_behavior_fact
+                  GROUP BY dt, user_id, SPLIT(dt_hh, ' ')[1]
+              ) t1
+     ) t
+WHERE t.rn = 1;
+
+INSERT OVERWRITE TABLE dws.taobao_behavior_user_agg PARTITION (dt)
+SELECT
+    user_id,
+    total_behavior_cnt,
+    buy_cnt,
+    CAST(active_hour AS INT),
+    dt  -- 动态分区字段（最后一列）
+FROM (
+         -- 第二层：窗口函数计算总行为数/购买数（在GROUP BY之后）
+         SELECT
+             dt,
+             user_id,
+             hour AS active_hour,
+             -- 窗口函数：基于用户+日期计算总行为数（GROUP BY之后执行）
+             SUM(hour_cnt) OVER (PARTITION BY dt, user_id) AS total_behavior_cnt,
+             -- 窗口函数：基于用户+日期计算购买数（先过滤buy行为再求和）
+             SUM(CASE WHEN behavior_type = 'buy' THEN hour_cnt ELSE 0 END) OVER (PARTITION BY dt, user_id) AS buy_cnt,
+             hour_cnt,
+             -- 排序取最活跃小时
+             ROW_NUMBER() OVER (PARTITION BY dt, user_id ORDER BY hour_cnt DESC, hour ASC) AS rn
+         FROM (
+                  -- 第一层：纯GROUP BY聚合（仅统计各小时的行为数，无窗口函数）
+                  SELECT
+                      dt,
+                      user_id,
+                      SPLIT(dt_hh, ' ')[1] AS hour,  -- 拆分小时（转为字符串，外层转INT）
+                      behavior_type,  -- 保留行为类型，用于后续过滤buy
+                      COUNT(1) AS hour_cnt  -- 统计当前用户+日期+小时的行为数
+                  FROM dwd.taobao_user_behavior_fact
+                  WHERE dt BETWEEN '2017-11-25' AND '2017-12-03'  -- 限定日期范围
+                  GROUP BY dt, user_id, SPLIT(dt_hh, ' ')[1], behavior_type  -- 所有非聚合字段必须分组
+              ) t1
+     ) t2
+WHERE rn = 1;  -- 取最活跃小时
+select * from dws.taobao_behavior_user_agg;
+
+
+--ADS层
+CREATE DATABASE IF NOT EXISTS ads;
+use ads;
+--1.行为转化漏斗分析表
+SHOW PARTITIONS ads.taobao_conversion_funnel;
+TRUNCATE TABLE ads.taobao_conversion_funnel;
+CREATE TABLE IF NOT EXISTS ads.taobao_conversion_funnel (
+                                                            dt STRING COMMENT '日期',
+                                                            pv_user_cnt BIGINT COMMENT '浏览用户数',
+                                                            cart_user_cnt BIGINT COMMENT '加购用户数',
+                                                            fav_user_cnt BIGINT COMMENT '收藏用户数',
+                                                            buy_user_cnt BIGINT COMMENT '购买用户数',
+                                                            pv2cart_rate DECIMAL(4,4) COMMENT '浏览转加购率',
+                                                            pv2fav_rate DECIMAL(4,4) COMMENT '浏览转收藏率',
+                                                            pv2buy_rate DECIMAL(4,4) COMMENT '浏览转购买率',
+                                                            cart2buy_rate DECIMAL(4,4) COMMENT '加购转购买率'
+)
+    COMMENT '用户行为转化漏斗表：核心KPI，支持漏斗图可视化'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    STORED AS ORC
+    LOCATION '/user/hive/warehouse/taobao_dw.db/ads/taobao_conversion_funnel';
+
+-- 计算转化漏斗指标
+INSERT OVERWRITE TABLE ads.taobao_conversion_funnel
+SELECT
+    dt,
+    pv_user_cnt,
+    cart_user_cnt,
+    fav_user_cnt,
+    buy_user_cnt,
+    -- 避免除以0
+    ROUND(CASE WHEN pv_user_cnt = 0 THEN 0 ELSE cart_user_cnt / pv_user_cnt END, 4) AS pv2cart_rate,
+    ROUND(CASE WHEN pv_user_cnt = 0 THEN 0 ELSE fav_user_cnt / pv_user_cnt END, 4) AS pv2fav_rate,
+    ROUND(CASE WHEN pv_user_cnt = 0 THEN 0 ELSE buy_user_cnt / pv_user_cnt END, 4) AS pv2buy_rate,
+    ROUND(CASE WHEN cart_user_cnt = 0 THEN 0 ELSE buy_user_cnt / cart_user_cnt END, 4) AS cart2buy_rate
+FROM (
+         SELECT
+             dt,
+             SUM(is_pv) as pv_user_cnt,
+             SUM(is_cart) as cart_user_cnt,
+             SUM(is_fav) as fav_user_cnt,
+             SUM(is_buy) as buy_user_cnt
+         FROM (
+                  -- 内层：按用户去重，标记每个用户当天是否有某类行为
+                  SELECT
+                      dt,
+                      user_id,
+                      MAX(CASE WHEN behavior_type = 'pv' THEN 1 ELSE 0 END) as is_pv,
+                      MAX(CASE WHEN behavior_type = 'cart' THEN 1 ELSE 0 END) as is_cart,
+                      MAX(CASE WHEN behavior_type = 'fav' THEN 1 ELSE 0 END) as is_fav,
+                      MAX(CASE WHEN behavior_type = 'buy' THEN 1 ELSE 0 END) as is_buy
+                  FROM dwd.taobao_user_behavior_fact
+                  GROUP BY dt, user_id
+              ) t1
+         GROUP BY dt
+     ) t2;
+select * from ads.taobao_conversion_funnel;
+
+
+
+--2.热门商品 TOP10 表
+CREATE TABLE IF NOT EXISTS ads.taobao_hot_item_top10 (
+                                                         dt STRING COMMENT '日期',
+                                                         item_rank INT COMMENT '排名（1-10）',
+                                                         item_id STRING COMMENT '商品ID',
+                                                         pv_cnt BIGINT COMMENT '商品浏览量',
+                                                         buy_cnt BIGINT COMMENT '商品购买量',
+                                                         buy2pv_rate DECIMAL(4,4) COMMENT '商品购买转化率'
+)
+    COMMENT '每日热门商品TOP10表：核心KPI，支持柱状图可视化'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    STORED AS ORC
+    LOCATION '/user/hive/warehouse/taobao_dw.db/ads/taobao_hot_item_top10';
+
+-- 计算热门商品TOP10
+INSERT OVERWRITE TABLE ads.taobao_hot_item_top10
+SELECT
+    dt,
+    item_rank,
+    item_id,
+    pv_cnt,
+    buy_cnt,
+    buy2pv_rate
+FROM (
+         SELECT
+             dt,
+             item_id,
+             pv_cnt,
+             buy_cnt,
+             -- 核心修复：处理 pv_cnt=0 的除零场景
+             ROUND(CASE WHEN pv_cnt = 0 THEN 0 ELSE buy_cnt / pv_cnt END, 4) AS buy2pv_rate,
+             ROW_NUMBER() OVER (PARTITION BY dt ORDER BY pv_cnt DESC) AS item_rank
+         FROM (
+                  SELECT
+                      dt,
+                      item_id,
+                      -- 确保 pv_cnt/buy_cnt 是数值类型（避免隐式转换问题）
+                      COALESCE(COUNT(CASE WHEN behavior_type = 'pv' THEN 1 END), 0) AS pv_cnt,
+                      COALESCE(COUNT(CASE WHEN behavior_type = 'buy' THEN 1 END), 0) AS buy_cnt
+                  FROM dwd.taobao_user_behavior_fact
+                  GROUP BY dt, item_id
+              ) t1
+     ) t2
+WHERE item_rank <= 10;
+select * from taobao_hot_item_top10;
+--3.日活跃用户数（DAU）表
+CREATE TABLE IF NOT EXISTS ads.taobao_user_dau (
+                                                   dt STRING COMMENT '日期',
+                                                   dau BIGINT COMMENT '日活跃用户数（有任意行为的唯一用户数）',
+                                                   mau_7d BIGINT COMMENT '7日累计活跃用户数（扩展）',
+                                                   active_rate DECIMAL(4,4) COMMENT '日活跃率（DAU/总用户数）'
+)
+    COMMENT '日活跃用户数表：核心KPI，支持折线图可视化'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    STORED AS ORC
+    LOCATION '/user/hive/warehouse/taobao_dw.db/ads/taobao_user_dau';
+
+-- 计算DAU
+INSERT OVERWRITE TABLE ads.taobao_user_dau
+-- 最终聚合：每个日期只保留1条记录（DAU、7日累计、活跃率）
+SELECT
+    dt,
+    MAX(dau) AS dau,  -- 同一日期DAU值相同，MAX取唯一值
+    MAX(mau_7d) AS mau_7d,  -- 同一日期7日累计值相同，MAX取唯一值
+    ROUND(MAX(dau) / MAX(total_user_cnt), 4) AS active_rate
+FROM (
+         -- 步骤2：计算7日累计活跃（基于展开的用户ID）
+         SELECT
+             t1.dt,
+             t1.dau,
+             t2.total_user_cnt,
+             -- 窗口函数统计7日去重用户数（核心：基于user_id去重）
+             COUNT(DISTINCT t1.user_id) OVER (
+                 ORDER BY t1.dt
+                 ROWS BETWEEN 6 PRECEDING AND CURRENT ROW
+                 ) AS mau_7d
+         FROM (
+                  -- 步骤1：计算每日DAU，并展开当日所有活跃用户ID
+                  SELECT
+                      dt,
+                      user_id,
+                      COUNT(DISTINCT user_id) OVER (PARTITION BY dt) AS dau  -- 按日期计算DAU
+                  FROM dwd.taobao_user_behavior_fact
+                  GROUP BY dt, user_id  -- 去重：每个用户每日只出现1次
+              ) t1
+                  -- 关联全局总用户数（笛卡尔积，无数据膨胀）
+                  CROSS JOIN (
+             SELECT COUNT(DISTINCT user_id) AS total_user_cnt
+             FROM dim.dim_user
+         ) t2
+     ) t3
+-- 按日期分组，合并同一日期的多条记录（因user_id展开导致的多行）
+GROUP BY dt;
+select * from ads.taobao_user_dau;
+
+-- 4. 分时流量趋势表（新增）
+CREATE TABLE IF NOT EXISTS ads.taobao_traffic_hourly_stats (
+                                                               dt STRING COMMENT '日期',
+                                                               hour STRING COMMENT '小时',
+                                                               pv_cnt BIGINT COMMENT '浏览次数',
+                                                               cart_cnt BIGINT COMMENT '加购次数',
+                                                               fav_cnt BIGINT COMMENT '收藏次数',
+                                                               buy_cnt BIGINT COMMENT '购买次数'
+)
+    COMMENT '分时流量趋势表：支持热力图分析用户活跃时间段'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    STORED AS ORC
+    LOCATION '/user/hive/warehouse/taobao_dw.db/ads/taobao_traffic_hourly_stats';
+
+-- 计算分时流量
+INSERT OVERWRITE TABLE ads.taobao_traffic_hourly_stats
+SELECT
+    dt,
+    SPLIT(dt_hh, ' ')[1] AS hour,
+    COUNT(CASE WHEN behavior_type = 'pv' THEN 1 END) AS pv_cnt,
+    COUNT(CASE WHEN behavior_type = 'cart' THEN 1 END) AS cart_cnt,
+    COUNT(CASE WHEN behavior_type = 'fav' THEN 1 END) AS fav_cnt,
+    COUNT(CASE WHEN behavior_type = 'buy' THEN 1 END) AS buy_cnt
+FROM dwd.taobao_user_behavior_fact
+GROUP BY dt, SPLIT(dt_hh, ' ')[1];
+
+
+-- 5. 热门品类 Top10 表（新增）
+CREATE TABLE IF NOT EXISTS ads.taobao_category_top10 (
+                                                         dt STRING COMMENT '日期',
+                                                         cate_rank INT COMMENT '排名',
+                                                         category_id STRING COMMENT '类目ID',
+                                                         pv_cnt BIGINT COMMENT '浏览量',
+                                                         buy_cnt BIGINT COMMENT '购买量',
+                                                         conversion_rate DECIMAL(4,4) COMMENT '购买转化率'
+)
+    COMMENT '每日热门品类Top10：支持词云或柱状图'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    STORED AS ORC
+    LOCATION '/user/hive/warehouse/taobao_dw.db/ads/taobao_category_top10';
+
+-- 计算热门品类
+INSERT OVERWRITE TABLE ads.taobao_category_top10
+SELECT
+    dt,
+    cate_rank,
+    category_id,
+    pv_cnt,
+    buy_cnt,
+    conversion_rate
+FROM (
+         SELECT
+             dt,
+             category_id,
+             pv_cnt,
+             buy_cnt,
+             ROUND(CASE WHEN pv_cnt = 0 THEN 0 ELSE buy_cnt / pv_cnt END, 4) AS conversion_rate,
+             ROW_NUMBER() OVER (PARTITION BY dt ORDER BY pv_cnt DESC) AS cate_rank
+         FROM dws.taobao_behavior_cate_agg
+     ) t
+WHERE cate_rank <= 10;
+
+select * from ads.taobao_category_top10;
+SET hive.execution.engine;
+SET hive.execution.engine=mr;
+SET hive.execution.engine=spark;
+-- 6. 用户复购率统计表（新增）
+CREATE TABLE IF NOT EXISTS ads.taobao_repurchase_stats (
+           dt STRING COMMENT '日期',
+           buy_user_cnt BIGINT COMMENT '购买用户数',
+           repurchase_user_cnt BIGINT COMMENT '复购用户数(购买次数>1)',
+           repurchase_rate DECIMAL(4,4) COMMENT '复购率'
+)
+    COMMENT '用户复购指标表：衡量用户粘性'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    STORED AS ORC
+    LOCATION '/user/hive/warehouse/taobao_dw.db/ads/taobao_repurchase_stats';
+
+-- 计算复购率
+INSERT OVERWRITE TABLE ads.taobao_repurchase_stats
+SELECT
+    dt,
+    COUNT(user_id) AS buy_user_cnt,
+    COUNT(CASE WHEN buy_cnt > 1 THEN 1 END) AS repurchase_user_cnt,
+    ROUND(COUNT(CASE WHEN buy_cnt > 1 THEN 1 END) / COUNT(user_id), 4) AS repurchase_rate
+FROM dws.taobao_behavior_user_agg
+WHERE buy_cnt > 0 -- 仅统计有过购买行为的用户
+GROUP BY dt;
+select * from ads.taobao_repurchase_stats;
+
+--7.用户活跃高峰时段分布
+CREATE TABLE IF NOT EXISTS ads.taobao_peak_hour_distribution (
+         dt STRING COMMENT '日期',
+         active_hour INT COMMENT '小时点(0-23)',
+         peak_user_cnt BIGINT COMMENT '以此小时为最活跃时段的用户数',
+         peak_user_ratio DECIMAL(4,4) COMMENT '占比(该时段达峰用户数/当日总用户数)',
+         avg_daily_acts BIGINT COMMENT '该群体的当日平均总行为数(衡量该时段活跃用户的质量)'
+)
+    COMMENT '用户活跃高峰分布表：识别平台的“黄金营销时间”'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    STORED AS ORC
+    LOCATION '/user/hive/warehouse/taobao_dw.db/ads/taobao_peak_hour_distribution';
+
+INSERT OVERWRITE TABLE ads.taobao_peak_hour_distribution
+SELECT
+    dt,
+    CAST(active_hour AS INT) AS active_hour,
+    peak_user_cnt,
+    -- 计算占比：当前小时人数 / 当日总人数
+    ROUND(peak_user_cnt / SUM(peak_user_cnt) OVER (PARTITION BY dt), 4) AS peak_user_ratio,
+    avg_daily_acts
+FROM (
+         SELECT
+             dt,
+             active_hour,
+             -- 统计把这个小时当作“最活跃小时”的用户有多少
+             COUNT(user_id) AS peak_user_cnt,
+             -- 统计这批用户的平均总行为次数（看看是晚上活跃的人猛，还是白天活跃的人猛）
+             CAST(AVG(total_behavior_cnt) AS BIGINT) AS avg_daily_acts
+         FROM dws.taobao_behavior_user_agg
+         GROUP BY dt, active_hour
+     ) t
+ORDER BY dt, active_hour;
+INSERT OVERWRITE TABLE ads.taobao_peak_hour_distribution
+SELECT
+    dt,
+    active_hour,
+    peak_user_cnt,
+    ROUND(peak_user_cnt / SUM(peak_user_cnt) OVER (PARTITION BY dt), 4) AS peak_user_ratio,
+    avg_daily_acts
+FROM (
+         SELECT
+             dt,
+             CAST(pmod(active_hour + 8, 24) AS INT) AS active_hour,
+             COUNT(user_id) AS peak_user_cnt,
+             CAST(AVG(total_behavior_cnt) AS BIGINT) AS avg_daily_acts
+         FROM dws.taobao_behavior_user_agg
+         GROUP BY dt, CAST(pmod(active_hour + 8, 24) AS INT)
+     ) t
+ORDER BY dt, active_hour;
+
+select * from ads.taobao_peak_hour_distribution;
+
+
+use ads;
+
+DROP TABLE IF EXISTS ;
+-- 最终聚合：总行为数、购买次数 + 最高频活跃小时
+-- 1. 提前设置动态分区参数
+SET hive.exec.dynamic.partition.mode=nonstrict;
+SET hive.exec.max.dynamic.partitions=2000;
+SET hive.exec.max.dynamic.partitions.pernode=200;
+
+-- 2. 最终无冲突版插入语句
+SET spark.executor.instances=60;
+SET spark.network.timeout=600s;     -- 客户端超时10分钟（默认30秒）
+
+
+select * from dws.taobao_behavior_user_agg limit 10;
+ALTER TABLE dwd.taobao_user_behavior_fact DROP IF EXISTS PARTITION (dt LIKE '19%');
+
+SHOW PARTITIONS dwd.taobao_user_behavior_fact;
+
+SELECT MIN(log_ts) AS min_ts, MAX(log_ts) AS max_ts FROM ods.taobao_user_behavior_ods;
+-- 查看Hive 3.1.2所有内置聚合函数，无MODE
+SHOW FUNCTIONS LIKE '*MODE*';
+
+
+
+CREATE EXTERNAL TABLE IF NOT EXISTS ods.taobao_category_ods (
+        id STRING COMMENT '类目ID',
+        pid STRING COMMENT '父类目ID',
+        group_id STRING COMMENT '分组ID',
+        name STRING COMMENT '类目名称',
+        path STRING COMMENT '路径',
+        id_path STRING COMMENT 'ID路径',
+        spell STRING COMMENT '拼音'
+)
+    COMMENT '淘宝商品类目原始表'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ','  -- 假设CSV是用逗号分隔
+    STORED AS TEXTFILE
+    TBLPROPERTIES ('skip.header.line.count'='1'); -- 如果CSV有表头，跳过第一行
+
+LOAD DATA LOCAL INPATH 'D:\XMU-SE\XMU-SE\大三上\数据仓库\大作业\taobao20190803003338' OVERWRITE INTO TABLE ods.taobao_category_ods;
