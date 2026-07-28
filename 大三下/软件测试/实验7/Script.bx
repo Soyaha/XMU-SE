@@ -1,0 +1,4476 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<WebScript v='30205'>
+	<Variables>
+	</Variables>
+	<nextScriptId>268</nextScriptId>
+	<Object>null</Object>
+	<dataSources>
+	</dataSources>
+	<Script v='3'>
+		<ver>14</ver>
+		<id>1</id>
+		<Summary v='3'>
+			<played>18</played>
+			<succeeded>18</succeeded>
+			<warnings>2</warnings>
+			<maxResponseTime>3030</maxResponseTime>
+			<averageResponseTime>344</averageResponseTime>
+		</Summary>
+		<childCount>1</childCount>
+		<ChildItems>
+			<SuiteItem v='1'>
+				<ver>14</ver>
+				<id>4</id>
+				<Summary v='3'>
+					<played>18</played>
+					<succeeded>18</succeeded>
+					<warnings>2</warnings>
+					<maxResponseTime>3030</maxResponseTime>
+					<averageResponseTime>344</averageResponseTime>
+				</Summary>
+				<childCount>1</childCount>
+				<ChildItems>
+					<TestItem v='3'>
+						<ver>14</ver>
+						<id>3</id>
+						<Summary v='3'>
+							<played>18</played>
+							<succeeded>18</succeeded>
+							<warnings>2</warnings>
+							<maxResponseTime>3030</maxResponseTime>
+							<averageResponseTime>344</averageResponseTime>
+						</Summary>
+						<childCount>1</childCount>
+						<ChildItems>
+							<Step v='4'>
+								<ver>14</ver>
+								<id>2</id>
+								<Summary v='3'>
+									<played>18</played>
+									<succeeded>18</succeeded>
+									<warnings>2</warnings>
+									<maxResponseTime>3030</maxResponseTime>
+									<averageResponseTime>344</averageResponseTime>
+								</Summary>
+								<childCount>23</childCount>
+								<ChildItems>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>13</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>172</maxResponseTime>
+											<averageResponseTime>172</averageResponseTime>
+										</Summary>
+										<childCount>1</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>15</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>172</maxResponseTime>
+													<averageResponseTime>172</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>14</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>172</maxResponseTime>
+															<averageResponseTime>172</averageResponseTime>
+														</Summary>
+														<timeMs>172</timeMs>
+														<size>4355</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/layui/css/layui.css&quot;&gt;
+    &lt;style&gt;
+
+        body {
+            /*width: 100%;*/
+            /*height: 100%;*/
+            background: url(&quot;/images/background.png&quot;) no-repeat;
+            /*background: url(&quot;static/images/a.png&quot;) no-repeat;*/
+            background-size: cover;
+        }
+
+        #login_form {
+            width: 400px;
+            height: 400px;
+            margin: 80px auto;
+            padding: 30px;
+            background-color: #f2f2f2;
+            opacity: 0.9;
+        }
+
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div id=&quot;wrapper&quot;&gt;
+    &lt;div class=&quot;layui-container&quot; id=&quot;login_form&quot;&gt;
+
+        &lt;div&gt;
+            &lt;h1 style=&quot;color: red&quot;&gt;鍥句功绠＄悊绯荤粺&lt;/h1&gt;
+            &lt;br&gt;
+            &lt;h2&gt;鐢ㄦ埛鐧诲綍&lt;/h2&gt;
+            &lt;br&gt;
+        &lt;/div&gt;
+
+        &lt;form class=&quot;layui-form&quot; id=&quot;my_form&quot; method=&quot;post&quot; action=&quot;/userLogin&quot;&gt;
+
+            &lt;div class=&quot;layui-form-item&quot;&gt;
+                &lt;label class=&quot;layui-form-label&quot;&gt;鐢ㄦ埛鍚?&lt;/label&gt;
+                &lt;div class=&quot;layui-input-block&quot;&gt;
+                    &lt;input type=&quot;text&quot; name=&quot;userName&quot; id=&quot;username&quot; autofocus
+                           placeholder=&quot;璇疯緭鍏ョ敤鎴峰悕&quot; autocomplete=&quot;off&quot; class=&quot;layui-input&quot;&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;layui-form-item&quot;&gt;
+                &lt;label class=&quot;layui-form-label&quot;&gt;瀵?鐮?&lt;/label&gt;
+                &lt;div class=&quot;layui-input-block&quot;&gt;
+                    &lt;input type=&quot;password&quot; name=&quot;password&quot; id=&quot;password&quot;
+                           placeholder=&quot;璇疯緭鍏ュ瘑鐮? autocomplete=&quot;off&quot; class=&quot;layui-input&quot;&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+
+            &lt;div class=&quot;layui-form-item&quot;&gt;
+                &lt;label class=&quot;layui-form-label&quot;&gt;鐢ㄦ埛韬唤&lt;/label&gt;
+                &lt;div class=&quot;layui-input-block&quot;&gt;
+                    &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;role&quot; value=&quot;1&quot; title=&quot;瀛︾敓&quot; checked&gt;
+                    &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;role&quot; value=&quot;0&quot; title=&quot;绠＄悊鍛?&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;layui-form-item layui-col-md4 layui-col-md-offset4&quot;&gt;
+                &lt;button id=&quot;sub_btn&quot; class=&quot;layui-btn layui-btn-normal&quot;&gt;鐧诲綍&lt;/button&gt;
+            &lt;/div&gt;
+
+        &lt;/form&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+
+
+&lt;script&gt;
+    layui.use([&apos;layer&apos;, &apos;form&apos;], function () {
+        let layer = layui.layer;
+        let form = layui.form;
+        form.render();
+
+        $(function () {
+            let flag = null;
+            if (flag) {
+                layer.msg(&quot;鐢ㄦ埛鍚嶆垨瀵嗙爜閿欒&quot;, {
+                    icon: 2,
+                    time: 2000 //2绉掑叧闂紙濡傛灉涓嶉厤缃紝榛樿鏄?绉掞級
+                });
+            }
+        });
+    });
+
+
+    $(&quot;#sub_btn&quot;).click(function () {
+        let username = $(&quot;#username&quot;).val();
+        let user_judge = check(username);
+
+        // 棣栧厛鍒ゆ柇鐢ㄦ埛鍚嶆槸鍚︿负绌?
+        if (user_judge) {
+            let password = $(&quot;#password&quot;).val();
+            let pwd_judge = check(password);
+
+            // 鐢ㄦ埛鍚嶄笉涓虹┖  , 鍒ゆ柇瀵嗙爜鏄惁涓虹┖
+            if (pwd_judge) {
+                let role_id = $(&apos;input[name=&quot;role&quot;]:checked&apos;).val();
+
+                // 濡傛灉role_id ==1 ,鍒欐槸鏅€氱敤鎴?, 鐩存帴鎻愪氦琛ㄥ崟
+                if (role_id == 1) {
+                    $(&quot;#my_form&quot;).submit();
+                } else {
+
+                    //濡傛灉鏄鐞嗗憳 , 鍒欏皢action 杩涜鏇存敼 
+                    $(&quot;#my_form&quot;).attr(&quot;action&quot;, &quot;/adminLogin&quot;)
+                    $(&quot;#my_form&quot;).submit();
+                }
+
+            } else {
+                layer.alert(&quot;瀵嗙爜涓嶈兘涓虹┖&quot;, {icon: 5});
+                return false;
+            }
+        } else {
+
+            layer.alert(&quot;鐢ㄦ埛鍚嶄笉鑳戒负绌?, {icon: 5});
+            return false;
+        }
+    });
+
+    // 鏍￠獙琛ㄥ崟涓敤鎴峰悕 涓?瀵嗙爜鏄惁杈撳叆,  濡傛灉鏈夊€?-&gt; 杩斿洖 true , 濡傛灉鏈緭鍏?杩斿洖 false;
+    function check(val) {
+        val = val.toString().trim();
+        return !(val == &apos;&apos;);
+    }
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+														<totalSize>4355</totalSize>
+														<timeStamp>2026-06-06 12:48:31</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: file:///D:/XMU-SE/XMU-SE/大三下/软件测试/实验7/Badboy/html/start.html
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>gb2312</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>28</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>223</maxResponseTime>
+											<averageResponseTime>223</averageResponseTime>
+										</Summary>
+										<childCount>4</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>33</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>223</maxResponseTime>
+													<averageResponseTime>223</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>32</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>223</maxResponseTime>
+															<averageResponseTime>223</averageResponseTime>
+														</Summary>
+														<timeMs>223</timeMs>
+														<size>3706</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;鏅€氱敤鎴?鍥句功绠＄悊绯荤粺&lt;/title&gt;
+    &lt;link href=&quot;/layui/css/layui.css&quot; rel=&quot;stylesheet&quot;/&gt;
+
+&lt;/head&gt;
+&lt;body class=&quot;layui-layout-body&quot;&gt;
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-header&quot;&gt;
+            &lt;div class=&quot; layui-nav &quot; style=&quot;font-size: x-large; color: #009688;line-height: 60px;&quot;&gt; 鍥?涔?绠?鐞?绯?缁?/div&gt;
+            &lt;!-- 澶撮儴鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勬按骞冲鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;
+                        &lt;img src=&quot;/images/user_image.jpg&quot; class=&quot;layui-nav-img&quot;&gt;
+                        &lt;span&gt;user1&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;鍩烘湰璧勬枡&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;瀹夊叏璁剧疆&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/userLogOut&quot;&gt;閫€鍑虹櫥褰?/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+        &lt;div class=&quot;layui-side-scroll&quot;&gt;
+            &lt;!-- 宸︿晶瀵艰埅鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勫瀭鐩村鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-nav-tree&quot;&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鍊熼槄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/userBorrowBookRecord&quot;&gt;&amp;emsp;&amp;emsp;鍊熶功璁板綍&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/borrowingPage&quot;&gt;&amp;emsp;&amp;emsp;鍊熼槄涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;涔︾睄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/userReturnBooksPage&quot;&gt;&amp;emsp;&amp;emsp;褰掕繕涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/findBookPage&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/userMessagePage&quot;&gt;涓汉淇℃伅&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-body layui-container&quot;&gt;
+        &lt;div class=&quot;layui-carousel layui-container&quot; id=&quot;index&quot; style=&quot;margin-top: 40px;&quot;&gt;
+            &lt;div carousel-item&gt;
+                &lt;div&gt;&lt;img src=&quot;/images/lib1.jpg&quot;/&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;img src=&quot;/images/lib2.jpg&quot;/&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;img src=&quot;/images/lib3.jpg&quot;/&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;img src=&quot;/images/lib4.jpg&quot;/&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;img src=&quot;/images/lib5.jpg&quot;/&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-footer&quot;&gt;
+            &lt;!-- 搴曢儴鍥哄畾鍖哄煙 --&gt;
+            Variation - library - managerSystem
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+
+    layui.use([&apos;carousel&apos;, &apos;element&apos;], function () {
+        let carousel = layui.carousel;
+        let element = layui.element;
+        //寤洪€犲疄渚?
+        carousel.render({
+            elem: &apos;#index&apos;
+            , width: &apos;900&apos; //璁剧疆瀹瑰櫒瀹藉害
+            , height: &apos;550px&apos; //璁剧疆瀹瑰櫒楂樺害
+            // , full:&apos;true&apos; //鏄惁鍏ㄥ睆杞挱,榛樿false
+            // , arrow: &apos;always&apos; //濮嬬粓鏄剧ず绠ご鍜岀偣鍑绘寜閽?
+            // ,anim: &apos;updown&apos; //鍒囨崲鍔ㄧ敾鏂瑰紡锛屽彲浠庡悇涓柟鍚戞粴鍔?
+        });
+    });
+
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</content>
+														<totalSize>3706</totalSize>
+														<timeStamp>2026-06-06 12:49:02</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>29</id>
+												<name>userName</name>
+												<value>user1</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>30</id>
+												<name>password</name>
+												<value>123456</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>31</id>
+												<name>role</name>
+												<value>1</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/userLogin</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/
+Content-Type: application/x-www-form-urlencoded
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>38</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>113</maxResponseTime>
+											<averageResponseTime>113</averageResponseTime>
+										</Summary>
+										<childCount>1</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>40</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>113</maxResponseTime>
+													<averageResponseTime>113</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>39</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>113</maxResponseTime>
+															<averageResponseTime>113</averageResponseTime>
+														</Summary>
+														<timeMs>113</timeMs>
+														<size>3678</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;鏅€氱敤鎴?鍥句功绠＄悊绯荤粺&lt;/title&gt;
+
+    &lt;link href=&quot;/layui/css/layui.css&quot; rel=&quot;stylesheet&quot;/&gt;
+
+&lt;/head&gt;
+&lt;body class=&quot;layui-layout-body&quot;&gt;
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-header&quot;&gt;
+            &lt;div class=&quot; layui-nav &quot; style=&quot;font-size: x-large; color: #009688;line-height: 60px;&quot;&gt; 鍥?涔?绠?鐞?绯?缁?/div&gt;
+            &lt;!-- 澶撮儴鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勬按骞冲鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;
+                        &lt;img src=&quot;/images/user_image.jpg&quot; class=&quot;layui-nav-img&quot;&gt;
+                        &lt;span&gt;user1&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;鍩烘湰璧勬枡&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;瀹夊叏璁剧疆&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/userLogOut&quot;&gt;閫€鍑虹櫥褰?/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+        &lt;div class=&quot;layui-side-scroll&quot;&gt;
+            &lt;!-- 宸︿晶瀵艰埅鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勫瀭鐩村鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-nav-tree&quot;&gt;
+
+                &lt;li class=&quot;layui-nav-item layui-nav-itemed&quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鍊熼槄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd class=&quot;layui-this&quot;&gt;&lt;a href=&quot;/userBorrowBookRecord&quot;&gt;&amp;emsp;&amp;emsp;鍊熶功璁板綍&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/borrowingPage&quot;&gt;&amp;emsp;&amp;emsp;鍊熼槄涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;涔︾睄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/userReturnBooksPage&quot;&gt;&amp;emsp;&amp;emsp;褰掕繕涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/findBookPage&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/userMessagePage&quot;&gt;涓汉淇℃伅&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-body&quot;&gt;
+
+        &lt;div class=&quot;layui-container&quot;&gt;
+            &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+            &lt;h3 style=&quot;text-align: center; font-size: xx-large&quot;&gt; 宸?鍊?涔?绫?/h3&gt;
+            &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+            &lt;table class=&quot;layui-table &quot;&gt;
+                &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th&gt;涔︾睄ID&lt;/th&gt;
+                    &lt;th&gt;涔﹀悕&lt;/th&gt;
+                    &lt;th&gt;鍊熶功鏃ユ湡&lt;/th&gt;
+                    &lt;th&gt;鏈€鏅氳繕涔︽棩鏈?/th&gt;
+                &lt;/tr&gt;
+                &lt;/thead&gt;
+
+                &lt;tr&gt;
+                    &lt;td&gt;&lt;label&gt;16&lt;/label&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;label id=&quot;bookName&quot; title=&quot;璋㈠笇浠? href=&quot;#&quot;&gt;璁＄畻鏈虹綉缁?/label&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;label&gt;2026-04-28&lt;/label&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;label&gt;2026-06-28&lt;/label&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-footer&quot;&gt;
+            &lt;!-- 搴曢儴鍥哄畾鍖哄煙 --&gt;
+            Variation - library - managerSystem
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    layui.use(&apos;element&apos;, function () {
+        let element = layui.element;
+    });
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</content>
+														<totalSize>3678</totalSize>
+														<timeStamp>2026-06-06 12:49:40</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/userBorrowBookRecord</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/userLogin
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>43</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>197</maxResponseTime>
+											<averageResponseTime>197</averageResponseTime>
+										</Summary>
+										<childCount>1</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>45</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>197</maxResponseTime>
+													<averageResponseTime>197</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>44</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>197</maxResponseTime>
+															<averageResponseTime>197</averageResponseTime>
+														</Summary>
+														<timeMs>197</timeMs>
+														<size>3316</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;鏅€氱敤鎴?鍥句功绠＄悊绯荤粺&lt;/title&gt;
+    &lt;link href=&quot;/layui/css/layui.css&quot; rel=&quot;stylesheet&quot;/&gt;
+&lt;/head&gt;
+
+&lt;body class=&quot;layui-layout-body&quot;&gt;
+
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-header&quot;&gt;
+            &lt;div class=&quot; layui-nav &quot; style=&quot;font-size: x-large; color: #009688;line-height: 60px;&quot;&gt; 鍥?涔?绠?鐞?绯?缁?/div&gt;
+            &lt;!-- 澶撮儴鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勬按骞冲鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;
+                        &lt;img src=&quot;/images/user_image.jpg&quot; class=&quot;layui-nav-img&quot;&gt;
+                        &lt;span&gt;user1&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;鍩烘湰璧勬枡&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;瀹夊叏璁剧疆&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/userLogOut&quot;&gt;閫€鍑虹櫥褰?/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+        &lt;div class=&quot;layui-side-scroll&quot;&gt;
+            &lt;!-- 宸︿晶瀵艰埅鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勫瀭鐩村鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-nav-tree&quot;&gt;
+
+                &lt;li class=&quot;layui-nav-item layui-nav-itemed&quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鍊熼槄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/userBorrowBookRecord&quot;&gt;&amp;emsp;&amp;emsp;鍊熶功璁板綍&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd class=&quot;layui-this&quot;&gt;&lt;a href=&quot;/borrowingPage&quot;&gt;&amp;emsp;&amp;emsp;鍊熼槄涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;涔︾睄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/userReturnBooksPage&quot;&gt;&amp;emsp;&amp;emsp;褰掕繕涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/findBookPage&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/userMessagePage&quot;&gt;涓汉淇℃伅&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-body layui-container&quot;&gt;
+
+        &lt;div class=&quot;layui-container layui-col-md6 &quot;&gt;
+            &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+            &lt;h3 style=&quot;text-align: center; font-size: xx-large&quot;&gt; 鐢?鎴?鍊?涔?&lt;/h3&gt;
+            &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+        &lt;/div&gt;
+
+        &lt;div&gt;
+            &lt;input class=&quot; layui-input-block&quot; placeholder=&quot;璇疯緭鍏ヤ功绫嶇紪鍙? autocomplete=&quot;off&quot; autofocus
+                   id=&quot;bookId&quot; type=&quot;text&quot; name=&quot;bookId&quot;&gt;
+
+            &lt;button class=&quot;layui-btn layui-bg-blue&quot; id=&quot;btn1&quot;&gt;纭鍊熶功&lt;/button&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-footer&quot;&gt;
+            &lt;!-- 搴曢儴鍥哄畾鍖哄煙 --&gt;
+            Variation - library - managerSystem
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.all.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/scripts/user/borrowingBook.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</content>
+														<totalSize>3316</totalSize>
+														<timeStamp>2026-06-06 12:49:46</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/borrowingPage</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/userBorrowBookRecord
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>50</id>
+										<Summary v='3'>
+											<maxResponseTime>0</maxResponseTime>
+											<averageResponseTime>0</averageResponseTime>
+										</Summary>
+										<childCount>1</childCount>
+										<ChildItems>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>51</id>
+												<name>bookId</name>
+												<value>3</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/userBorrowingBook</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers/>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset/>
+										<method>2</method>
+										<waitForSubRequests>false</waitForSubRequests>
+										<executionMode>1</executionMode>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>58</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>199</maxResponseTime>
+											<averageResponseTime>199</averageResponseTime>
+										</Summary>
+										<childCount>1</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>60</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>199</maxResponseTime>
+													<averageResponseTime>199</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>59</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>199</maxResponseTime>
+															<averageResponseTime>199</averageResponseTime>
+														</Summary>
+														<timeMs>199</timeMs>
+														<size>3313</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;鏅€氱敤鎴?鍥句功绠＄悊绯荤粺&lt;/title&gt;
+    &lt;link href=&quot;/layui/css/layui.css&quot; rel=&quot;stylesheet&quot;/&gt;
+&lt;/head&gt;
+&lt;body class=&quot;layui-layout-body&quot;&gt;
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-header&quot;&gt;
+            &lt;div class=&quot; layui-nav &quot; style=&quot;font-size: x-large; color: #009688;line-height: 60px;&quot;&gt; 鍥?涔?绠?鐞?绯?缁?/div&gt;
+            &lt;!-- 澶撮儴鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勬按骞冲鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;
+                        &lt;img src=&quot;/images/user_image.jpg&quot; class=&quot;layui-nav-img&quot;&gt;
+                        &lt;span&gt;user1&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;鍩烘湰璧勬枡&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;瀹夊叏璁剧疆&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/userLogOut&quot;&gt;閫€鍑虹櫥褰?/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+        &lt;div class=&quot;layui-side-scroll&quot;&gt;
+            &lt;!-- 宸︿晶瀵艰埅鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勫瀭鐩村鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-nav-tree&quot;&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鍊熼槄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/userBorrowBookRecord&quot;&gt;&amp;emsp;&amp;emsp;鍊熶功璁板綍&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/borrowingPage&quot;&gt;&amp;emsp;&amp;emsp;鍊熼槄涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item layui-nav-itemed&quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;涔︾睄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd class=&quot;layui-this&quot;&gt;&lt;a href=&quot;/userReturnBooksPage&quot;&gt;&amp;emsp;&amp;emsp;褰掕繕涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/findBookPage&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/userMessagePage&quot;&gt;涓汉淇℃伅&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-body layui-container&quot;&gt;
+
+        &lt;div class=&quot;layui-container layui-col-md6 &quot;&gt;
+            &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+            &lt;h3 style=&quot;text-align: center; font-size: xx-large&quot;&gt; 鐢?鎴?杩?涔?&lt;/h3&gt;
+            &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+        &lt;/div&gt;
+
+        &lt;div&gt;
+            &lt;input class=&quot; layui-input-block&quot; placeholder=&quot;璇疯緭鍏ヤ功绫嶇紪鍙? autocomplete=&quot;off&quot; autofocus
+                   id=&quot;bookId&quot; type=&quot;text&quot; name=&quot;bookId&quot;&gt;
+
+            &lt;button class=&quot;layui-btn layui-bg-blue&quot; id=&quot;btn1&quot;&gt;纭杩樹功&lt;/button&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-footer&quot;&gt;
+            &lt;!-- 搴曢儴鍥哄畾鍖哄煙 --&gt;
+            Variation - library - managerSystem
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/scripts/user/returnBook.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+</content>
+														<totalSize>3313</totalSize>
+														<timeStamp>2026-06-06 12:50:06</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/userReturnBooksPage</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/borrowingPage
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>65</id>
+										<Summary v='3'>
+											<maxResponseTime>0</maxResponseTime>
+											<averageResponseTime>0</averageResponseTime>
+										</Summary>
+										<childCount>1</childCount>
+										<ChildItems>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>66</id>
+												<name>bookId</name>
+												<value>3</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/userReturnBook</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers/>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset/>
+										<method>2</method>
+										<waitForSubRequests>false</waitForSubRequests>
+										<executionMode>1</executionMode>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>71</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>197</maxResponseTime>
+											<averageResponseTime>197</averageResponseTime>
+										</Summary>
+										<childCount>1</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>73</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>197</maxResponseTime>
+													<averageResponseTime>197</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>72</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>197</maxResponseTime>
+															<averageResponseTime>197</averageResponseTime>
+														</Summary>
+														<timeMs>197</timeMs>
+														<size>4350</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;鏅€氱敤鎴?鍥句功绠＄悊绯荤粺&lt;/title&gt;
+    &lt;link href=&quot;/layui/css/layui.css&quot; rel=&quot;stylesheet&quot;/&gt;
+&lt;/head&gt;
+&lt;body class=&quot;layui-layout-body&quot;&gt;
+
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-header&quot;&gt;
+            &lt;div class=&quot; layui-nav &quot; style=&quot;font-size: x-large; color: #009688;line-height: 60px;&quot;&gt; 鍥?涔?绠?鐞?绯?缁?/div&gt;
+            &lt;!-- 澶撮儴鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勬按骞冲鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;
+                        &lt;img src=&quot;/images/user_image.jpg&quot; class=&quot;layui-nav-img&quot;&gt;
+                        &lt;span&gt;user1&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;鍩烘湰璧勬枡&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;瀹夊叏璁剧疆&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/userLogOut&quot;&gt;閫€鍑虹櫥褰?/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+        &lt;div class=&quot;layui-side-scroll&quot;&gt;
+            &lt;!-- 宸︿晶瀵艰埅鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勫瀭鐩村鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-nav-tree&quot;&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鍊熼槄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/userBorrowBookRecord&quot;&gt;&amp;emsp;&amp;emsp;鍊熶功璁板綍&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/borrowingPage&quot;&gt;&amp;emsp;&amp;emsp;鍊熼槄涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item layui-nav-itemed&quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;涔︾睄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/userReturnBooksPage&quot;&gt;&amp;emsp;&amp;emsp;褰掕繕涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd class=&quot;layui-this&quot;&gt;&lt;a href=&quot;/findBookPage&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/userMessagePage&quot;&gt;涓汉淇℃伅&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-body layui-container&quot;&gt;
+
+        &lt;div class=&quot;layui-row&quot;&gt;
+            &lt;div class=&quot;layui-col-md4&quot;&gt;&lt;!--宸﹀崐閮ㄥ垎--&gt;
+
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+                &lt;h1 style=&quot;text-align:left&quot;&gt;鏌ヨ涔︾睄&lt;/h1&gt;
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+
+                &lt;form class=&quot;layui-form&quot; action=&quot;/findBookByBookPartInfo&quot; id=&quot;findBookByNameForm&quot;&gt;
+
+                    &lt;div class=&quot;layui-form-item&quot;&gt;
+                        &lt;input placeholder=&quot;璇疯緭鍏ヤ功鍚嶄俊鎭? class=&quot;layui-input&quot; autofocus autocomplete=&quot;off&quot; type=&quot;text&quot;
+                               name=&quot;bookPartInfo&quot; lay-verify=&quot;required&quot;&gt;
+                    &lt;/div&gt;
+
+                    &lt;input class=&quot;layui-btn&quot; type=&quot;submit&quot; lay-submit=&quot;&quot; value=&quot;鏌ヨ&quot;&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+
+
+            &lt;div class=&quot;layui-col-md7 layui-col-lg-offset1&quot;&gt;&lt;!--鍙冲崐閮ㄥ垎--&gt;
+
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+                &lt;h1 style=&quot;text-align: left&quot;&gt;鏌ヨ缁撴灉&lt;/h1&gt;
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+
+                &lt;table class=&quot;layui-table &quot;&gt;
+                    &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;涔︾睄缂栧彿&lt;/th&gt;
+                        &lt;th&gt;涔﹀悕&lt;/th&gt;
+                        &lt;th&gt;浣滆€?/th&gt;
+                        &lt;th&gt;鍑虹増绀?/th&gt;
+                        &lt;th&gt;鐘舵€?/th&gt;
+                    &lt;/tr&gt;
+                    &lt;/thead&gt;
+
+                    
+                &lt;/table&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+
+    &lt;/div&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-footer&quot;&gt;
+            &lt;!-- 搴曢儴鍥哄畾鍖哄煙 --&gt;
+            Variation - library - managerSystem
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+    layui.use([&apos;form&apos;, &apos;element&apos;], function () {
+        let form = layui.form;
+        let element = layui.element;
+    });
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</content>
+														<totalSize>4350</totalSize>
+														<timeStamp>2026-06-06 12:50:20</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/findBookPage</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/userReturnBooksPage
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>80</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>184</maxResponseTime>
+											<averageResponseTime>184</averageResponseTime>
+										</Summary>
+										<childCount>3</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>84</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>184</maxResponseTime>
+													<averageResponseTime>184</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>83</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>184</maxResponseTime>
+															<averageResponseTime>184</averageResponseTime>
+														</Summary>
+														<timeMs>184</timeMs>
+														<size>4674</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;鏅€氱敤鎴?鍥句功绠＄悊绯荤粺&lt;/title&gt;
+    &lt;link href=&quot;/layui/css/layui.css&quot; rel=&quot;stylesheet&quot;/&gt;
+&lt;/head&gt;
+&lt;body class=&quot;layui-layout-body&quot;&gt;
+
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-header&quot;&gt;
+            &lt;div class=&quot; layui-nav &quot; style=&quot;font-size: x-large; color: #009688;line-height: 60px;&quot;&gt; 鍥?涔?绠?鐞?绯?缁?/div&gt;
+            &lt;!-- 澶撮儴鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勬按骞冲鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;
+                        &lt;img src=&quot;/images/user_image.jpg&quot; class=&quot;layui-nav-img&quot;&gt;
+                        &lt;span&gt;user1&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;鍩烘湰璧勬枡&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;瀹夊叏璁剧疆&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/userLogOut&quot;&gt;閫€鍑虹櫥褰?/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+        &lt;div class=&quot;layui-side-scroll&quot;&gt;
+            &lt;!-- 宸︿晶瀵艰埅鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勫瀭鐩村鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-nav-tree&quot;&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鍊熼槄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/userBorrowBookRecord&quot;&gt;&amp;emsp;&amp;emsp;鍊熶功璁板綍&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/borrowingPage&quot;&gt;&amp;emsp;&amp;emsp;鍊熼槄涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item layui-nav-itemed&quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;涔︾睄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/userReturnBooksPage&quot;&gt;&amp;emsp;&amp;emsp;褰掕繕涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd class=&quot;layui-this&quot;&gt;&lt;a href=&quot;/findBookPage&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/userMessagePage&quot;&gt;涓汉淇℃伅&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-body layui-container&quot;&gt;
+
+        &lt;div class=&quot;layui-row&quot;&gt;
+            &lt;div class=&quot;layui-col-md4&quot;&gt;&lt;!--宸﹀崐閮ㄥ垎--&gt;
+
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+                &lt;h1 style=&quot;text-align:left&quot;&gt;鏌ヨ涔︾睄&lt;/h1&gt;
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+
+                &lt;form class=&quot;layui-form&quot; action=&quot;/findBookByBookPartInfo&quot; id=&quot;findBookByNameForm&quot;&gt;
+
+                    &lt;div class=&quot;layui-form-item&quot;&gt;
+                        &lt;input placeholder=&quot;璇疯緭鍏ヤ功鍚嶄俊鎭? class=&quot;layui-input&quot; autofocus autocomplete=&quot;off&quot; type=&quot;text&quot;
+                               name=&quot;bookPartInfo&quot; lay-verify=&quot;required&quot;&gt;
+                    &lt;/div&gt;
+
+                    &lt;input class=&quot;layui-btn&quot; type=&quot;submit&quot; lay-submit=&quot;&quot; value=&quot;鏌ヨ&quot;&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+
+
+            &lt;div class=&quot;layui-col-md7 layui-col-lg-offset1&quot;&gt;&lt;!--鍙冲崐閮ㄥ垎--&gt;
+
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+                &lt;h1 style=&quot;text-align: left&quot;&gt;鏌ヨ缁撴灉&lt;/h1&gt;
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+
+                &lt;table class=&quot;layui-table &quot;&gt;
+                    &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;涔︾睄缂栧彿&lt;/th&gt;
+                        &lt;th&gt;涔﹀悕&lt;/th&gt;
+                        &lt;th&gt;浣滆€?/th&gt;
+                        &lt;th&gt;鍑虹増绀?/th&gt;
+                        &lt;th&gt;鐘舵€?/th&gt;
+                    &lt;/tr&gt;
+                    &lt;/thead&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;2&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;涓変綋&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍒樻厛娆?/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍗椾含澶у鍑虹増绀?/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍙€?/label&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+
+    &lt;/div&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-footer&quot;&gt;
+            &lt;!-- 搴曢儴鍥哄畾鍖哄煙 --&gt;
+            Variation - library - managerSystem
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+    layui.use([&apos;form&apos;, &apos;element&apos;], function () {
+        let form = layui.form;
+        let element = layui.element;
+    });
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</content>
+														<totalSize>4674</totalSize>
+														<timeStamp>2026-06-06 12:50:26</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>81</id>
+												<name>bookPartInfo</name>
+												<value>%C8%FD%CC%E5</value>
+												<sendEquals>true</sendEquals>
+												<method>1</method>
+											</Parameter>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>82</id>
+												<name/>
+												<value>%B2%E9%D1%AF</value>
+												<sendEquals>true</sendEquals>
+												<method>1</method>
+											</Parameter>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/findBookByBookPartInfo</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/findBookPage
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>89</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>270</maxResponseTime>
+											<averageResponseTime>270</averageResponseTime>
+										</Summary>
+										<childCount>1</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>91</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>270</maxResponseTime>
+													<averageResponseTime>270</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>90</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>270</maxResponseTime>
+															<averageResponseTime>270</averageResponseTime>
+														</Summary>
+														<timeMs>270</timeMs>
+														<size>5130</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;鏅€氱敤鎴?鍥句功绠＄悊绯荤粺&lt;/title&gt;
+    &lt;link href=&quot;/layui/css/layui.css&quot; rel=&quot;stylesheet&quot;/&gt;
+
+&lt;/head&gt;
+&lt;body class=&quot;layui-layout-body&quot;&gt;
+
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-header&quot;&gt;
+            &lt;div class=&quot; layui-nav &quot; style=&quot;font-size: x-large; color: #009688;line-height: 60px;&quot;&gt; 鍥?涔?绠?鐞?绯?缁?/div&gt;
+            &lt;!-- 澶撮儴鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勬按骞冲鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;
+                        &lt;img src=&quot;/images/user_image.jpg&quot; class=&quot;layui-nav-img&quot;&gt;
+                        &lt;span&gt;user1&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;鍩烘湰璧勬枡&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;瀹夊叏璁剧疆&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/userLogOut&quot;&gt;閫€鍑虹櫥褰?/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+        &lt;div class=&quot;layui-side-scroll&quot;&gt;
+            &lt;!-- 宸︿晶瀵艰埅鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勫瀭鐩村鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-nav-tree&quot;&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鍊熼槄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/userBorrowBookRecord&quot;&gt;&amp;emsp;&amp;emsp;鍊熶功璁板綍&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/borrowingPage&quot;&gt;&amp;emsp;&amp;emsp;鍊熼槄涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;涔︾睄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/userReturnBooksPage&quot;&gt;&amp;emsp;&amp;emsp;褰掕繕涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/findBookPage&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item layui-nav-itemed&quot;&gt;&lt;a class=&quot;&quot; href=&quot;/userMessagePage&quot;&gt;涓汉淇℃伅&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-body layui-container&quot;&gt;
+
+        &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+        &lt;h3 style=&quot;font-size: xx-large; text-align: center&quot;&gt; 涓?浜?淇?鎭?&lt;/h3&gt;
+        &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+
+        &lt;div class=&quot;layui-row&quot;&gt;
+            &lt;div class=&quot;layui-col-md8 layui-col-lg-offset2&quot;&gt;
+                &lt;table class=&quot;layui-table&quot;&gt;
+                    &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;鐢ㄦ埛id&lt;/th&gt;
+                        &lt;th&gt;鐢ㄦ埛濮撳悕&lt;/th&gt;
+                        &lt;th&gt;鐢ㄦ埛閭&lt;/th&gt;
+                        &lt;th&gt;鐢ㄦ埛瀵嗙爜&lt;/th&gt;
+                    &lt;/tr&gt;
+                    &lt;/thead&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;b&gt;1&lt;/b&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;b&gt;user1&lt;/b&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;b&gt;501455447@qq.com&lt;/b&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;b&gt;123456&lt;/b&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;layui-row&quot;&gt;
+            &lt;button id=&quot;modify-user&quot; class=&quot;layui-btn&quot; style=&quot;display: block; margin: 10px auto;&quot;&gt;淇敼淇℃伅&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;window&quot; title=&quot;淇敼淇℃伅&quot; style=&quot;margin: 5%; display: none&quot;&gt;
+            &lt;form id=&quot;updateUserForm&quot; class=&quot;layui-form&quot;&gt;
+                &lt;div class=&quot;layui-form-item&quot;&gt;
+                    &lt;label class=&quot;layui-form-label&quot;&gt;鍚嶅瓧&lt;/label&gt;
+
+                    &lt;div class=&quot;layui-input-block&quot;&gt;
+                        &lt;input type=&quot;text&quot; name=&quot;userName&quot; value=&quot;user1&quot; id=&quot;name&quot;
+                               class=&quot;layui-input&quot;&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;layui-form-item&quot;&gt;
+                    &lt;label class=&quot;layui-form-label&quot;&gt;閭&lt;/label&gt;
+
+                    &lt;div class=&quot;layui-input-block&quot;&gt;
+                        &lt;input type=&quot;text&quot; name=&quot;UserEmail&quot; value=&quot;501455447@qq.com&quot; id=&quot;email&quot;
+                               class=&quot;layui-input&quot;&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;layui-form-item&quot;&gt;
+                    &lt;label class=&quot;layui-form-label&quot;&gt;瀵嗙爜&lt;/label&gt;
+
+                    &lt;div class=&quot;layui-input-block&quot;&gt;
+                        &lt;input type=&quot;text&quot; name=&quot;userPwd&quot; id=&quot;password&quot; class=&quot;layui-input&quot;
+                               value=&quot;123456&quot;&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+            &lt;/form&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-footer&quot;&gt;
+            &lt;!-- 搴曢儴鍥哄畾鍖哄煙 --&gt;
+            Variation - library - managerSystem
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/scripts/user/userMessage.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</content>
+														<totalSize>5130</totalSize>
+														<timeStamp>2026-06-06 12:50:39</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/userMessagePage</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/findBookByBookPartInfo?bookPartInfo=%E4%B8%89%E4%BD%93&amp;=%E6%9F%A5%E8%AF%A2
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>98</id>
+										<Summary v='3'>
+											<maxResponseTime>0</maxResponseTime>
+											<averageResponseTime>0</averageResponseTime>
+										</Summary>
+										<childCount>3</childCount>
+										<ChildItems>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>99</id>
+												<name>userName</name>
+												<value>user1</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>100</id>
+												<name>UserEmail</name>
+												<value>501455447@qq.com</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>101</id>
+												<name>userPwd</name>
+												<value>123456</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/updateUser</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers/>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset/>
+										<method>2</method>
+										<waitForSubRequests>false</waitForSubRequests>
+										<executionMode>1</executionMode>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>106</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>138</maxResponseTime>
+											<averageResponseTime>138</averageResponseTime>
+										</Summary>
+										<childCount>1</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>108</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>138</maxResponseTime>
+													<averageResponseTime>138</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>107</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>138</maxResponseTime>
+															<averageResponseTime>138</averageResponseTime>
+														</Summary>
+														<timeMs>138</timeMs>
+														<size>4355</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/layui/css/layui.css&quot;&gt;
+    &lt;style&gt;
+
+        body {
+            /*width: 100%;*/
+            /*height: 100%;*/
+            background: url(&quot;/images/background.png&quot;) no-repeat;
+            /*background: url(&quot;static/images/a.png&quot;) no-repeat;*/
+            background-size: cover;
+        }
+
+        #login_form {
+            width: 400px;
+            height: 400px;
+            margin: 80px auto;
+            padding: 30px;
+            background-color: #f2f2f2;
+            opacity: 0.9;
+        }
+
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div id=&quot;wrapper&quot;&gt;
+    &lt;div class=&quot;layui-container&quot; id=&quot;login_form&quot;&gt;
+
+        &lt;div&gt;
+            &lt;h1 style=&quot;color: red&quot;&gt;鍥句功绠＄悊绯荤粺&lt;/h1&gt;
+            &lt;br&gt;
+            &lt;h2&gt;鐢ㄦ埛鐧诲綍&lt;/h2&gt;
+            &lt;br&gt;
+        &lt;/div&gt;
+
+        &lt;form class=&quot;layui-form&quot; id=&quot;my_form&quot; method=&quot;post&quot; action=&quot;/userLogin&quot;&gt;
+
+            &lt;div class=&quot;layui-form-item&quot;&gt;
+                &lt;label class=&quot;layui-form-label&quot;&gt;鐢ㄦ埛鍚?&lt;/label&gt;
+                &lt;div class=&quot;layui-input-block&quot;&gt;
+                    &lt;input type=&quot;text&quot; name=&quot;userName&quot; id=&quot;username&quot; autofocus
+                           placeholder=&quot;璇疯緭鍏ョ敤鎴峰悕&quot; autocomplete=&quot;off&quot; class=&quot;layui-input&quot;&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;layui-form-item&quot;&gt;
+                &lt;label class=&quot;layui-form-label&quot;&gt;瀵?鐮?&lt;/label&gt;
+                &lt;div class=&quot;layui-input-block&quot;&gt;
+                    &lt;input type=&quot;password&quot; name=&quot;password&quot; id=&quot;password&quot;
+                           placeholder=&quot;璇疯緭鍏ュ瘑鐮? autocomplete=&quot;off&quot; class=&quot;layui-input&quot;&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+
+            &lt;div class=&quot;layui-form-item&quot;&gt;
+                &lt;label class=&quot;layui-form-label&quot;&gt;鐢ㄦ埛韬唤&lt;/label&gt;
+                &lt;div class=&quot;layui-input-block&quot;&gt;
+                    &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;role&quot; value=&quot;1&quot; title=&quot;瀛︾敓&quot; checked&gt;
+                    &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;role&quot; value=&quot;0&quot; title=&quot;绠＄悊鍛?&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;layui-form-item layui-col-md4 layui-col-md-offset4&quot;&gt;
+                &lt;button id=&quot;sub_btn&quot; class=&quot;layui-btn layui-btn-normal&quot;&gt;鐧诲綍&lt;/button&gt;
+            &lt;/div&gt;
+
+        &lt;/form&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+
+
+&lt;script&gt;
+    layui.use([&apos;layer&apos;, &apos;form&apos;], function () {
+        let layer = layui.layer;
+        let form = layui.form;
+        form.render();
+
+        $(function () {
+            let flag = null;
+            if (flag) {
+                layer.msg(&quot;鐢ㄦ埛鍚嶆垨瀵嗙爜閿欒&quot;, {
+                    icon: 2,
+                    time: 2000 //2绉掑叧闂紙濡傛灉涓嶉厤缃紝榛樿鏄?绉掞級
+                });
+            }
+        });
+    });
+
+
+    $(&quot;#sub_btn&quot;).click(function () {
+        let username = $(&quot;#username&quot;).val();
+        let user_judge = check(username);
+
+        // 棣栧厛鍒ゆ柇鐢ㄦ埛鍚嶆槸鍚︿负绌?
+        if (user_judge) {
+            let password = $(&quot;#password&quot;).val();
+            let pwd_judge = check(password);
+
+            // 鐢ㄦ埛鍚嶄笉涓虹┖  , 鍒ゆ柇瀵嗙爜鏄惁涓虹┖
+            if (pwd_judge) {
+                let role_id = $(&apos;input[name=&quot;role&quot;]:checked&apos;).val();
+
+                // 濡傛灉role_id ==1 ,鍒欐槸鏅€氱敤鎴?, 鐩存帴鎻愪氦琛ㄥ崟
+                if (role_id == 1) {
+                    $(&quot;#my_form&quot;).submit();
+                } else {
+
+                    //濡傛灉鏄鐞嗗憳 , 鍒欏皢action 杩涜鏇存敼 
+                    $(&quot;#my_form&quot;).attr(&quot;action&quot;, &quot;/adminLogin&quot;)
+                    $(&quot;#my_form&quot;).submit();
+                }
+
+            } else {
+                layer.alert(&quot;瀵嗙爜涓嶈兘涓虹┖&quot;, {icon: 5});
+                return false;
+            }
+        } else {
+
+            layer.alert(&quot;鐢ㄦ埛鍚嶄笉鑳戒负绌?, {icon: 5});
+            return false;
+        }
+    });
+
+    // 鏍￠獙琛ㄥ崟涓敤鎴峰悕 涓?瀵嗙爜鏄惁杈撳叆,  濡傛灉鏈夊€?-&gt; 杩斿洖 true , 濡傛灉鏈緭鍏?杩斿洖 false;
+    function check(val) {
+        val = val.toString().trim();
+        return !(val == &apos;&apos;);
+    }
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+														<totalSize>4355</totalSize>
+														<timeStamp>2026-06-06 12:51:01</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/userLogOut</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/userMessagePage
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>124</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>168</maxResponseTime>
+											<averageResponseTime>168</averageResponseTime>
+										</Summary>
+										<childCount>4</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>129</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>168</maxResponseTime>
+													<averageResponseTime>168</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>128</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>168</maxResponseTime>
+															<averageResponseTime>168</averageResponseTime>
+														</Summary>
+														<timeMs>168</timeMs>
+														<size>4108</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;绠＄悊鍛?鍥句功绠＄悊绯荤粺&lt;/title&gt;
+    &lt;link href=&quot;/layui/css/layui.css&quot; rel=&quot;stylesheet&quot;/&gt;
+
+&lt;/head&gt;
+
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-header&quot;&gt;
+            &lt;div class=&quot; layui-nav &quot; style=&quot;font-size: x-large; color: #009688;line-height: 60px;&quot;&gt; 鍥?涔?绠?鐞?绯?缁?/div&gt;
+            &lt;!-- 澶撮儴鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勬按骞冲鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;
+                        &lt;img src=&quot;/images/user_image.jpg&quot; class=&quot;layui-nav-img&quot;&gt;
+                        &lt;span&gt;admin&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;鍩烘湰璧勬枡&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;瀹夊叏璁剧疆&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/adminLogOut&quot;&gt;閫€鍑虹櫥褰?/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+        &lt;div class=&quot;layui-side-scroll&quot;&gt;
+            &lt;!-- 宸︿晶瀵艰埅鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勫瀭鐩村鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-nav-tree&quot;&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;涔︾睄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addBookPage&quot;&gt;&amp;emsp;&amp;emsp;褰曞叆鏂颁功&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addCategoryPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏂板缓绫诲埆&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/showBooksPage&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鐢ㄦ埛绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/showUsersPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addUserPage&quot;&gt;&amp;emsp;&amp;emsp;鏂板鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鍊熼槄淇℃伅&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/allBorrowBooksRecordPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鎵€鏈夎褰?/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;&lt;a href=&quot;/adminInfoPage&quot;&gt;涓汉淇℃伅&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-body layui-container&quot;&gt;
+        &lt;div class=&quot;layui-carousel layui-container&quot; id=&quot;index&quot; style=&quot;margin-top: 40px;&quot;&gt;
+            &lt;div carousel-item&gt;
+                &lt;div&gt;&lt;img src=&quot;/images/lib1.jpg&quot;/&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;img src=&quot;/images/lib2.jpg&quot;/&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;img src=&quot;/images/lib3.jpg&quot;/&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;img src=&quot;/images/lib4.jpg&quot;/&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;img src=&quot;/images/lib5.jpg&quot;/&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-footer&quot;&gt;
+            &lt;!-- 搴曢儴鍥哄畾鍖哄煙 --&gt;
+            Variation - library - managerSystem
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+
+    layui.use([&apos;carousel&apos;, &apos;element&apos;], function () {
+        let carousel = layui.carousel;
+        let element = layui.element;
+
+        //寤洪€犲疄渚?
+        carousel.render({
+            elem: &apos;#index&apos;
+            , width: &apos;900&apos; //璁剧疆瀹瑰櫒瀹藉害
+            , height: &apos;550px&apos; //璁剧疆瀹瑰櫒楂樺害
+            // , full:&apos;true&apos; //鏄惁鍏ㄥ睆杞挱,榛樿false
+            // , arrow: &apos;always&apos; //濮嬬粓鏄剧ず绠ご鍜岀偣鍑绘寜閽?
+            // ,anim: &apos;updown&apos; //鍒囨崲鍔ㄧ敾鏂瑰紡锛屽彲浠庡悇涓柟鍚戞粴鍔?
+        });
+    });
+
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</content>
+														<totalSize>4108</totalSize>
+														<timeStamp>2026-06-06 12:51:09</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>125</id>
+												<name>userName</name>
+												<value>admin</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>126</id>
+												<name>password</name>
+												<value>123456</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>127</id>
+												<name>role</name>
+												<value>0</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/adminLogin</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/userLogOut
+Content-Type: application/x-www-form-urlencoded
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>134</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>235</maxResponseTime>
+											<averageResponseTime>235</averageResponseTime>
+										</Summary>
+										<childCount>1</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>136</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>235</maxResponseTime>
+													<averageResponseTime>235</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>135</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>235</maxResponseTime>
+															<averageResponseTime>235</averageResponseTime>
+														</Summary>
+														<timeMs>235</timeMs>
+														<size>6503</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;绠＄悊鍛?鍥句功绠＄悊绯荤粺&lt;/title&gt;
+    &lt;link href=&quot;/layui/css/layui.css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot;/&gt;
+
+&lt;/head&gt;
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-header&quot;&gt;
+            &lt;div class=&quot; layui-nav &quot; style=&quot;font-size: x-large; color: #009688;line-height: 60px;&quot;&gt; 鍥?涔?绠?鐞?绯?缁?/div&gt;
+            &lt;!-- 澶撮儴鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勬按骞冲鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;
+                        &lt;img src=&quot;/images/user_image.jpg&quot; class=&quot;layui-nav-img&quot;&gt;
+                        &lt;span&gt;admin&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;鍩烘湰璧勬枡&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;瀹夊叏璁剧疆&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/adminLogOut&quot;&gt;閫€鍑虹櫥褰?/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+        &lt;div class=&quot;layui-side-scroll&quot;&gt;
+            &lt;!-- 宸︿晶瀵艰埅鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勫瀭鐩村鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-nav-tree&quot;&gt;
+
+                &lt;li class=&quot;layui-nav-item layui-nav-itemed&quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;涔︾睄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd class=&quot;layui-this&quot;&gt;&lt;a href=&quot;/addBookPage&quot;&gt;&amp;emsp;&amp;emsp;褰曞叆鏂颁功&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addCategoryPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏂板缓绫诲埆&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/showBooksPage&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鐢ㄦ埛绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/showUsersPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addUserPage&quot;&gt;&amp;emsp;&amp;emsp;鏂板鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鍊熼槄淇℃伅&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/allBorrowBooksRecordPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鎵€鏈夎褰?/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/adminInfoPage&quot;&gt;涓汉淇℃伅&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-body layui-container&quot;
+         style=&quot;margin : 10px auto; padding:10px 16px ;border: 200px; width: 480px; height: 580px; background-color: #f2f2f2&quot;&gt;
+
+        &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+        &lt;h2 style=&quot;text-align:center&quot;&gt;娣诲姞涔︾睄&lt;/h2&gt;
+        &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+
+        &lt;div style=&quot;width: 420px; padding: 20px; margin: auto auto; background-color: #f2f2f2&quot;&gt;
+            &lt;form class=&quot;layui-form&quot; id=&quot;addBookForm&quot;&gt;
+
+                &lt;div class=&quot;layui-form-item&quot;&gt;
+                    &lt;label class=&quot;layui-form-label&quot;&gt;涔?鍚?/label&gt;
+                    &lt;div class=&quot;layui-input-inline&quot;&gt;
+                        &lt;input required lay-verify=&quot;required&quot; id=&quot;bookName&quot; type=&quot;text&quot; name=&quot;bookName&quot;
+                               placeholder=&quot;璇疯緭鍏ヤ功鍚? autofocus
+                               class=&quot;layui-input&quot; autocomplete=&quot;off&quot;&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;layui-form-item&quot;&gt;
+                    &lt;label class=&quot;layui-form-label&quot;&gt;浣?鑰?/label&gt;
+                    &lt;div class=&quot;layui-input-inline&quot;&gt;
+                        &lt;input id=&quot;bookAuthor&quot; lay-verify=&quot;required&quot; type=&quot;text&quot; name=&quot;bookAuthor&quot; placeholder=&quot;璇疯緭鍏ヤ綔鑰?
+                               autocomplete=&quot;off&quot; class=&quot;layui-input&quot;&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;layui-form-item&quot;&gt;
+                    &lt;label class=&quot;layui-form-label&quot;&gt;鍑虹増绀?/label&gt;
+                    &lt;div class=&quot;layui-input-inline&quot;&gt;
+                        &lt;input id=&quot;bookPublish&quot; lay-verify=&quot;required&quot; type=&quot;text&quot; name=&quot;bookPublish&quot;
+                               placeholder=&quot;璇疯緭鍏ュ嚭鐗堢ぞ&quot; autocomplete=&quot;off&quot;
+                               class=&quot;layui-input&quot;&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;layui-form-item&quot;&gt;
+                    &lt;label class=&quot;layui-form-label&quot;&gt;绫?鍒?/label&gt;
+                    &lt;div class=&quot;layui-input-inline&quot;&gt;
+                        &lt;select lay-verify=&quot;required&quot; id=&quot;bookCategory&quot; name=&quot;bookCategory&quot;&gt;
+                        &lt;/select&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;layui-form-item&quot;&gt;
+                    &lt;label class=&quot;layui-form-label&quot;&gt;浠?鏍?/label&gt;
+                    &lt;div class=&quot;layui-input-inline&quot;&gt;
+                        &lt;input id=&quot;bookPrice&quot; lay-verify=&quot;number&quot; type=&quot;text&quot; name=&quot;bookPrice&quot; placeholder=&quot;锟?
+                               autocomplete=&quot;off&quot; class=&quot;layui-input&quot;&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;layui-form-item layui-form-text&quot;&gt;
+                    &lt;label class=&quot;layui-form-label&quot;&gt;绠€ 浠?/label&gt;
+                    &lt;div class=&quot;layui-input-inline&quot;&gt;
+                    &lt;textarea id=&quot;bookIntroduction&quot; lay-verify=&quot;required&quot; name=&quot;bookIntroduction&quot; placeholder=&quot;璇疯緭鍏ョ畝浠?
+                              class=&quot;layui-textarea &quot;
+                              autocomplete=&quot;off&quot;&gt;&lt;/textarea&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!--lay-filter閲嶈 , js 浼氱敤鍒?-&gt;
+                &lt;div style=&quot;margin-left: 100px&quot;&gt;
+                    &lt;input type=&quot;submit&quot; lay-filter=&quot;btn1&quot; id=&quot;btn1&quot; class=&quot;layui-btn&quot; lay-submit=&quot;&quot; value=&quot;娣诲姞鍥句功&quot;&gt;
+                &lt;/div&gt;
+
+            &lt;/form&gt;
+        &lt;/div&gt;
+
+
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;div class=&quot;layui-footer&quot;&gt;
+            &lt;!-- 搴曢儴鍥哄畾鍖哄煙 --&gt;
+            Variation - library - managerSystem
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/scripts/admin/addBook.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</content>
+														<totalSize>6503</totalSize>
+														<timeStamp>2026-06-06 12:51:15</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/addBookPage</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/adminLogin
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>193</id>
+										<Summary v='3'>
+											<maxResponseTime>0</maxResponseTime>
+											<averageResponseTime>0</averageResponseTime>
+										</Summary>
+										<childCount>6</childCount>
+										<ChildItems>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>194</id>
+												<name>bookName</name>
+												<value>%BF%B5%C9%F1%BF%AA%B2%A5%C1%CB</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>195</id>
+												<name>bookAuthor</name>
+												<value>%D5%E6%B5%C4%BC%D9%B5%C4</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>196</id>
+												<name>bookPublish</name>
+												<value>wokao</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>197</id>
+												<name>bookCategory</name>
+												<value>1</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>198</id>
+												<name>bookPrice</name>
+												<value>123</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>199</id>
+												<name>bookIntroduction</name>
+												<value>%D5%E6%BF%AA%B2%A5%C0%B2</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/addBook</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers/>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset/>
+										<method>2</method>
+										<waitForSubRequests>false</waitForSubRequests>
+										<executionMode>1</executionMode>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>204</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<warnings>2</warnings>
+											<maxResponseTime>3030</maxResponseTime>
+											<averageResponseTime>3030</averageResponseTime>
+										</Summary>
+										<childCount>2</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>209</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<warnings>2</warnings>
+													<maxResponseTime>3030</maxResponseTime>
+													<averageResponseTime>3030</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>206</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<warnings>2</warnings>
+															<maxResponseTime>3030</maxResponseTime>
+															<averageResponseTime>3030</averageResponseTime>
+														</Summary>
+														<childCount>2</childCount>
+														<ChildItems>
+															<ResponseError v='3'>
+																<ver>14</ver>
+																<id>207</id>
+																<description>缺少函数 : line 3 char 5</description>
+																<category>Scripting Error</category>
+																<level>1</level>
+																<url>http://localhost:8080/scripts/admin/addBookCategory.js</url>
+																<PlayContext v='1'>
+																	<variables>
+																	</variables>
+																</PlayContext>
+															</ResponseError>
+															<ResponseError v='3'>
+																<ver>14</ver>
+																<id>208</id>
+																<description>缺少函数 : line 3 char 5</description>
+																<category>Scripting Error</category>
+																<level>1</level>
+																<url>http://localhost:8080/scripts/admin/addBookCategory.js</url>
+																<PlayContext v='1'>
+																	<variables>
+																	</variables>
+																</PlayContext>
+															</ResponseError>
+														</ChildItems>
+														<timeMs>3030</timeMs>
+														<size>10009</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;绠＄悊鍛?鍥句功绠＄悊绯荤粺&lt;/title&gt;
+    &lt;link href=&quot;/layui/css/layui.css&quot; rel=&quot;stylesheet&quot;/&gt;
+
+&lt;/head&gt;
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-header&quot;&gt;
+            &lt;div class=&quot; layui-nav &quot; style=&quot;font-size: x-large; color: #009688;line-height: 60px;&quot;&gt; 鍥?涔?绠?鐞?绯?缁?/div&gt;
+            &lt;!-- 澶撮儴鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勬按骞冲鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;
+                        &lt;img src=&quot;/images/user_image.jpg&quot; class=&quot;layui-nav-img&quot;&gt;
+                        &lt;span&gt;admin&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;鍩烘湰璧勬枡&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;瀹夊叏璁剧疆&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/adminLogOut&quot;&gt;閫€鍑虹櫥褰?/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+        &lt;div class=&quot;layui-side-scroll&quot;&gt;
+            &lt;!-- 宸︿晶瀵艰埅鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勫瀭鐩村鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-nav-tree&quot;&gt;
+
+                &lt;li class=&quot;layui-nav-item layui-nav-itemed&quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;涔︾睄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addBookPage&quot;&gt;&amp;emsp;&amp;emsp;褰曞叆鏂颁功&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd class=&quot;layui-this&quot;&gt;&lt;a href=&quot;/addCategoryPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏂板缓绫诲埆&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/showBooksPage&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鐢ㄦ埛绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/showUsersPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addUserPage&quot;&gt;&amp;emsp;&amp;emsp;鏂板鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鍊熼槄淇℃伅&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/allBorrowBooksRecordPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鎵€鏈夎褰?/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/adminInfoPage&quot;&gt;涓汉淇℃伅&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-body layui-container&quot;&gt;
+
+        &lt;div class=&quot;layui-row&quot;&gt;
+
+            &lt;div class=&quot;layui-col-md4&quot;&gt;&lt;!--宸﹀崐閮ㄥ垎--&gt;
+
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+                &lt;h2 style=&quot;text-align:center&quot;&gt;鏂板缓绫诲埆&lt;/h2&gt;
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+
+                &lt;form class=&quot;layui-form&quot; id=&quot;addBookCategoryForm&quot;&gt;
+
+                    &lt;div class=&quot;layui-form-item&quot;&gt;
+                        &lt;label class=&quot;layui-form-label&quot;&gt;绫诲埆&lt;/label&gt;
+                        &lt;input class=&quot;layui-input-inline layui-input&quot; id=&quot;categoryName&quot; autocomplete=&quot;off&quot;
+                               placeholder=&quot;璇疯緭鍏ョ被鍒悕绉? type=&quot;text&quot; name=&quot;categoryName&quot; lay-verify=&quot;required&quot;&gt;
+                    &lt;/div&gt;
+
+                    &lt;input name=&quot;pageNum&quot; value=&quot;1&quot; style=&quot;display: none&quot;&gt;
+
+                    &lt;div style=&quot;margin-left: 100px&quot;&gt;
+                        &lt;input lay-filter=&quot;btn_addBookCategory&quot; lay-submit=&quot;&quot; id=&quot;btn_addBookCategory&quot; type=&quot;submit&quot;
+                               class=&quot;layui-btn &quot; value=&quot;娣诲姞绫诲埆&quot;&gt;
+                    &lt;/div&gt;
+                &lt;/form&gt;
+
+            &lt;/div&gt;
+
+            &lt;div class=&quot;layui-col-md6 layui-col-md-offset2 &quot;&gt;&lt;!--鍙冲崐閮ㄥ垎--&gt;
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+                &lt;h2 style=&quot;text-align:center&quot;&gt;宸?鏈?绫?鍒?/h2&gt;
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+
+                &lt;table class=&quot;layui-table&quot; lay-size=&quot;sm&quot;&gt;
+                    &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;绫诲埆缂栧彿&lt;/th&gt;
+                        &lt;th&gt;绫诲埆鍚嶇О&lt;/th&gt;
+                        &lt;th&gt;鎿嶄綔&lt;/th&gt;
+                    &lt;/tr&gt;
+                    &lt;/thead&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;1&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;灏忚&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger btn_deleteCategory&quot;
+                                    value=&quot;1&quot;&gt;鍒犻櫎
+                            &lt;/button&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;2&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍘嗗彶&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger btn_deleteCategory&quot;
+                                    value=&quot;2&quot;&gt;鍒犻櫎
+                            &lt;/button&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;3&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;璁＄畻鏈?/label&gt;&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger btn_deleteCategory&quot;
+                                    value=&quot;3&quot;&gt;鍒犻櫎
+                            &lt;/button&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;4&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍝插&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger btn_deleteCategory&quot;
+                                    value=&quot;4&quot;&gt;鍒犻櫎
+                            &lt;/button&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;5&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;绀句細绉戝&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger btn_deleteCategory&quot;
+                                    value=&quot;5&quot;&gt;鍒犻櫎
+                            &lt;/button&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;6&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鏀挎不娉曞緥&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger btn_deleteCategory&quot;
+                                    value=&quot;6&quot;&gt;鍒犻櫎
+                            &lt;/button&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;7&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍐涗簨绉戝&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger btn_deleteCategory&quot;
+                                    value=&quot;7&quot;&gt;鍒犻櫎
+                            &lt;/button&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;8&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;涓浗鏂囧&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger btn_deleteCategory&quot;
+                                    value=&quot;8&quot;&gt;鍒犻櫎
+                            &lt;/button&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;9&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;澶栧浗鏂囧&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger btn_deleteCategory&quot;
+                                    value=&quot;9&quot;&gt;鍒犻櫎
+                            &lt;/button&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;10&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;澶栧浗浼犺&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger btn_deleteCategory&quot;
+                                    value=&quot;10&quot;&gt;鍒犻櫎
+                            &lt;/button&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td colspan=&quot;3&quot;&gt;
+                            &lt;div style=&quot;margin: auto; width: 160px;&quot;&gt;
+
+                                &lt;a id=&quot;prePage&quot; href=&quot;/addCategoryPage?pageNum=0&quot;&gt;
+                                    &lt;button class=&quot;layui-btn layui-btn-sm&quot;&gt;涓婁竴椤?/button&gt;
+                                &lt;/a&gt;
+                                &lt;label id=&quot;lab1&quot;&gt;1&lt;/label&gt;
+
+                                &lt;span&gt;/&lt;/span&gt;
+
+                                &lt;label id=&quot;lab2&quot;&gt;2&lt;/label&gt;
+                                &lt;a id=&quot;nextPage&quot; href=&quot;/addCategoryPage?pageNum=2&quot;&gt;
+                                    &lt;button class=&quot;layui-btn layui-btn-sm&quot;&gt;涓嬩竴椤?/button&gt;
+                                &lt;/a&gt;
+                            &lt;/div&gt;
+
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+                &lt;br&gt;
+
+
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;div class=&quot;layui-footer&quot;&gt;
+            &lt;!-- 搴曢儴鍥哄畾鍖哄煙 --&gt;
+            Variation - library - managerSystem
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/scripts/admin/addBookCategory.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+</content>
+														<totalSize>10009</totalSize>
+														<timeStamp>2026-06-06 12:52:30</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>205</id>
+												<name>pageNum</name>
+												<value>1</value>
+												<sendEquals>true</sendEquals>
+												<method>1</method>
+											</Parameter>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/addCategoryPage</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/addBookPage
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>212</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>177</maxResponseTime>
+											<averageResponseTime>177</averageResponseTime>
+										</Summary>
+										<childCount>1</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>214</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>177</maxResponseTime>
+													<averageResponseTime>177</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>213</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>177</maxResponseTime>
+															<averageResponseTime>177</averageResponseTime>
+														</Summary>
+														<timeMs>177</timeMs>
+														<size>5902</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;绠＄悊鍛?鍥句功绠＄悊绯荤粺&lt;/title&gt;
+    &lt;link href=&quot;/layui/css/layui.css&quot; rel=&quot;stylesheet&quot;/&gt;
+
+&lt;/head&gt;
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-header&quot;&gt;
+            &lt;div class=&quot; layui-nav &quot; style=&quot;font-size: x-large; color: #009688;line-height: 60px;&quot;&gt; 鍥?涔?绠?鐞?绯?缁?/div&gt;
+            &lt;!-- 澶撮儴鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勬按骞冲鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;
+                        &lt;img src=&quot;/images/user_image.jpg&quot; class=&quot;layui-nav-img&quot;&gt;
+                        &lt;span&gt;admin&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;鍩烘湰璧勬枡&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;瀹夊叏璁剧疆&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/adminLogOut&quot;&gt;閫€鍑虹櫥褰?/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+        &lt;div class=&quot;layui-side-scroll&quot;&gt;
+            &lt;!-- 宸︿晶瀵艰埅鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勫瀭鐩村鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-nav-tree&quot;&gt;
+
+                &lt;li class=&quot;layui-nav-item layui-nav-itemed&quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;涔︾睄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addBookPage&quot;&gt;&amp;emsp;&amp;emsp;褰曞叆鏂颁功&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addCategoryPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏂板缓绫诲埆&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd class=&quot;layui-this&quot;&gt;&lt;a href=&quot;/showBooksPage&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鐢ㄦ埛绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/showUsersPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addUserPage&quot;&gt;&amp;emsp;&amp;emsp;鏂板鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鍊熼槄淇℃伅&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/allBorrowBooksRecordPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鎵€鏈夎褰?/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/adminInfoPage&quot;&gt;涓汉淇℃伅&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-body layui-container&quot;&gt;
+
+        &lt;div class=&quot;layui-row&quot;&gt;
+
+            &lt;div class=&quot;layui-col-md3&quot;&gt;&lt;!--宸﹀崐閮ㄥ垎--&gt;
+
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+                &lt;h2 style=&quot;text-align:center&quot;&gt;鏌ヨ涔︾睄&lt;/h2&gt;
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+
+                &lt;form class=&quot;layui-form&quot; action=&quot;/showBooksResultPageByCategoryId&quot; id=&quot;bookCategoryForm&quot;&gt;
+
+                    &lt;div class=&quot;layui-form-item&quot;&gt;
+
+                        &lt;div style=&quot;margin: 20px;&quot;&gt;
+                            &lt;label&gt;鎸夌被鍒煡鎵?/label&gt;
+                        &lt;/div&gt;
+
+                        &lt;div&gt;
+                            &lt;select lay-verify=&quot;required&quot; class=&quot;layui-select&quot; id=&quot;bookCategory&quot; name=&quot;bookCategory&quot;&gt;
+                            &lt;/select&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;input type=&quot;text&quot; name=&quot;pageNum&quot; value=&quot;1&quot; style=&quot;display: none&quot;&gt;
+
+                    &lt;input class=&quot;layui-btn&quot; type=&quot;submit&quot; lay-submit=&quot;&quot; value=&quot;鏌ユ壘&quot;&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;layui-col-md7 layui-col-md-offset2&quot;&gt;&lt;!--鍙冲崐閮ㄥ垎--&gt;
+
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+                &lt;h2 style=&quot;text-align:center&quot;&gt;鏌ヨ缁撴灉&lt;/h2&gt;
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+
+
+                &lt;table class=&quot;layui-table&quot; lay-size=&quot;sm&quot;&gt;
+                    &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;id&lt;/th&gt;
+                        &lt;th&gt;涔﹀悕&lt;/th&gt;
+                        &lt;th&gt;浣滆€?/th&gt;
+                        &lt;th&gt;鍑虹増绀?/th&gt;
+                        &lt;th&gt;鐘舵€?/th&gt;
+                    &lt;/tr&gt;
+                    &lt;/thead&gt;
+
+                    
+
+                    &lt;tr&gt;
+                        &lt;td colspan=&quot;5&quot;&gt;
+                            &lt;div style=&quot;margin: auto; width: 160px;&quot;&gt;
+
+                                &lt;a id=&quot;prePage&quot;
+                                   href=&quot;/showBooksResultPageByCategoryId?pageNum=0&amp;amp;bookCategory=&quot;&gt;
+                                    &lt;button class=&quot;layui-btn layui-btn-sm&quot;&gt;涓婁竴椤?/button&gt;
+                                &lt;/a&gt;
+                                &lt;label id=&quot;lab1&quot;&gt;1&lt;/label&gt;
+
+                                &lt;span&gt;/&lt;/span&gt;
+
+                                &lt;label id=&quot;lab2&quot;&gt;1&lt;/label&gt;
+                                &lt;a id=&quot;nextPage&quot;
+                                   href=&quot;/showBooksResultPageByCategoryId?pageNum=2&amp;amp;bookCategory=&quot;&gt;
+                                    &lt;button class=&quot;layui-btn layui-btn-sm&quot;&gt;涓嬩竴椤?/button&gt;
+                                &lt;/a&gt;
+                            &lt;/div&gt;
+
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;div class=&quot;layui-footer&quot;&gt;
+            &lt;!-- 搴曢儴鍥哄畾鍖哄煙 --&gt;
+            Variation - library - managerSystem
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/scripts/admin/showBooks.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+</content>
+														<totalSize>5902</totalSize>
+														<timeStamp>2026-06-06 12:52:33</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/showBooksPage</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/addCategoryPage?pageNum=1
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>225</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>179</maxResponseTime>
+											<averageResponseTime>179</averageResponseTime>
+										</Summary>
+										<childCount>5</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>231</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>179</maxResponseTime>
+													<averageResponseTime>179</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>230</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>179</maxResponseTime>
+															<averageResponseTime>179</averageResponseTime>
+														</Summary>
+														<timeMs>179</timeMs>
+														<size>8368</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;绠＄悊鍛?鍥句功绠＄悊绯荤粺&lt;/title&gt;
+    &lt;link href=&quot;/layui/css/layui.css&quot; rel=&quot;stylesheet&quot;/&gt;
+
+&lt;/head&gt;
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-header&quot;&gt;
+            &lt;div class=&quot; layui-nav &quot; style=&quot;font-size: x-large; color: #009688;line-height: 60px;&quot;&gt; 鍥?涔?绠?鐞?绯?缁?/div&gt;
+            &lt;!-- 澶撮儴鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勬按骞冲鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;
+                        &lt;img src=&quot;/images/user_image.jpg&quot; class=&quot;layui-nav-img&quot;&gt;
+                        &lt;span&gt;admin&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;鍩烘湰璧勬枡&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;瀹夊叏璁剧疆&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/adminLogOut&quot;&gt;閫€鍑虹櫥褰?/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+        &lt;div class=&quot;layui-side-scroll&quot;&gt;
+            &lt;!-- 宸︿晶瀵艰埅鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勫瀭鐩村鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-nav-tree&quot;&gt;
+
+                &lt;li class=&quot;layui-nav-item layui-nav-itemed&quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;涔︾睄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addBookPage&quot;&gt;&amp;emsp;&amp;emsp;褰曞叆鏂颁功&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addCategoryPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏂板缓绫诲埆&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd class=&quot;layui-this&quot;&gt;&lt;a href=&quot;/showBooksPage&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鐢ㄦ埛绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/showUsersPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addUserPage&quot;&gt;&amp;emsp;&amp;emsp;鏂板鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鍊熼槄淇℃伅&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/allBorrowBooksRecordPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鎵€鏈夎褰?/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/adminInfoPage&quot;&gt;涓汉淇℃伅&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-body layui-container&quot;&gt;
+
+        &lt;div class=&quot;layui-row&quot;&gt;
+
+            &lt;div class=&quot;layui-col-md3&quot;&gt;&lt;!--宸﹀崐閮ㄥ垎--&gt;
+
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+                &lt;h2 style=&quot;text-align:center&quot;&gt;鏌ヨ涔︾睄&lt;/h2&gt;
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+
+                &lt;form class=&quot;layui-form&quot; action=&quot;/showBooksResultPageByCategoryId&quot; id=&quot;bookCategoryForm&quot;&gt;
+
+                    &lt;div class=&quot;layui-form-item&quot;&gt;
+
+                        &lt;div style=&quot;margin: 20px;&quot;&gt;
+                            &lt;label&gt;鎸夌被鍒煡鎵?/label&gt;
+                        &lt;/div&gt;
+
+                        &lt;div&gt;
+                            &lt;select lay-verify=&quot;required&quot; class=&quot;layui-select&quot; id=&quot;bookCategory&quot; name=&quot;bookCategory&quot;&gt;
+                            &lt;/select&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;input type=&quot;text&quot; name=&quot;pageNum&quot; value=&quot;1&quot; style=&quot;display: none&quot;&gt;
+
+                    &lt;input class=&quot;layui-btn&quot; type=&quot;submit&quot; lay-submit=&quot;&quot; value=&quot;鏌ユ壘&quot;&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;layui-col-md7 layui-col-md-offset2&quot;&gt;&lt;!--鍙冲崐閮ㄥ垎--&gt;
+
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+                &lt;h2 style=&quot;text-align:center&quot;&gt;鏌ヨ缁撴灉&lt;/h2&gt;
+                &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+
+
+                &lt;table class=&quot;layui-table&quot; lay-size=&quot;sm&quot;&gt;
+                    &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;id&lt;/th&gt;
+                        &lt;th&gt;涔﹀悕&lt;/th&gt;
+                        &lt;th&gt;浣滆€?/th&gt;
+                        &lt;th&gt;鍑虹増绀?/th&gt;
+                        &lt;th&gt;鐘舵€?/th&gt;
+                    &lt;/tr&gt;
+                    &lt;/thead&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;1&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;宸ㄤ汉鐨勯櫒钀?/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鑲?绂忚幈鐗?/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;姹熻嫃鍑ゅ嚢鏂囪壓鍑虹増绀?/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;涓嶅彲鍊?/label&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;2&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;涓変綋&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍒樻厛娆?/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍗椾含澶у鍑虹増绀?/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍙€?/label&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;3&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;澶嶆椿&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍒楀か.鎵樺皵鏂嘲&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;涓婃捣璇戞枃鍑虹増绀?/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍙€?/label&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;6&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;骞冲嚒鐨勪笘鐣?/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;璺仴&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;涓婃捣鏂囪壓鍑虹増绀?/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍙€?/label&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;15&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鐧介箍鍘?/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;闄堝繝瀹?/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍗椾含鍑虹増绀?/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍙€?/label&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;18&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;澶╂墠鍦ㄥ乏鐤瓙鍦ㄥ彸&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;楂橀摥&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍖椾含鑱斿悎鍑虹増鍏徃&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍙€?/label&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;label&gt;74&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;搴风寮€鎾簡&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鐪熺殑鍋囩殑&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;wokao&lt;/label&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;label&gt;鍙€?/label&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td colspan=&quot;5&quot;&gt;
+                            &lt;div style=&quot;margin: auto; width: 160px;&quot;&gt;
+
+                                &lt;a id=&quot;prePage&quot;
+                                   href=&quot;/showBooksResultPageByCategoryId?pageNum=0&amp;amp;bookCategory=1&quot;&gt;
+                                    &lt;button class=&quot;layui-btn layui-btn-sm&quot;&gt;涓婁竴椤?/button&gt;
+                                &lt;/a&gt;
+                                &lt;label id=&quot;lab1&quot;&gt;1&lt;/label&gt;
+
+                                &lt;span&gt;/&lt;/span&gt;
+
+                                &lt;label id=&quot;lab2&quot;&gt;1&lt;/label&gt;
+                                &lt;a id=&quot;nextPage&quot;
+                                   href=&quot;/showBooksResultPageByCategoryId?pageNum=2&amp;amp;bookCategory=1&quot;&gt;
+                                    &lt;button class=&quot;layui-btn layui-btn-sm&quot;&gt;涓嬩竴椤?/button&gt;
+                                &lt;/a&gt;
+                            &lt;/div&gt;
+
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;div class=&quot;layui-footer&quot;&gt;
+            &lt;!-- 搴曢儴鍥哄畾鍖哄煙 --&gt;
+            Variation - library - managerSystem
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/scripts/admin/showBooks.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+</content>
+														<totalSize>8368</totalSize>
+														<timeStamp>2026-06-06 12:52:38</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>226</id>
+												<name>bookCategory</name>
+												<value>1</value>
+												<sendEquals>true</sendEquals>
+												<method>1</method>
+											</Parameter>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>227</id>
+												<name/>
+												<value>%D0%A1%CB%B5</value>
+												<sendEquals>true</sendEquals>
+												<method>1</method>
+											</Parameter>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>228</id>
+												<name>pageNum</name>
+												<value>1</value>
+												<sendEquals>true</sendEquals>
+												<method>1</method>
+											</Parameter>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>229</id>
+												<name/>
+												<value>%B2%E9%D5%D2</value>
+												<sendEquals>true</sendEquals>
+												<method>1</method>
+											</Parameter>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/showBooksResultPageByCategoryId</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/showBooksPage
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>236</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>178</maxResponseTime>
+											<averageResponseTime>178</averageResponseTime>
+										</Summary>
+										<childCount>2</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>239</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>178</maxResponseTime>
+													<averageResponseTime>178</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>238</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>178</maxResponseTime>
+															<averageResponseTime>178</averageResponseTime>
+														</Summary>
+														<timeMs>178</timeMs>
+														<size>7993</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;绠＄悊鍛?鍥句功绠＄悊绯荤粺&lt;/title&gt;
+    &lt;link href=&quot;/layui/css/layui.css&quot; rel=&quot;stylesheet&quot;/&gt;
+
+&lt;/head&gt;
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-header&quot;&gt;
+            &lt;div class=&quot; layui-nav &quot; style=&quot;font-size: x-large; color: #009688;line-height: 60px;&quot;&gt; 鍥?涔?绠?鐞?绯?缁?/div&gt;
+            &lt;!-- 澶撮儴鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勬按骞冲鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;
+                        &lt;img src=&quot;/images/user_image.jpg&quot; class=&quot;layui-nav-img&quot;&gt;
+                        &lt;span&gt;admin&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;鍩烘湰璧勬枡&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;瀹夊叏璁剧疆&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/adminLogOut&quot;&gt;閫€鍑虹櫥褰?/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+        &lt;div class=&quot;layui-side-scroll&quot;&gt;
+            &lt;!-- 宸︿晶瀵艰埅鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勫瀭鐩村鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-nav-tree&quot;&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;涔︾睄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addBookPage&quot;&gt;&amp;emsp;&amp;emsp;褰曞叆鏂颁功&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addCategoryPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏂板缓绫诲埆&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/showBooksPage&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item layui-nav-itemed&quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鐢ㄦ埛绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd class=&quot;layui-this&quot;&gt;&lt;a href=&quot;/showUsersPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addUserPage&quot;&gt;&amp;emsp;&amp;emsp;鏂板鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鍊熼槄淇℃伅&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/allBorrowBooksRecordPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鎵€鏈夎褰?/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/adminInfoPage&quot;&gt;涓汉淇℃伅&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-body layui-container&quot;&gt;
+
+        &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+        &lt;h2 style=&quot;text-align:center&quot;&gt;鏌ヨ鐢ㄦ埛&lt;/h2&gt;
+        &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+
+        &lt;table class=&quot;layui-table&quot; lay-size=&quot;sm&quot;&gt;
+            &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;id&lt;/th&gt;
+                &lt;th&gt;鐢ㄦ埛鍚?/th&gt;
+                &lt;th&gt;閭&lt;/th&gt;
+                &lt;th&gt;鎿嶄綔&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;label&gt;1&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;user1&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;501455447@qq.com&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger del_btn&quot; value=&quot;1&quot;&gt;鍒犻櫎
+                    &lt;/button&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;label&gt;2&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;zbw&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;501455447@qq.com&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger del_btn&quot; value=&quot;2&quot;&gt;鍒犻櫎
+                    &lt;/button&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;label&gt;5&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;user2&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;501455447@qq.com&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger del_btn&quot; value=&quot;5&quot;&gt;鍒犻櫎
+                    &lt;/button&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;label&gt;7&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;绉戞瘮&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;501455447@qq.com&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger del_btn&quot; value=&quot;7&quot;&gt;鍒犻櫎
+                    &lt;/button&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;label&gt;8&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;鏌忔媺鍥?/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;501455447@qq.com&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger del_btn&quot; value=&quot;8&quot;&gt;鍒犻櫎
+                    &lt;/button&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;label&gt;9&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;鎷跨牬浠?/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;501455447@qq.com&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger del_btn&quot; value=&quot;9&quot;&gt;鍒犻櫎
+                    &lt;/button&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;label&gt;10&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;娆ф枃&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;501455447@qq.com&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger del_btn&quot; value=&quot;10&quot;&gt;鍒犻櫎
+                    &lt;/button&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;label&gt;11&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;搴撳吂椹?/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;501455447@qq.com&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger del_btn&quot; value=&quot;11&quot;&gt;鍒犻櫎
+                    &lt;/button&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;label&gt;13&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;榄旀湳甯?/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;501455447@qq.com&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger del_btn&quot; value=&quot;13&quot;&gt;鍒犻櫎
+                    &lt;/button&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;label&gt;16&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;鍛ㄦ澃浼?/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;501455447@qq.com&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button class=&quot;layui-btn layui-btn-sm layui-btn-danger del_btn&quot; value=&quot;16&quot;&gt;鍒犻櫎
+                    &lt;/button&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+                &lt;td colspan=&quot;5&quot;&gt;
+                    &lt;div style=&quot;margin: auto; width: 160px;&quot;&gt;
+
+                        &lt;a id=&quot;prePage&quot;
+                           href=&quot;/showUsersPage?pageNum=0&quot;&gt;
+                            &lt;button class=&quot;layui-btn layui-btn-sm&quot;&gt;涓婁竴椤?/button&gt;
+                        &lt;/a&gt;
+                        &lt;label id=&quot;lab1&quot;&gt;1&lt;/label&gt;
+
+                        &lt;span&gt;/&lt;/span&gt;
+
+                        &lt;label id=&quot;lab2&quot;&gt;2&lt;/label&gt;
+                        &lt;a id=&quot;nextPage&quot; href=&quot;/showUsersPage?pageNum=2&quot;&gt;
+                            &lt;button class=&quot;layui-btn layui-btn-sm&quot;&gt;涓嬩竴椤?/button&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+
+                &lt;/td&gt;
+            &lt;/tr&gt;
+
+        &lt;/table&gt;
+
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;div class=&quot;layui-footer&quot;&gt;
+            &lt;!-- 搴曢儴鍥哄畾鍖哄煙 --&gt;
+            Variation - library - managerSystem
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/scripts/admin/showUsers.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</content>
+														<totalSize>7993</totalSize>
+														<timeStamp>2026-06-06 12:52:41</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>237</id>
+												<name>pageNum</name>
+												<value>1</value>
+												<sendEquals>true</sendEquals>
+												<method>1</method>
+											</Parameter>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/showUsersPage</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/showBooksResultPageByCategoryId?bookCategory=1&amp;=%E5%B0%8F%E8%AF%B4&amp;pageNum=1&amp;=%E6%9F%A5%E6%89%BE
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>244</id>
+										<Summary v='3'>
+											<maxResponseTime>0</maxResponseTime>
+											<averageResponseTime>0</averageResponseTime>
+										</Summary>
+										<childCount>1</childCount>
+										<ChildItems>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>245</id>
+												<name>userId</name>
+												<value>7</value>
+												<sendEquals>true</sendEquals>
+												<method>2</method>
+											</Parameter>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/deleteUser</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers/>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset/>
+										<method>2</method>
+										<waitForSubRequests>false</waitForSubRequests>
+										<executionMode>1</executionMode>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>248</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>174</maxResponseTime>
+											<averageResponseTime>174</averageResponseTime>
+										</Summary>
+										<childCount>1</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>250</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>174</maxResponseTime>
+													<averageResponseTime>174</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>249</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>174</maxResponseTime>
+															<averageResponseTime>174</averageResponseTime>
+														</Summary>
+														<timeMs>174</timeMs>
+														<size>4768</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;绠＄悊鍛?鍥句功绠＄悊绯荤粺&lt;/title&gt;
+    &lt;link href=&quot;/layui/css/layui.css&quot; rel=&quot;stylesheet&quot;/&gt;
+
+&lt;/head&gt;
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-header&quot;&gt;
+            &lt;div class=&quot; layui-nav &quot; style=&quot;font-size: x-large; color: #009688;line-height: 60px;&quot;&gt; 鍥?涔?绠?鐞?绯?缁?/div&gt;
+            &lt;!-- 澶撮儴鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勬按骞冲鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;
+                        &lt;img src=&quot;/images/user_image.jpg&quot; class=&quot;layui-nav-img&quot;&gt;
+                        &lt;span&gt;admin&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;鍩烘湰璧勬枡&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;瀹夊叏璁剧疆&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/adminLogOut&quot;&gt;閫€鍑虹櫥褰?/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+        &lt;div class=&quot;layui-side-scroll&quot;&gt;
+            &lt;!-- 宸︿晶瀵艰埅鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勫瀭鐩村鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-nav-tree&quot;&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;涔︾睄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addBookPage&quot;&gt;&amp;emsp;&amp;emsp;褰曞叆鏂颁功&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addCategoryPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏂板缓绫诲埆&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/showBooksPage&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item layui-nav-itemed&quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鐢ㄦ埛绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/showUsersPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd class=&quot;layui-this&quot;&gt;&lt;a href=&quot;/addUserPage&quot;&gt;&amp;emsp;&amp;emsp;鏂板鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鍊熼槄淇℃伅&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/allBorrowBooksRecordPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鎵€鏈夎褰?/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/adminInfoPage&quot;&gt;涓汉淇℃伅&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div style=&quot;margin : 30px auto; padding:40px 16px ;border: 200px; width: 400px; height: 550px; background-color: #f2f2f2&quot;
+         class=&quot;layui-container&quot;&gt;
+
+        &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+        &lt;h1 style=&quot;text-align:center&quot;&gt;鏂板鐢ㄦ埛&lt;/h1&gt;
+        &lt;hr class=&quot;layui-bg-blue&quot; style=&quot;margin-bottom: 40px&quot;&gt;
+
+        &lt;form class=&quot;layui-form&quot; id=&quot;addUserForm&quot; action=&quot;#&quot;&gt;
+
+            &lt;div class=&quot;layui-form-item&quot;&gt;
+                &lt;label class=&quot;layui-form-label&quot;&gt;鐢ㄦ埛鍚?/label&gt;
+                &lt;input type=&quot;text&quot; class=&quot;layui-input layui-input-inline&quot; id=&quot;userName&quot; autocomplete=&quot;off&quot; autofocus
+                       name=&quot;userName&quot; lay-verify=&quot;required&quot;
+                       placeholder=&quot;璇疯緭鍏ョ敤鎴峰悕&quot;&gt;&lt;br&gt;&lt;br&gt;
+            &lt;/div&gt;
+
+
+            &lt;div class=&quot;layui-form-item&quot;&gt;
+                &lt;label class=&quot;layui-form-label&quot;&gt;瀵嗙爜&lt;/label&gt;
+                &lt;input class=&quot;layui-input layui-input-inline&quot; type=&quot;password&quot; id=&quot;password&quot;
+                       lay-verify=&quot;required&quot; name=&quot;userPwd&quot; placeholder=&quot;璇疯緭鍏ュ瘑鐮?&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;layui-form-item&quot;&gt;
+                &lt;label class=&quot;layui-form-label&quot;&gt;閭&lt;/label&gt;
+                &lt;input class=&quot;layui-input layui-input-inline&quot; type=&quot;text&quot; lay-verify=&quot;email&quot;
+                       id=&quot;email&quot; name=&quot;userEmail&quot; placeholder=&quot;璇疯緭鍏ラ偖绠?&gt;
+            &lt;/div&gt;
+
+            &lt;div style=&quot;margin-left: 120px&quot;&gt;
+                &lt;input class=&quot;layui-btn layui-btn-radius&quot; lay-filter=&quot;btn_addUser&quot;
+                       id=&quot;btn_addUser&quot; type=&quot;submit&quot; lay-submit=&quot;&quot; value=&quot;娣诲姞鐢ㄦ埛&quot;&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-footer&quot;&gt;
+            &lt;!-- 搴曢儴鍥哄畾鍖哄煙 --&gt;
+            Variation - library - managerSystem
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/scripts/admin/addUser.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</content>
+														<totalSize>4768</totalSize>
+														<timeStamp>2026-06-06 12:52:47</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/addUserPage</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/showUsersPage?pageNum=1
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>255</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>181</maxResponseTime>
+											<averageResponseTime>181</averageResponseTime>
+										</Summary>
+										<childCount>2</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>258</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>181</maxResponseTime>
+													<averageResponseTime>181</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>257</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>181</maxResponseTime>
+															<averageResponseTime>181</averageResponseTime>
+														</Summary>
+														<timeMs>181</timeMs>
+														<size>5336</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;绠＄悊鍛?鍥句功绠＄悊绯荤粺&lt;/title&gt;
+    &lt;link href=&quot;/layui/css/layui.css&quot; rel=&quot;stylesheet&quot;/&gt;
+
+
+&lt;/head&gt;
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-header&quot;&gt;
+            &lt;div class=&quot; layui-nav &quot; style=&quot;font-size: x-large; color: #009688;line-height: 60px;&quot;&gt; 鍥?涔?绠?鐞?绯?缁?/div&gt;
+            &lt;!-- 澶撮儴鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勬按骞冲鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;
+                        &lt;img src=&quot;/images/user_image.jpg&quot; class=&quot;layui-nav-img&quot;&gt;
+                        &lt;span&gt;admin&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;鍩烘湰璧勬枡&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;瀹夊叏璁剧疆&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/adminLogOut&quot;&gt;閫€鍑虹櫥褰?/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+        &lt;div class=&quot;layui-side-scroll&quot;&gt;
+            &lt;!-- 宸︿晶瀵艰埅鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勫瀭鐩村鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-nav-tree&quot;&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;涔︾睄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addBookPage&quot;&gt;&amp;emsp;&amp;emsp;褰曞叆鏂颁功&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addCategoryPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏂板缓绫诲埆&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/showBooksPage&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鐢ㄦ埛绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/showUsersPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addUserPage&quot;&gt;&amp;emsp;&amp;emsp;鏂板鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item layui-nav-itemed&quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鍊熼槄淇℃伅&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd class=&quot;layui-this&quot;&gt;&lt;a href=&quot;/allBorrowBooksRecordPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鎵€鏈夎褰?/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/adminInfoPage&quot;&gt;涓汉淇℃伅&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-body layui-container&quot;&gt;
+
+        &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+        &lt;h2 style=&quot;text-align:center&quot;&gt;鎵€鏈夊€熶功璁板綍&lt;/h2&gt;
+        &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+
+        &lt;table class=&quot;layui-table&quot; lay-size=&quot;sm&quot;&gt;
+
+            &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;td&gt;鐢ㄦ埛&lt;/td&gt;
+                &lt;td&gt;涔︾睄&lt;/td&gt;
+                &lt;td&gt;鍊熶功鏃ユ湡&lt;/td&gt;
+                &lt;td&gt;杩樹功鏃ユ湡&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+
+            &lt;tr&gt;
+                &lt;td&gt;&lt;label&gt;user2&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;宸ㄤ汉鐨勯櫒钀?/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;2020-08-04&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;2020-10-04&lt;/label&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+                &lt;td&gt;&lt;label&gt;user2&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;搴熼兘&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;2020-08-01&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;2020-10-01&lt;/label&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+                &lt;td&gt;&lt;label&gt;zbw&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;jQuery&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;2020-08-02&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;2020-10-02&lt;/label&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+                &lt;td&gt;&lt;label&gt;user1&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;璁＄畻鏈虹綉缁?/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;2026-04-28&lt;/label&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;label&gt;2026-06-28&lt;/label&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+                &lt;td colspan=&quot;5&quot;&gt;
+                    &lt;div style=&quot;margin: auto; width: 160px;&quot;&gt;
+
+                        &lt;a id=&quot;prePage&quot; href=&quot;/allBorrowBooksRecordPage?pageNum=0&quot;&gt;
+                            &lt;button class=&quot;layui-btn layui-btn-sm&quot;&gt;涓婁竴椤?/button&gt;
+                        &lt;/a&gt;
+                        &lt;label id=&quot;lab1&quot;&gt;1&lt;/label&gt;
+
+                        &lt;span&gt;/&lt;/span&gt;
+
+                        &lt;label id=&quot;lab2&quot;&gt;1&lt;/label&gt;
+
+                        &lt;a id=&quot;nextPage&quot; href=&quot;/allBorrowBooksRecordPage?pageNum=2&quot;&gt;
+                            &lt;button class=&quot;layui-btn layui-btn-sm&quot;&gt;涓嬩竴椤?/button&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+
+                &lt;/td&gt;
+            &lt;/tr&gt;
+
+        &lt;/table&gt;
+    &lt;/div&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-footer&quot;&gt;
+            &lt;!-- 搴曢儴鍥哄畾鍖哄煙 --&gt;
+            Variation - library - managerSystem
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/scripts/admin/allBorrowingBooksRecord.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</content>
+														<totalSize>5336</totalSize>
+														<timeStamp>2026-06-06 12:52:53</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+											<Parameter v='4'>
+												<ver>14</ver>
+												<id>256</id>
+												<name>pageNum</name>
+												<value>1</value>
+												<sendEquals>true</sendEquals>
+												<method>1</method>
+											</Parameter>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/allBorrowBooksRecordPage</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/addUserPage
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+									<Request v='10'>
+										<ver>14</ver>
+										<id>261</id>
+										<Summary v='3'>
+											<played>1</played>
+											<succeeded>1</succeeded>
+											<maxResponseTime>176</maxResponseTime>
+											<averageResponseTime>176</averageResponseTime>
+										</Summary>
+										<childCount>1</childCount>
+										<ChildItems>
+											<ResponsesItem v='4'>
+												<ver>14</ver>
+												<id>263</id>
+												<Summary v='3'>
+													<played>1</played>
+													<succeeded>1</succeeded>
+													<maxResponseTime>176</maxResponseTime>
+													<averageResponseTime>176</averageResponseTime>
+												</Summary>
+												<childCount>1</childCount>
+												<ChildItems>
+													<Response v='3'>
+														<ver>14</ver>
+														<id>262</id>
+														<Summary v='3'>
+															<played>1</played>
+															<succeeded>1</succeeded>
+															<maxResponseTime>176</maxResponseTime>
+															<averageResponseTime>176</averageResponseTime>
+														</Summary>
+														<timeMs>176</timeMs>
+														<size>5551</size>
+														<encodedContent>false</encodedContent>
+														<content>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;绠＄悊鍛?鍥句功绠＄悊绯荤粺&lt;/title&gt;
+    &lt;link href=&quot;/layui/css/layui.css&quot; rel=&quot;stylesheet&quot;/&gt;
+
+&lt;/head&gt;
+
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-header&quot;&gt;
+            &lt;div class=&quot; layui-nav &quot; style=&quot;font-size: x-large; color: #009688;line-height: 60px;&quot;&gt; 鍥?涔?绠?鐞?绯?缁?/div&gt;
+            &lt;!-- 澶撮儴鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勬按骞冲鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;
+                        &lt;img src=&quot;/images/user_image.jpg&quot; class=&quot;layui-nav-img&quot;&gt;
+                        &lt;span&gt;admin&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;鍩烘湰璧勬枡&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;&quot;&gt;瀹夊叏璁剧疆&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;/adminLogOut&quot;&gt;閫€鍑虹櫥褰?/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+        &lt;div class=&quot;layui-side-scroll&quot;&gt;
+            &lt;!-- 宸︿晶瀵艰埅鍖哄煙锛堝彲閰嶅悎layui宸叉湁鐨勫瀭鐩村鑸級 --&gt;
+            &lt;ul class=&quot;layui-nav layui-nav-tree&quot;&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;涔︾睄绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addBookPage&quot;&gt;&amp;emsp;&amp;emsp;褰曞叆鏂颁功&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addCategoryPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏂板缓绫诲埆&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/showBooksPage&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ涔︾睄&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item&quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鐢ㄦ埛绠＄悊&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/showUsersPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鏌ヨ鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/addUserPage&quot;&gt;&amp;emsp;&amp;emsp;鏂板鐢ㄦ埛&lt;/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item &quot;&gt;
+                    &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;鍊熼槄淇℃伅&lt;/a&gt;
+                    &lt;dl class=&quot;layui-nav-child&quot;&gt;
+                        &lt;dd&gt;&lt;a href=&quot;/allBorrowBooksRecordPage?pageNum=1&quot;&gt;&amp;emsp;&amp;emsp;鎵€鏈夎褰?/a&gt;&lt;/dd&gt;
+                    &lt;/dl&gt;
+                &lt;/li&gt;
+
+                &lt;li class=&quot;layui-nav-item  layui-nav-itemed&quot;&gt;&lt;a class=&quot;&quot; href=&quot;/adminInfoPage&quot;&gt;涓汉淇℃伅&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;layui-body layui-container&quot;&gt;
+
+        &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+        &lt;h3 style=&quot;font-size: xx-large; text-align: center&quot;&gt; 绠?鐞?鍛?淇?鎭?&lt;/h3&gt;
+        &lt;hr class=&quot;layui-bg-blue&quot;&gt;
+
+        &lt;div class=&quot;layui-row&quot;&gt;
+            &lt;div class=&quot;layui-col-md8 layui-col-lg-offset2&quot;&gt;
+                &lt;table class=&quot;layui-table&quot;&gt;
+                    &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;绠＄悊鍛榠d&lt;/th&gt;
+                        &lt;th&gt;绠＄悊鍛樺鍚?/th&gt;
+                        &lt;th&gt;绠＄悊鍛橀偖绠?/th&gt;
+                        &lt;th&gt;绠＄悊鍛樺瘑鐮?/th&gt;
+                    &lt;/tr&gt;
+                    &lt;/thead&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;b&gt;1&lt;/b&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;b&gt;admin&lt;/b&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;b&gt;501455447@qq.com&lt;/b&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;b&gt;123456&lt;/b&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;layui-row&quot;&gt;
+            &lt;button id=&quot;modify-admin&quot; class=&quot;layui-btn&quot; style=&quot;display: block; margin: 10px auto;&quot;&gt;淇敼淇℃伅&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;window&quot; title=&quot;淇敼淇℃伅&quot; style=&quot;margin: 5%; display: none&quot;&gt;
+            &lt;form id=&quot;updateAdminForm&quot; class=&quot;layui-form&quot;&gt;
+
+
+                &lt;div class=&quot;layui-form-item&quot;&gt;
+                    &lt;label class=&quot;layui-form-label&quot;&gt;鍚嶅瓧&lt;/label&gt;
+
+                    &lt;div class=&quot;layui-input-block&quot;&gt;
+                        &lt;input type=&quot;text&quot; name=&quot;adminName&quot; value=&quot;admin&quot; id=&quot;name&quot;
+                               class=&quot;layui-input&quot;&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;layui-form-item&quot;&gt;
+                    &lt;label class=&quot;layui-form-label&quot;&gt;閭&lt;/label&gt;
+
+                    &lt;div class=&quot;layui-input-block&quot;&gt;
+                        &lt;input type=&quot;text&quot; name=&quot;adminEmail&quot; value=&quot;501455447@qq.com&quot; id=&quot;email&quot;
+                               class=&quot;layui-input&quot;&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;layui-form-item&quot;&gt;
+                    &lt;label class=&quot;layui-form-label&quot;&gt;瀵嗙爜&lt;/label&gt;
+
+                    &lt;div class=&quot;layui-input-block&quot;&gt;
+                        &lt;input type=&quot;text&quot; name=&quot;adminPwd&quot; id=&quot;password&quot; class=&quot;layui-input&quot;
+                               value=&quot;123456&quot;&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+            &lt;/form&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div&gt;
+        &lt;div class=&quot;layui-footer&quot;&gt;
+            &lt;!-- 搴曢儴鍥哄畾鍖哄煙 --&gt;
+            Variation - library - managerSystem
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;script src=&quot;/scripts/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/scripts/admin/adminInfo.js&quot;&gt;&lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</content>
+														<totalSize>5551</totalSize>
+														<timeStamp>2026-06-06 12:52:56</timeStamp>
+														<logContent/>
+													</Response>
+												</ChildItems>
+												<Summary v='3'>
+													<maxResponseTime>0</maxResponseTime>
+													<averageResponseTime>0</averageResponseTime>
+												</Summary>
+											</ResponsesItem>
+										</ChildItems>
+										<timeoutEnabled>false</timeoutEnabled>
+										<Object>null</Object>
+										<targetWindow/>
+										<itemName/>
+										<documentation/>
+										<waitForPageToLoad>false</waitForPageToLoad>
+										<sourceLocation/>
+										<recordResponses>true</recordResponses>
+										<quiescenceTimeMs>500</quiescenceTimeMs>
+										<disabled>false</disabled>
+										<ignoreErrors>false</ignoreErrors>
+										<errorFilter/>
+										<Object>null</Object>
+										<host>localhost:8080</host>
+										<path>/adminInfoPage</path>
+										<protocol>http</protocol>
+										<resource/>
+										<targetFrame/>
+										<isActive>1</isActive>
+										<label/>
+										<headers>Referer: http://localhost:8080/allBorrowBooksRecordPage?pageNum=1
+</headers>
+										<multipartBoundary/>
+										<Object>null</Object>
+										<lenientSubrequestCount>false</lenientSubrequestCount>
+										<formCharset>utf-8</formCharset>
+										<method>1</method>
+										<waitForSubRequests>false</waitForSubRequests>
+									</Request>
+								</ChildItems>
+								<timeoutEnabled>false</timeoutEnabled>
+								<Object>null</Object>
+								<targetWindow/>
+								<itemName/>
+								<documentation/>
+								<waitForPageToLoad>false</waitForPageToLoad>
+								<sourceLocation/>
+								<recordResponses>true</recordResponses>
+								<quiescenceTimeMs>500</quiescenceTimeMs>
+								<disabled>false</disabled>
+								<ignoreErrors>false</ignoreErrors>
+								<errorFilter/>
+								<Object>null</Object>
+								<name>Step 1</name>
+								<repetitions>1</repetitions>
+								<repeatType>1</repeatType>
+								<repeatVariable/>
+								<incrementAutomatically>true</incrementAutomatically>
+								<incrementAll>true</incrementAll>
+								<expanded>1</expanded>
+							</Step>
+						</ChildItems>
+						<timeoutEnabled>false</timeoutEnabled>
+						<Object>null</Object>
+						<targetWindow/>
+						<itemName/>
+						<documentation/>
+						<waitForPageToLoad>false</waitForPageToLoad>
+						<sourceLocation/>
+						<recordResponses>true</recordResponses>
+						<quiescenceTimeMs>500</quiescenceTimeMs>
+						<disabled>false</disabled>
+						<ignoreErrors>false</ignoreErrors>
+						<errorFilter/>
+						<Object>null</Object>
+						<title>Test 1</title>
+						<template/>
+						<expanded>1</expanded>
+					</TestItem>
+				</ChildItems>
+				<timeoutEnabled>false</timeoutEnabled>
+				<Object>null</Object>
+				<targetWindow/>
+				<itemName>Test Suite 1</itemName>
+				<documentation/>
+				<waitForPageToLoad>false</waitForPageToLoad>
+				<sourceLocation/>
+				<recordResponses>true</recordResponses>
+				<quiescenceTimeMs>500</quiescenceTimeMs>
+				<disabled>false</disabled>
+				<ignoreErrors>false</ignoreErrors>
+				<errorFilter/>
+				<Object>null</Object>
+				<expanded>1</expanded>
+			</SuiteItem>
+		</ChildItems>
+		<defaultHeaders>User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64; Trident/7.0; rv:11.0) like Gecko
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Accept-Language: zh-CN
+</defaultHeaders>
+		<itemName>Script.bx</itemName>
+		<documentation/>
+	</Script>
+</WebScript>
